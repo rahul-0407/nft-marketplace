@@ -20,11 +20,10 @@ const NavBar = () => {
   const [profile, setProfile] = useState(false);
   const [openSideMenu, setOpenSideMenu] = useState(false);
 
-  /* ================= LOGIC FUNCTIONS (NAMES UNCHANGED) ================= */
+  /* ===== LOGIC (UNCHANGED NAMES) ===== */
 
   const openMenu = (e) => {
     const btnText = e.target.innerText;
-
     setDiscover(btnText === "Discover");
     setHelp(btnText === "Help Center");
     setNotification(false);
@@ -49,17 +48,19 @@ const NavBar = () => {
     setOpenSideMenu((prev) => !prev);
   };
 
-  /* =========================== JSX =========================== */
+  /* ================= JSX ================= */
 
   return (
     <nav className="w-full py-6 relative z-[1111111]">
-      <div className="w-[80%] mx-auto grid grid-cols-2 items-center gap-4">
+      {/* navbar_container */}
+      <div className="w-[80%] mx-auto grid grid-cols-2 items-center gap-4 max-md:grid-cols-2">
 
-        {/* LEFT SECTION */}
-        <div className="grid grid-cols-[1fr_2fr] items-center gap-4">
+        {/* navbar_container_left */}
+        <div className="grid grid-cols-[1fr_2fr] items-center gap-4 max-md:grid-cols-1">
           <img src="/logo.svg" alt="NFT Marketplace" width={100} height={100} />
 
-          <div className="w-[60%] border border-[var(--icons-color)] flex items-center p-2 rounded-full">
+          {/* navbar_container_left_box_input_box (hidden on mobile) */}
+          <div className="w-[60%] border border-[var(--icons-color)] flex items-center p-2 rounded-full max-md:hidden">
             <input
               type="text"
               placeholder="Search NFT"
@@ -69,11 +70,11 @@ const NavBar = () => {
           </div>
         </div>
 
-        {/* RIGHT SECTION */}
-        <div className="grid grid-cols-[1fr_1fr_.5fr_1fr_.3fr] gap-4 items-center self-end">
+        {/* navbar_container_right */}
+        <div className="grid grid-cols-[1fr_1fr_.5fr_1fr_.3fr] gap-4 items-center self-end max-md:grid-cols-3">
 
-          {/* DISCOVER */}
-          <div className="relative cursor-pointer">
+          {/* navbar_container_right_discover (hidden on mobile) */}
+          <div className="relative cursor-pointer max-md:hidden">
             <p onClick={openMenu}>Discover</p>
             {discover && (
               <div className="absolute mt-4 p-4 w-60 rounded-xl bg-[var(--main-bg-color)] shadow-[var(--box-shadow)]">
@@ -82,8 +83,8 @@ const NavBar = () => {
             )}
           </div>
 
-          {/* HELP CENTER */}
-          <div className="relative cursor-pointer">
+          {/* navbar_container_right_help (hidden on mobile) */}
+          <div className="relative cursor-pointer max-md:hidden">
             <p onClick={openMenu}>Help Center</p>
             {help && (
               <div className="absolute mt-4 p-4 w-60 rounded-xl bg-[var(--main-bg-color)] shadow-[var(--box-shadow)]">
@@ -92,7 +93,7 @@ const NavBar = () => {
             )}
           </div>
 
-          {/* NOTIFICATION */}
+          {/* navbar_container_right_notify */}
           <div className="relative">
             <MdNotifications
               className="text-[2rem] cursor-pointer"
@@ -101,12 +102,12 @@ const NavBar = () => {
             {notification && <Notification />}
           </div>
 
-          {/* CREATE BUTTON */}
-          <div className="relative cursor-pointer">
+          {/* navbar_container_right_button (hidden on mobile) */}
+          <div className="relative cursor-pointer max-md:hidden">
             <Button btnText="Create" />
           </div>
 
-          {/* PROFILE */}
+          {/* navbar_container_right_profile_box */}
           <div className="relative cursor-pointer">
             <img
               src="/user-1.png"
@@ -119,8 +120,8 @@ const NavBar = () => {
             {profile && <Profile />}
           </div>
 
-          {/* MENU BUTTON (hidden by default) */}
-          <div className="hidden">
+          {/* navbar_container_right_menuBtn (mobile only) */}
+          <div className="hidden max-md:block">
             <CgMenuRight
               className="text-[2.5rem] cursor-pointer"
               onClick={openSideBar}
@@ -129,9 +130,14 @@ const NavBar = () => {
         </div>
       </div>
 
-      {/* SIDEBAR */}
+      {/* ===== SIDEBAR (mobile only) ===== */}
       {openSideMenu && (
-        <div className="fixed inset-0 bg-black/30 z-[999999]">
+        <div
+          className="fixed top-0 w-96 h-screen bg-[var(--main-bg-color)]
+                     shadow-[var(--box-shadow)] overflow-y-auto
+                     z-[11111] hidden max-md:block"
+          style={{ scrollbarWidth: "none" }}
+        >
           <SideBar setOpenSideMenu={setOpenSideMenu} />
         </div>
       )}
