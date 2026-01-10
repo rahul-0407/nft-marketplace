@@ -131,7 +131,7 @@ const NavBar = () => {
       </div>
 
       {/* ===== SIDEBAR (mobile only) ===== */}
-      {openSideMenu && (
+      {!openSideMenu && (
         <div
           className="fixed top-0 w-96 h-screen bg-[var(--main-bg-color)]
                      shadow-[var(--box-shadow)] overflow-y-auto
