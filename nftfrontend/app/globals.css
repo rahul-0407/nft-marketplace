@@ -72,48 +72,80 @@ body {
 
 
 
-.sideBar{
-  position: fixed;
-  top: 0;
-  width: 24rem;
-  background-color: var(--main-bg-color);
+
+
+.notification{
+  position: absolute;
+  padding: 2rem 1rem;
   box-shadow: var(--box-shadow);
-  height: 100vh;
-  overflow-y: auto;
-  display: none;
-  z-index: 11111;
+  font-size: 1rem;
+  width: 25rem;
+  border-radius: 1rem;
+  left: -20rem;
+  top: 3.5rem;
+  z-index: 222222222;
+  background-color: var(--main-bg-color);
 }
 
-.sideBar::-webkit-scrollbar{
-  display: none;
+.notification > p {
+  font-size:   1.3rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
 }
 
-@media screen and (min-device-width: 320px) and (max-device-width: 768px) {
-  .navbar_container{
-    grid-template-columns: 1fr 1fr;
+.notification_box{
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  transition: all .3s ease-in;
+}
+
+.notification_box:hover{
+  background-color: var(--icons-color);
+  color: var(--shadow-dark-color);
+  border-radius: .3rem;
+}
+
+.notification_box_img{
+  border-radius: 5rem;
+}
+
+.notification_box_info{
+  line-height: 0;
+  margin-top: -.8rem;
+}
+
+.notification_box_info h4 {
+  font-weight: 600;
+}
+
+.notification_box_info p {
+  font-size: 15px;
+  line-height: .3;
+  position: relative;
+}
+
+.notification_box_new{
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background-color: aqua;
+}
+
+@media screen and (max-width: 35em) {
+  .notification{
+    width: 20rem;
+    left: -15rem;
   }
-  .navbar_container_left{
-    grid-template-columns: 1fr;
+  .notification_box{
+    padding: .3rem;
   }
-  .navbar_container_right{
-    grid-template-columns: repeat(3, 1fr);
+  .notification_box p{
+    font-size: 12px;
   }
-  .navbar_container_right_menuBtn{
-    display: block;
-  }
-  .navbar_container_left_box_input_box{
-    display: none;
-  }
-  .navbar_container_right_discover{
-    display: none;
-  }
-  .navbar_container_right_help{
-    display: none;
-  }
-  .navbar_container_right_button{
-    display: none;
-  }
-  .sideBar{
-    display: block;
-  }
+}
+
+.profile{
+  
 }
