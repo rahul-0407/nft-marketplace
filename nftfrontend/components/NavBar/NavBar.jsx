@@ -1,150 +1,142 @@
-"use client"
+"use client";
 
-import React,{useState} from 'react'
-// import Image from 'next/image'
-// import Link from "next/link"
+import React, { useState } from "react";
 
-import {MdNotifications} from "react-icons/md"
-import {BsSearch} from "react-icons/bs"
-import {CgMenuLeft, CgMenuRight} from "react-icons/cg";
+import { MdNotifications } from "react-icons/md";
+import { BsSearch } from "react-icons/bs";
+import { CgMenuRight } from "react-icons/cg";
 
-import Discover from './Discover'
-import HelpCenter from './HelpCenter'
-import Notification from './Notification'
-import Profile from './Profile'
-import SideBar from './SideBar'
-import Button from '../Button'
-// import images from "../../img/index"
+import Discover from "./Discover";
+import HelpCenter from "./HelpCenter";
+import Notification from "./Notification";
+import Profile from "./Profile";
+import SideBar from "./SideBar";
+import Button from "../Button";
 
 const NavBar = () => {
-
-  const [discover, setDiscover] = useState(false)
-  const [help, setHelp] = useState(false)
-  const [notification, setNotification] = useState(false)
-  const [profile, setProfile] = useState(false)
+  const [discover, setDiscover] = useState(false);
+  const [help, setHelp] = useState(false);
+  const [notification, setNotification] = useState(false);
+  const [profile, setProfile] = useState(false);
   const [openSideMenu, setOpenSideMenu] = useState(false);
 
+  /* ================= LOGIC FUNCTIONS (NAMES UNCHANGED) ================= */
 
   const openMenu = (e) => {
     const btnText = e.target.innerText;
-    if(btnText == "Discover"){
-      setDiscover(true);
-      setHelp(false);
-      setNotification(false);
-      setProfile(false);
-    } else if(btnText == "Help Center") {
-      setDiscover(false);
-      setHelp(true);
-      setNotification(false);
-      setProfile(false);
-    } else {
-      setDiscover(false);
-      setHelp(false);
-      setNotification(false);
-      setProfile(false);
-    }
-  }
+
+    setDiscover(btnText === "Discover");
+    setHelp(btnText === "Help Center");
+    setNotification(false);
+    setProfile(false);
+  };
 
   const openNotificcation = () => {
-    if(!notification){
-      setDiscover(false);
-      setHelp(false);
-      setNotification(true);
-      setProfile(false);
-    } else {
-      setNotification(false)
-    }
-  }
+    setDiscover(false);
+    setHelp(false);
+    setProfile(false);
+    setNotification((prev) => !prev);
+  };
 
   const openProfile = () => {
-    if(!profile){
-      setDiscover(false);
-      setHelp(false);
-      setNotification(false);
-      setProfile(true);
-    } else {
-      setProfile(false)
-    }
-  }
+    setDiscover(false);
+    setHelp(false);
+    setNotification(false);
+    setProfile((prev) => !prev);
+  };
 
   const openSideBar = () => {
-    if(!openSideMenu){
-      setOpenSideMenu(true);
-    } else {
-      setOpenSideMenu(false)
-    }
-  }
+    setOpenSideMenu((prev) => !prev);
+  };
 
+  /* =========================== JSX =========================== */
 
   return (
-    <div className='navbar'>
-      <div className='navbar_container'>
-        <div className='navbar_contianer_left'>
-          <div className='logo'>
-            <img src="/logo.svg" alt="NFT MARKET PLACE" width={100} height={100}/>
-          </div>
-          <div className='navbar_contianer_left_box_input'>
-            <div className='navbar_contianer_left_box_input_box'>
-              <input type="text" placeholder='Search NFT'/>
-              <BsSearch onClick={()=>{}} className='search_con'/>
-            </div>
+    <nav className="w-full py-6 relative z-[1111111]">
+      <div className="w-[80%] mx-auto grid grid-cols-2 items-center gap-4">
+
+        {/* LEFT SECTION */}
+        <div className="grid grid-cols-[1fr_2fr] items-center gap-4">
+          <img src="/logo.svg" alt="NFT Marketplace" width={100} height={100} />
+
+          <div className="w-[60%] border border-[var(--icons-color)] flex items-center p-2 rounded-full">
+            <input
+              type="text"
+              placeholder="Search NFT"
+              className="w-[90%] bg-transparent outline-none"
+            />
+            <BsSearch className="cursor-pointer text-[1.4rem]" />
           </div>
         </div>
 
-        {/* // enf of left section */}
-        <div className='navbar_contianer_right'>
-          <div className='navbar_container_right_discover'>
-            <p onClick={(e) => openMenu(e)}>Discover</p>
+        {/* RIGHT SECTION */}
+        <div className="grid grid-cols-[1fr_1fr_.5fr_1fr_.3fr] gap-4 items-center self-end">
+
+          {/* DISCOVER */}
+          <div className="relative cursor-pointer">
+            <p onClick={openMenu}>Discover</p>
             {discover && (
-              <div className='navbar_container_right_discover_box'>
-              <Discover/>
-            </div>
-            )}
-          </div>
-
-          <div className='navbar_container_right_help'>
-            <p onClick={(e) => openMenu(e)}>Help Center</p>
-            {help && (
-              <div className='navbar_container_right_help_box'>
-              <HelpCenter/>
-            </div>
-            )}
-          </div>
-
-          <div className='navabr_container_right_notify'>
-            <MdNotifications className='notify' onClick={(e) => openNotificcation()} />
-              {notification && <Notification/>}
-          </div>
-
-           {/* create button section  */}
-           <div className='navbar_container_right_button'>
-            <Button btnText="Create" />
-           </div>
-
-              {/* User Profile   */}
-            <div className='navbar_container_right_profile_box'>
-              <div className='navabr_contianer_right'>
-                <img src="/user-1.png" alt='Profile' height={40} width={40} onClick={()=> openProfile()} className='navbar_container_right_profile'/>
-                  {profile && <Profile/>}
+              <div className="absolute mt-4 p-4 w-60 rounded-xl bg-[var(--main-bg-color)] shadow-[var(--box-shadow)]">
+                <Discover />
               </div>
-            </div>
+            )}
+          </div>
 
-            {/* ======MENU BUTTON====== */}
-            <div className='navbar_conatainer_right_menuBtn'>
-              <CgMenuRight className='menuIcon' onClick={()=> openSideBar()} />
-            </div>
+          {/* HELP CENTER */}
+          <div className="relative cursor-pointer">
+            <p onClick={openMenu}>Help Center</p>
+            {help && (
+              <div className="absolute mt-4 p-4 w-60 rounded-xl bg-[var(--main-bg-color)] shadow-[var(--box-shadow)]">
+                <HelpCenter />
+              </div>
+            )}
+          </div>
 
+          {/* NOTIFICATION */}
+          <div className="relative">
+            <MdNotifications
+              className="text-[2rem] cursor-pointer"
+              onClick={openNotificcation}
+            />
+            {notification && <Notification />}
+          </div>
+
+          {/* CREATE BUTTON */}
+          <div className="relative cursor-pointer">
+            <Button btnText="Create" />
+          </div>
+
+          {/* PROFILE */}
+          <div className="relative cursor-pointer">
+            <img
+              src="/user-1.png"
+              alt="Profile"
+              width={40}
+              height={40}
+              className="rounded-full"
+              onClick={openProfile}
+            />
+            {profile && <Profile />}
+          </div>
+
+          {/* MENU BUTTON (hidden by default) */}
+          <div className="hidden">
+            <CgMenuRight
+              className="text-[2.5rem] cursor-pointer"
+              onClick={openSideBar}
+            />
+          </div>
         </div>
       </div>
 
-      {/* =======SIDEBAR COMPONENT===== */}
+      {/* SIDEBAR */}
       {openSideMenu && (
-        <div className='SideBar'>
-          <SideBar setOpenSideMenu={setOpenSideMenu}/>
+        <div className="fixed inset-0 bg-black/30 z-[999999]">
+          <SideBar setOpenSideMenu={setOpenSideMenu} />
         </div>
       )}
-    </div>
-  )
-}
+    </nav>
+  );
+};
 
-export default NavBar
+export default NavBar;
