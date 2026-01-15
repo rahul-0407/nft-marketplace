@@ -28,6 +28,10 @@ const NavBar = () => {
     setHelp(btnText === "Help Center");
     setNotification(false);
     setProfile(false);
+    if(discover || help){
+      setDiscover(false)
+      setHelp(false)
+    }
   };
 
   const openNotificcation = () => {
@@ -104,7 +108,7 @@ const NavBar = () => {
 
           {/* navbar_container_right_button (hidden on mobile) */}
           <div className="relative cursor-pointer max-md:hidden">
-            <Button btnText="Create" />
+            <Button btnName="Create" handleClick={()=>{}} />
           </div>
 
           {/* navbar_container_right_profile_box */}
@@ -131,9 +135,9 @@ const NavBar = () => {
       </div>
 
       {/* ===== SIDEBAR (mobile only) ===== */}
-      {!openSideMenu && (
+      {openSideMenu && (
         <div
-          className="fixed top-0 w-96 h-screen bg-[var(--main-bg-color)]
+          className="fixed top-0 left-0 w-96 h-screen bg-[var(--main-bg-color)]
                      shadow-[var(--box-shadow)] overflow-y-auto
                      z-[11111] hidden max-md:block"
           style={{ scrollbarWidth: "none" }}
