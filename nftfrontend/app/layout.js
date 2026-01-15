@@ -18,6 +18,7 @@ const poppins = Poppins({
 
 
 import NavBar from "@/components/NavBar/NavBar";
+import Footer from "@/components/Footer/Footer";
 
 export default function RootLayout({ children }) {
   return (
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
       <body className={`${poppins.variable} font-sans`}>
         <NavBar/>
         {children}
+        <Footer/>
       </body>
     </html>
   );
