@@ -3,6 +3,7 @@ import React from 'react'
 import HeroSection from '@/components/HeroSection'
 import Service from '@/components/Service'
 import BigNFTSlider from '@/components/BigNFTSlider'
+import Subscribe from '@/components/Subscribe'
 
 const Home = () => {
   return (
@@ -10,6 +11,7 @@ const Home = () => {
       <HeroSection/>
       <Service/>
       <BigNFTSlider/>
+      <Subscribe/>
     </div>
   )
 }
