@@ -1,4 +1,4 @@
-'use-client'
+'use client'
 
 import React,{useState} from 'react'
 import {FaFilter, FaAngleDown, FaAngleUp, FaWallet, FaMusic, FaVideo, FaImages, FaUserAlt} from "react-icons/fa"

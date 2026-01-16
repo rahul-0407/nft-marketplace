@@ -12,14 +12,14 @@ import HelpCenter from "../NavBar/HelpCenter";
 
 const Footer = () => {
   return (
-    <div className="w-full py-[1.5rem] relative">
+    <div className="w-full py-6 relative text-(--icons-color)">
       <div
         className="
           w-[80%] mx-auto
           grid
-          grid-cols-[1.3fr_repeat(2,_1fr)_2fr]
+          grid-cols-[1.3fr_repeat(2,1fr)_2fr]
           items-start
-          gap-[3rem]
+          gap-12
           max-[45em]:w-[90%]
           max-[45em]:grid-cols-[1fr_2fr]
           max-[35em]:grid-cols-1
@@ -28,7 +28,7 @@ const Footer = () => {
         {/* SOCIAL */}
         <div>
           <img src="./logo.svg" alt="footer logo" width={100} height={100}  className="mt-6"/>
-          <p className="mt-[4.5rem]">
+          <p className="mt-18">
             The world's first and largest digital marketplace for crypto
             collectibles and non-fungible tokens (NFTs). Buy, sell, and discover
             exclusive digital items.
@@ -44,9 +44,9 @@ const Footer = () => {
                     p-2 rounded-full
                     grid
                     transition-all duration-300 ease-in
-                    hover:bg-[var(--icons-color)]
-                    hover:text-[var(--shadow-dark-color)]
-                    hover:shadow-[var(--box-shadow)]
+                    hover:bg-(--icons-color)
+                    hover:text-(--shadow-dark-color)
+                    hover:shadow-(--box-shadow)
                   "
                 >
                   <Icon />
@@ -77,10 +77,10 @@ const Footer = () => {
               w-full
               flex justify-between items-center
               px-8 py-6
-              bg-[var(--icons-color)]
-              text-[var(--shadow-dark-color)]
+              bg-(--icons-color)
+              text-(--shadow-dark-color)
               rounded-[5rem]
-              mt-[3rem]
+              mt-12
             "
           >
             <input
@@ -91,8 +91,8 @@ const Footer = () => {
                 border-none
                 outline-none
                 w-[90%]
-                text-[var(--shadow-dark-color)]
-                placeholder:text-[var(--shadow-dark-color)]
+                text-(--shadow-dark-color)
+                placeholder:text-(--shadow-dark-color)
               "
             />
             <RiSendPlaneFill className="cursor-pointer text-[2rem]" />
