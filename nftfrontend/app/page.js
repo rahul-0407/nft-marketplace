@@ -7,6 +7,8 @@ import Subscribe from '@/components/Subscribe'
 import Title from '@/components/Title'
 import Category from '@/components/Category'
 import Filter from '@/components/Filter'
+import NFTCard from '@/components/NFTCard'
+
 
 const Home = () => {
   return (
@@ -16,6 +18,7 @@ const Home = () => {
       <BigNFTSlider/>
       <Title heading="Featured NFTs" paragraph="Discover the most outstanding NFTs in all topicsof life."/>
       <Filter/>
+      <NFTCard/>
       <Title heading="Browse by category" paragraph="Explore the NFTSs in the most featured categories."/>
       <Category/>
       <Subscribe/>
