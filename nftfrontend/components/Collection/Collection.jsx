@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import React, { useState } from "react";
 import {
@@ -36,30 +36,30 @@ const Collection = () => {
   };
 
   return (
-    <div className="w-full py-12 text-(--icons-color)">
+    <div className="w-full py-12 text-(--icons-color) pb-40">
       {/* Title */}
-      <div className="w-[35rem] mx-auto pb-24 text-center max-[1024px]:w-[90%]">
+      <div className="w-140 mx-auto pb-24 text-center max-[1024px]:w-[90%]">
         <h2 className="text-5xl mb-16 font-bold">Top List Creators</h2>
 
         {/* Filter Buttons */}
-        <div className="bg-[var(--main-bg-color)] px-4 py-2 rounded-full flex gap-4 justify-around items-center text-lg shadow-[var(--box-shadow)]">
+        <div className="bg-(--main-bg-color) px-4 py-2 rounded-full flex gap-4 justify-around items-center text-lg shadow-(--box-shadow)">
           <button
             onClick={openPopular}
-            className="flex items-center gap-2 bg-[var(--icons-color)] text-[var(--main-bg-color)] px-6 py-4 rounded-full border border-[var(--icons-color)] transition-all duration-300 ease-in hover:bg-transparent hover:text-[var(--icons-color)] max-[425px]:text-xs"
+            className="flex items-center gap-2 bg-(--icons-color) text-(--main-bg-color) px-6 py-4 rounded-full border border-(--icons-color) transition-all duration-300 ease-in hover:bg-transparent hover:text-(--icons-color) max-[425px]:text-xs"
           >
             <BsAlarmFill /> 24 hours
           </button>
 
           <button
             onClick={openFollowers}
-            className="flex items-center gap-2 bg-[var(--icons-color)] text-[var(--main-bg-color)] px-6 py-4 rounded-full border border-[var(--icons-color)] transition-all duration-300 ease-in hover:bg-transparent hover:text-[var(--icons-color)] max-[425px]:text-xs"
+            className="flex items-center gap-2 bg-(--icons-color) text-(--main-bg-color) px-6 py-4 rounded-full border border-(--icons-color) transition-all duration-300 ease-in hover:bg-transparent hover:text-(--icons-color) max-[425px]:text-xs"
           >
             <BsCalendar3 /> 7 days
           </button>
 
           <button
             onClick={openNews}
-            className="flex items-center gap-2 bg-[var(--icons-color)] text-[var(--main-bg-color)] px-6 py-4 rounded-full border border-[var(--icons-color)] transition-all duration-300 ease-in hover:bg-transparent hover:text-[var(--icons-color)] max-[425px]:text-xs"
+            className="flex items-center gap-2 bg-(--icons-color) text-[var(--main-bg-color)] px-6 py-4 rounded-full border border-[var(--icons-color)] transition-all duration-300 ease-in hover:bg-transparent hover:text-[var(--icons-color)] max-[425px]:text-xs"
           >
             <BsFillCalendarDateFill /> 30 days
           </button>
@@ -69,7 +69,7 @@ const Collection = () => {
       {/* Cards Grid */}
       {popular && (
         <div className="w-[80%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-[1024px]:w-[90%] max-[1024px]:gap-16">
-          {cardArray.map((el, i) => (
+          {cardArray.map((_el, i) => (
             <DaysComponents key={i + 1} />
           ))}
         </div>
@@ -77,7 +77,7 @@ const Collection = () => {
 
       {following && (
         <div className="w-[80%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-[1024px]:w-[90%] max-[1024px]:gap-16">
-          {followingArray.map((el, i) => (
+          {followingArray.map((_el, i) => (
             <DaysComponents key={i + 1} />
           ))}
         </div>
@@ -85,7 +85,7 @@ const Collection = () => {
 
       {news && (
         <div className="w-[80%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-[1024px]:w-[90%] max-[1024px]:gap-16">
-          {newArray.map((el, i) => (
+          {newArray.map((_el, i) => (
             <DaysComponents key={i + 1} />
           ))}
         </div>
