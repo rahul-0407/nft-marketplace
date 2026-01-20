@@ -9,6 +9,8 @@ import Category from '@/components/Category'
 import Filter from '@/components/Filter'
 import NFTCard from '@/components/NFTCard'
 import Collection from '@/components/Collection/Collection'
+import FollowerTab from '@/components/FollowerTab'
+
 
 
 const Home = () => {
@@ -18,6 +20,7 @@ const Home = () => {
       <Service/>
       <BigNFTSlider/>
       <Title heading="New Collection" paragraph="Explore the NFTSs in the most featured categories."/>
+      <FollowerTab/>
       <Collection/>
       <Title heading="Featured NFTs" paragraph="Discover the most outstanding NFTs in all topicsof life."/>
       <Filter/>
