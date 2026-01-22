@@ -75,3 +75,16 @@ body {
 
 
 
+.banner_img_mobile{
+  display: none;
+}
+
+.banner_img{
+  height: 300px;
+}
+
+@media screen and (max-device-width: 35em) {
+  .banner_img_mobile{
+    display: block;
+  }
+}
