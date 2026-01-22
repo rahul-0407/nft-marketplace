@@ -75,16 +75,3 @@ body {
 
 
 
-.like{
-  display: flex;
-  align-items: center;
-}
-
-.like_box{
-  border: 3px solid var(--icons-color);
-  border-radius: 50%;
-}
-
-.like_img{
-  border-radius: 50%;
-}

@@ -39,7 +39,7 @@ const AudioCardSmall = () => {
       {/* Play Button */}
       <div
         onClick={() => setPlay(!play)}
-        className="text-3xl bg-(--main-bg-color) rounded-full p-3 cursor-pointer"
+        className="text-3xl text-(--main-bg-color) bg-(--icons-color) rounded-full p-3 cursor-pointer"
       >
         {play ? <TbPlayerPause /> : <TbPlayerPlay />}
       </div>

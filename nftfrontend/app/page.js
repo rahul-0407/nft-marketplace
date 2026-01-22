@@ -11,6 +11,7 @@ import NFTCard from '@/components/NFTCard'
 import Collection from '@/components/Collection/Collection'
 import FollowerTab from '@/components/FollowerTab'
 import AudioLive from '@/components/AudioLive'
+import Slider from '@/components/Slider'
 
 
 
@@ -23,8 +24,9 @@ const Home = () => {
       <BigNFTSlider/>
       <Title heading="Audio Collection" paragraph="Explore the NFTSs in the most featured categories."/>
       <AudioLive/>
-      <Title heading="New Collection" paragraph="Explore the NFTSs in the most featured categories."/>
+      {/* <Title heading="New Collection" paragraph="Explore the NFTSs in the most featured categories."/> */}
       <FollowerTab/>
+      <Slider/>
       <Collection/>
       <Title heading="Featured NFTs" paragraph="Discover the most outstanding NFTs in all topicsof life."/>
       <Filter/>

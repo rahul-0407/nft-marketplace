@@ -47,7 +47,7 @@ const AudioCard = () => {
 
         <div
           onClick={() => setPlay(!play)}
-          className="p-5 rounded-full bg-(--main-bg-color) text-3xl cursor-pointer"
+          className="p-5 rounded-full bg-(--icons-color) text-(--main-bg-color) text-3xl cursor-pointer"
         >
           {play ? <TbPlayerPause /> : <TbPlayerPlay />}
         </div>

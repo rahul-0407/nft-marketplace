@@ -4,7 +4,7 @@ import AudioCardSmall from "./AudioCardSmall";
 
 const AudioLive = () => {
   return (
-    <div className="w-full text-(--icons-color)">
+    <div className="w-full text-(--icons-color) mt-16">
       <div className="w-[80%] mx-auto py-8 pb-32 grid grid-cols-[2.5fr_1fr] gap-8
                       max-[768px]:w-[90%]
                       max-[768px]:grid-cols-1">
