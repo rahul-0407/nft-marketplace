@@ -12,6 +12,7 @@ import Collection from '@/components/Collection/Collection'
 import FollowerTab from '@/components/FollowerTab'
 import AudioLive from '@/components/AudioLive'
 import Slider from '@/components/Slider'
+import Brand from '@/components/Brand'
 
 
 
@@ -34,6 +35,7 @@ const Home = () => {
       <Title heading="Browse by category" paragraph="Explore the NFTSs in the most featured categories."/>
       <Category/>
       <Subscribe/>
+      <Brand/>
     </div>
   )
 }
