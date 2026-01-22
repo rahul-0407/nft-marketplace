@@ -13,6 +13,7 @@ import FollowerTab from '@/components/FollowerTab'
 import AudioLive from '@/components/AudioLive'
 import Slider from '@/components/Slider'
 import Brand from '@/components/Brand'
+import Video from '@/components/Video'
 
 
 
@@ -36,6 +37,7 @@ const Home = () => {
       <Category/>
       <Subscribe/>
       <Brand/>
+      {/* <Video/> */}
     </div>
   )
 }
