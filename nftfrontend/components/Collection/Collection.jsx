@@ -59,7 +59,7 @@ const Collection = () => {
 
           <button
             onClick={openNews}
-            className="flex items-center gap-2 bg-(--icons-color) text-[var(--main-bg-color)] px-6 py-4 rounded-full border border-[var(--icons-color)] transition-all duration-300 ease-in hover:bg-transparent hover:text-[var(--icons-color)] max-[425px]:text-xs"
+            className="flex items-center gap-2 bg-(--icons-color) text-(--main-bg-color) px-6 py-4 rounded-full border border-(--icons-color) transition-all duration-300 ease-in hover:bg-transparent hover:text-(--icons-color) max-[425px]:text-xs"
           >
             <BsFillCalendarDateFill /> 30 days
           </button>

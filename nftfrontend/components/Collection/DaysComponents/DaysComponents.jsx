@@ -3,9 +3,8 @@ import { MdVerified } from "react-icons/md";
 
 const DaysComponents = () => {
   return (
-    <div className="w-full rounded-2xl transition-all duration-300 ease-in cursor-pointer hover:shadow-[var(--box-shadow)]">
+    <div className="w-full rounded-2xl transition-all duration-300 ease-in cursor-pointer hover:shadow-(--box-shadow)">
       <div>
-        {/* Top Image */}
         <div>
           <img
             src="./creatorbackground-1.jpeg"
@@ -16,7 +15,6 @@ const DaysComponents = () => {
           />
         </div>
 
-        {/* 3 Image Grid */}
         <div className="grid grid-cols-3 gap-2">
           <img
             src="./creatorbackground-2.jpeg"
@@ -41,12 +39,11 @@ const DaysComponents = () => {
           />
         </div>
 
-        {/* Title + Info */}
         <div className="px-8 py-4 leading-none">
           <h2 className="text-xl font-bold">Amazing Collection</h2>
 
           <div className="flex items-center justify-between max-[768px]:flex-col max-[768px]:gap-8 max-[768px]:p-4 max-[768px]:items-start">
-            {/* Profile */}
+            
             <div className="flex items-center gap-4">
               <img
                 src="./user-1.png"
@@ -63,9 +60,8 @@ const DaysComponents = () => {
               </p>
             </div>
 
-            {/* Price */}
             <div>
-              <span className="font-semibold border-[3px] border-[var(--icons-color)] px-2 py-1 rounded-lg text-sm">
+              <span className="font-semibold border-[3px] border-(--icons-color) px-2 py-1 rounded-lg text-sm">
                 1.255 ETH
               </span>
             </div>
