@@ -21,7 +21,7 @@ const Home = () => {
       <HeroSection/>
       <Service/>
       <BigNFTSlider/>
-      <Title heading="Latest Audio Collection" paragraph="Explore the NFTSs in the most featured categories."/>
+      <Title heading="Audio Collection" paragraph="Explore the NFTSs in the most featured categories."/>
       <AudioLive/>
       <Title heading="New Collection" paragraph="Explore the NFTSs in the most featured categories."/>
       <FollowerTab/>
