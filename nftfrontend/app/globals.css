@@ -80,7 +80,7 @@ body {
 }
 
 .banner_img{
-  height: 300px;
+  height: 100px;
 }
 
 @media screen and (max-device-width: 35em) {

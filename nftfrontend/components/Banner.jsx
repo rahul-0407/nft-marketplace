@@ -1,16 +1,29 @@
-import React from 'react'
+import React from "react";
 
-const Banner = ({bannerImage}) => {
+const Banner = ({ bannerImage }) => {
   return (
-    <div className='banner'>
-        <div className="banner_img">
-            <img src={bannerImage} alt="background" objectFit="cover" width={1600} height={300}/>
-        </div>
-        <div className="banner_img_mobile">
-            <img src={bannerImage} alt="background" objectFit="cover" width={1600} height={900}/>
-        </div>
-    </div>
-  )
-}
+    <div className="w-full relative">
 
-export default Banner
+      {/* Desktop (default) */}
+      <div className="h-[300px] max-[35em]:hidden overflow-hidden">
+        <img
+          src={bannerImage}
+          alt="background"
+          className="w-full h-full object-cover block"
+        />
+      </div>
+
+      {/* Mobile */}
+      <div className="hidden max-[35em]:block h-[900px] overflow-hidden">
+        <img
+          src={bannerImage}
+          alt="background"
+          className="w-full h-full object-cover block"
+        />
+      </div>
+
+    </div>
+  );
+};
+
+export default Banner;
