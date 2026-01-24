@@ -2,8 +2,8 @@ import React from "react";
 import Banner from "@/components/Banner";
 import CollectionProfile from "@/components/CollectionProfile";
 import Filter from "@/components/Filter";
-import Slider from '@/components/Slider'
-import Brand from '@/components/Brand'
+import Slider from "@/components/Slider";
+import Brand from "@/components/Brand";
 import NFTCardTwo from "@/components/NFTCardTwo";
 // import Filter from '@/components/Filter'
 
@@ -24,10 +24,10 @@ const Collection = () => {
     <div className="collection">
       <Banner bannerImage="./creatorbackground-1.jpeg" />
       <CollectionProfile />
-      <NFTCardTwo NFTData={collectionArray}/>
       <Filter />
-      <Slider/>
-      <Brand/>
+      <NFTCardTwo NFTData={collectionArray} />
+      <Slider />
+      <Brand />
     </div>
   );
 };
