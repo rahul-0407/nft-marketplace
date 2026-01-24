@@ -74,126 +74,207 @@ body {
 
 
 
-.NFTCardTwo{
+.AuthorProfileCard{
+  width: 100%;
+  z-index: 22222;
+  margin-top: 5rem;
+}
+
+.AuthorProfileCard_box{
   width: 80%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: 1fr 4fr 1.3fr;
+  align-items: center;
+  background-color: var(--main-bg-color);
+  padding: 2.5rem 2rem;
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow);
   gap: 3rem;
-  margin-bottom: 14rem;
 }
 
-.NFTCardTwo_box{
-  display: grid;
-  cursor: pointer;
-  transition: all .3s ease-in;
+.AuthorProfileCard_box_img_img{
   border-radius: 1rem;
 }
 
-.NFTCardTwo_box:hover{
+.AuthorProfileCard_box_info h4{
+  font-size: 2.5rem;
+  line-height: 0;
+  margin-top: -.5rem;
+}
+
+.AuthorProfileCard_box_info_address{
+  margin-top: -1rem;
+}
+
+.AuthorProfileCard_box_info_address input{
+  outline: none;
+  width: 35%;
+  font-size: 1rem;
+  border: none;
+  background: transparent;
+}
+
+.AuthorProfileCard_box_info_address_icon{
+  transition: all .3s ease-in;
+}
+
+.AuthorProfileCard_box_info_address_icon:hover{
   box-shadow: var(--box-shadow);
-}
-
-.NFTCardTwo_box_like{
-  padding: 1rem;
-  grid-column: 1/-1;
-  grid-row: 1/-1;
-  z-index: 111111;
-}
-
-.NFTCardTwo_box_like_box_box{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.NFTCardTwo_box_like_box_box_icon{
-  font-size: 2rem;
+  cursor: pointer;
   color: var(--icons-color);
 }
 
-.NFTCardTwo_box_like_box_box p{
+.AuthorProfileCard_box_info p{
+  font-size: 1.1rem;
+  line-height: 1;
+  width: 90%;
+}
+
+.AuthorProfileCard_box_info_social{
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+}
+
+.AuthorProfileCard_box_info_social a{
   background-color: var(--icons-color);
   color: var(--main-bg-color);
-  border-radius: 2rem;
-  padding: 0 .5rem;
-}
-
-.NFTCardTwo_box_img{
-  grid-row: 1/-1;
-  grid-column: 1/-1;
-}
-
-.NFTCardTwo_box_img_img{
-  border-radius: 1rem;
-}
-
-.NFTCardTwo_box_info{
-  display: flex;
-  justify-content: space-between;
-  padding: 1rem;
-}
-
-.NFTCardTwo_box_info_left{
-  line-height: 0;
-}
-
-.NFTCardTwo_box_info small{
-  font-size: 1rem;
-}
-
-.NFTCardTwo_box_info_left p{
-  font-size: 2rem;
-  font-weight: 900;
-}
-
-.NFTCardTwo_box_price{
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  line-height: 0;
-  padding: 1rem;
-}
-
-.NFTCardTwo_box_price_box p{
+  border-radius: 50%;
+  display: grid;
+  padding: .5rem;
   border: 1px solid var(--icons-color);
-  padding: 1.5rem 1rem 1rem 1rem;
-  font-size: 1.4rem;
-  margin-top: .5rem;
-  border-radius: .3rem;
+  transition: all .3s ease-in;
+  cursor: pointer;
 }
 
-.NFTCardTwo_box_price_box small{
-  background-color: var(--icons-color);
-  color: var(--main-bg-color);
-  padding: .3rem;
-  border-radius: .3rem;
-  margin-left: 1rem;
+.AuthorProfileCard_box_info_social a:hover{
+  box-shadow: var(--box-shadow);
+  background-color: var(--main-bg-color);
+  border: var(--icons-color);
+  color: var(--icons-color);
 }
 
-.NFTCardTwo_box_price_stock{
+.AuthorProfileCard_box_share{
   display: flex;
   align-items: center;
-  gap: .5rem;
-  font-size: 1.1rem;
-
+  align-self: start;
+  gap: 2rem;
+  position: relative;
 }
+
+.AuthorProfileCard_box_share_icon{
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.AuthorProfileCard_box_share_upoad{
+  position: absolute;
+  padding: .5rem;
+  width: 15rem;
+  box-shadow: var(--box-shadow);
+  border-radius: 1rem;
+  background-color: var(--main-bg-color);
+  left: 2rem;
+  top: 5rem;
+  z-index: 1111111;
+}
+
+.AuthorProfileCard_box_share_upoad p{
+  display: flex;
+  align-items: center;
+  line-height: 0;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all .3s ease-in;
+  padding: .3rem .5rem;
+}
+
+.AuthorProfileCard_box_share_upoad p:hover{
+  background-color: var(--icons-color);
+  color: var(--main-bg-color);
+  border-radius: .2rem;
+}
+
+.AuthorProfileCard_box_share_upoad span{
+  font-size: 1.5rem;
+}
+
+.AuthorProfileCard_box_share_report{
+  position: absolute;
+  padding: .5rem;
+  width: 10rem;
+  box-shadow: var(--box-shadow);
+  border-radius: 1rem;
+  background-color: var(--main-bg-color);
+  left: 5rem;
+  top: 4rem;
+  z-index: 111111;
+}
+
+.AuthorProfileCard_box_share_report p{
+  display: flex;
+  align-items: center;
+  gap: 2rem;  
+}
+
+
 
 
 @media screen and (max-width: 35em) {
-  .NFTCardTwo{
+  .AuthorProfileCard_box{
     width: 90%;
     grid-template-columns: 1fr;
+    padding: .5rem .5rem 1.5rem;
+    gap: 1rem;
+  }
+
+  .AuthorProfileCard_box_img{
+    width: 50%;
+  }
+
+  .AuthorProfileCard_box_info h2{
+    font-size: 2rem;
+  }
+
+  .AuthorProfileCard_box_info_address input{
+    width: 85%;
+  }
+
+  .AuthorProfileCard_box_info p{
+    font-size: 1rem;
+    line-height: 1.4;
+    width: 90%;
+  }
+
+  .AuthorProfileCard_box_info_social{
+    padding: 0 2rem;
+  }
+
+  .AuthorProfileCard_box_share{
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .AuthorProfileCard_box_share_icon{
+    font-size: 2rem;
+  }
+
+  .AuthorProfileCard_box_share_upoad{
+    left: 9rem;
+  }
+
+  .AuthorProfileCard_box_share_report{
+    left: 9rem;
   }
 }
 
 @media screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  .NFTCardTwo{
-    width: 90%;
-    grid-template-columns: repeat(2, 1fr);
+  .AuthorProfileCard_box{
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
   }
 }
