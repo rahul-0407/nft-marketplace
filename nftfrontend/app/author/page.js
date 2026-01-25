@@ -33,7 +33,7 @@ const Author = () => {
     <div className='banner'>
         <Banner bannerImage="./creatorbackground-2.jpeg" />
         <AuthorProfileCard/>
-        <AuthorTabs collectiables={setCollectiables} created={setCreated} like={setLike} follower={setFollower} following={setFollowing} />
+        <AuthorTabs setCollectiables={setCollectiables} setCreated={setCreated} setLike={setLike} setFollower={setFollower} setFollowing={setFollowing} />
         <AuthorNftCardBox collectiables={collectiables} created={created} like={like} follower={follower} following={following}/>
         <Title heading="Popular Creators" paragraph="Click on music icon and enjoy NTF music or audio"/>
         {/* {popularArray.map((el,i)=>(
