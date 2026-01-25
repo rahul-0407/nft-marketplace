@@ -89,7 +89,7 @@ const AuthorProfileCard = () => {
               className="
                 outline-none bg-transparent border-none
                 w-[35%] text-base
-                max-[560px]:w-[85%]
+                max-[560px]:w-[85%] mb-4 text-black
               "
             />
             <FiCopy
@@ -104,7 +104,7 @@ const AuthorProfileCard = () => {
           </div>
 
           {/* Bio */}
-          <p className="text-[1.1rem]  w-[90%] max-[560px]:text-base max-[560px]:leading-relaxed">
+          <p className="text-[1.1rem] leading-4.5  w-[90%] max-[560px]:text-base max-[560px]:leading-relaxed">
             Punk #4786 / An OG Cryptopunk Collector, hoarder of NFTS.
             Contributing to @ether_cards, an NFT Monetization Platform.
           </p>

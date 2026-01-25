@@ -8,6 +8,7 @@ import Title from '@/components/Title';
 import AuthorProfileCard from '@/components/AuthorProfileCard';
 import AuthorTabs from '@/components/AuthorTabs';
 import FollowerTabCard from '@/components/FollowerTabCard';
+import AuthorNftCardBox from '@/components/AuthorNftCardBox';
 
 const Author = () => {
 
@@ -32,7 +33,8 @@ const Author = () => {
     <div className='banner'>
         <Banner bannerImage="./creatorbackground-2.jpeg" />
         <AuthorProfileCard/>
-        <AuthorTabs collectiables={collectiables} created={created} like={like} follower={follower} following={following} />
+        <AuthorTabs collectiables={setCollectiables} created={setCreated} like={setLike} follower={setFollower} following={setFollowing} />
+        <AuthorNftCardBox collectiables={collectiables} created={created} like={like} follower={follower} following={following}/>
         <Title heading="Popular Creators" paragraph="Click on music icon and enjoy NTF music or audio"/>
         {/* {popularArray.map((el,i)=>(
             <FollowerTabCard key={i+1} i={i} el={el} />
