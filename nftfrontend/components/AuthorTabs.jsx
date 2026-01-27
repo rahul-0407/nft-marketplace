@@ -104,7 +104,7 @@ const AuthorTabs = ({
                       transition-all duration-300 ease-in
                       ${
                         isActive
-                          ? "bg-(--icons-color) text-(--main-bg-color)"
+                          ? "bg-[#4c5773] text-(--main-bg-color)"
                           : "text-(--icons-color) hover:bg-(--icons-color) hover:text-(--main-bg-color)"
                       }
                     `}

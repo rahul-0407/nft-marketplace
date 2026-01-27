@@ -12,16 +12,14 @@ import AuthorNftCardBox from '@/components/AuthorNftCardBox';
 
 const Author = () => {
 
-    const popularArray = [
-        "./user-1.png",
-        "./user-2.png",
-        "./user-3.png",
-        "./user-4.png",
-        "./user-5.png",
-        "./user-6.png",
-        "./user-7.png",
-        "./user-8.png"
-    ]
+    const followingArray = [
+    { bg: "./creatorbackground-3.jpeg", avatar: "./user-3.png", name: "Aman Verma", price: "7.540 ETH" },
+    { bg: "./creatorbackground-4.jpg", avatar: "./user-4.png", name: "Rohit Singh", price: "5.120 ETH" },
+    { bg: "./creatorbackground-9.jpg", avatar: "./user-5.png", name: "Neha Patel", price: "11.004 ETH" },
+    { bg: "./creatorbackground-6.jpg", avatar: "./user-6.png", name: "Karan Shah", price: "6.899 ETH" },
+    { bg: "./creatorbackground-10.jpg", avatar: "./user-7.png", name: "Ankit Jain", price: "8.777 ETH" },
+    { bg: "./creatorbackground-8.jpg", avatar: "./user-8.png", name: "Pooja Mehta", price: "10.320 ETH" },
+  ];
 
     const [collectiables, setCollectiables] = useState(true)
     const [created, setCreated] = useState(false)
@@ -30,15 +28,18 @@ const Author = () => {
     const [following, setFollowing] = useState(false)
 
   return (
-    <div className='banner'>
+    <div className='author'>
         <Banner bannerImage="./creatorbackground-2.jpeg" />
         <AuthorProfileCard/>
         <AuthorTabs setCollectiables={setCollectiables} setCreated={setCreated} setLike={setLike} setFollower={setFollower} setFollowing={setFollowing} />
         <AuthorNftCardBox collectiables={collectiables} created={created} like={like} follower={follower} following={following}/>
         <Title heading="Popular Creators" paragraph="Click on music icon and enjoy NTF music or audio"/>
-        {/* {popularArray.map((el,i)=>(
-            <FollowerTabCard key={i+1} i={i} el={el} />
-        ))} */}
+        
+        <div className='author_box w-[80%] grid-cols-4 grid mx-auto my-0 gap-8 mt-24 max-[560px]:w-[90%] max-[560px]:grid-cols-1'>
+          {followingArray.map((el,i)=>(
+            <FollowerTabCard key={i+1} i={i} data={el} />
+        ))}
+        </div>
         <Brand/>
     </div>
   )

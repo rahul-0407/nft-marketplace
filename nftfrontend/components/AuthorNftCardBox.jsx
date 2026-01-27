@@ -56,10 +56,10 @@ const AuthorNftCardBox = ({collectiables,created,like,follower,following}) => {
       {created && <NFTCardTwo NFTData={createdArray}/>}
       {like && <NFTCardTwo NFTData={likeArray}/>}
       {follower && (
-        <div className='AuthorNFTCardBox_box w-[80%] mx-auto my-0 grid gap-8 grid-cols-4'>{followerArray.map((el, i)=><FollowerTabCard el={el} i={i}/>)}</div>
+        <div className='AuthorNFTCardBox_box w-[80%] mx-auto my-0 grid gap-8 grid-cols-4'>{followerArray.map((el, i)=><FollowerTabCard data={el} i={i}/>)}</div>
       )}
       {following && (
-        <div className='AuthorNFTCardBox_box'>{followingArray.map((el, i)=><FollowerTabCard el={el} i={i}/>)}</div>
+        <div className='AuthorNFTCardBox_box w-[80%] mx-auto my-0 grid gap-8 grid-cols-4'>{followingArray.map((el, i)=><FollowerTabCard data={el} i={i}/>)}</div>
       )}
     </div>
   )
