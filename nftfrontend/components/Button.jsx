@@ -1,11 +1,11 @@
 import React from "react";
 
-const Button = ({ btnName, handleClick }) => {
+const Button = ({ btnName, handleClick, icon, classStyle }) => {
   return (
     <div>
       <button
-        onClick={handleClick}
-        className="
+        onClick={()=>handleClick()}
+        className={`
           bg-[var(--icons-color)]
           px-8 py-4
           border border-[var(--icons-light-color)]
@@ -17,10 +17,10 @@ const Button = ({ btnName, handleClick }) => {
           shadow-[var(--box-shadow)]
           hover:bg-[var(--main-bg-color)]
           hover:border-[var(--icons-color)]
-          hover:text-[var(--icons-color)]
-        "
+          hover:text-[var(--icons-color)] ${classStyle}
+        `}  
       >
-        {btnName}
+        {icon} {btnName}
       </button>
     </div>
   );
