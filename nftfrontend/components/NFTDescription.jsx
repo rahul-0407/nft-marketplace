@@ -1,232 +1,167 @@
 'use client'
 
-import React,{useState} from 'react'
-import {MdVerified, MdCloudUpload, MdTimer, MdReportProblem, MdOutlineDeleteSweep} from "react-icons/md"
-import {BsThreeDots} from "react-icons/bs"
-import {FaWallet, FaPercentage} from "react-icons/fa";
+import React, { useState } from "react";
+import {
+  MdVerified,
+  MdCloudUpload,
+  MdTimer,
+  MdReportProblem,
+  MdOutlineDeleteSweep,
+} from "react-icons/md";
+import { BsThreeDots } from "react-icons/bs";
+import { FaWallet, FaPercentage } from "react-icons/fa";
 import {
   TiSocialFacebook,
   TiSocialLinkedin,
   TiSocialTwitter,
   TiSocialYoutube,
-  TiSocialInstagram
+  TiSocialInstagram,
 } from "react-icons/ti";
-import {BiTransferAlt, BiDollar} from "react-icons/bi"
-import Button from './Button';
-import NFTTabs from './NFTTabs';
+import { BiTransferAlt, BiDollar } from "react-icons/bi";
+import Button from "./Button";
+import NFTTabs from "./NFTTabs";
 
 const NFTDescription = () => {
-
-  const [social, setSocial] = useState(false)
-  const [NFTMenu, setNFTMenu] = useState(false)
-  const [history, setHistory] = useState(true)
-  const [provanance, setProvanance] = useState(false)
+  const [social, setSocial] = useState(false);
+  const [NFTMenu, setNFTMenu] = useState(false);
+  const [history, setHistory] = useState(true);
+  const [provanance, setProvanance] = useState(false);
   const [owner, setOwner] = useState(false);
 
-  const historyArray = [
-    "./user-1.png",
-    "./user-2.png",
-    "./user-3.png",
-    "./user-4.png",
-    "./user-5.png"
-  ]
-
-  const provonanceArray = [
-    "./user-6.png",
-    "./user-7.png",
-    "./user-8.png",
-    "./user-9.png",
-    "./user-10.png"
-  ]
-
-  const ownerArray = [
-    "./user-1.png",
-    "./user-8.png",
-    "./user-3.png",
-    "./user-10.png",
-    "./user-7.png"
-  ]
-
-  const openSocial = () => {
-    if(!social){
-      setSocial(true)
-      setNFTMenu(false)
-    } else {
-      setSocial(false)
-    }
-  }
-
-  const openNFTMenu = () => {
-    if(!NFTMenu){
-      setSocial(false)
-      setNFTMenu(true)
-    } else {
-      setNFTMenu(false)
-    }
-  }
-
-  const openTabs = (e) =>{
-    const btnText = e.target.innerText;
-
-    if(btnText == "Bid History"){
-      setHistory(true)
-      setProvanance(false)
-      setOwner(false)
-    } else if (btnText == "Provanance"){
-      setHistory(false);
-      setProvanance(true)
-      setOwner(false)
-    }
-  }
-
-  const openOwner = () => {
-    if(!owner){
-      setOwner(true);
-      setHistory(false)
-      setProvanance(false)
-    } else {
-      setOwner(false)
-      setHistory(true)
-    }
-  }
-
-
+  const historyArray = ["./user-1.png","./user-2.png","./user-3.png","./user-4.png","./user-5.png"];
+  const provonanceArray = ["./user-6.png","./user-7.png","./user-8.png","./user-9.png","./user-10.png"];
+  const ownerArray = ["./user-1.png","./user-8.png","./user-3.png","./user-10.png","./user-7.png"];
 
   return (
-    <div className='NFTDescription'>
-      <div className="NFTDescription_box">
+    <div className="w-full">
+      <div className="w-full">
 
+        {/* ===== TOP SHARE BAR ===== */}
+        <div className="flex items-center justify-between relative">
+          <p className="bg-[var(--icons-color)] text-[var(--main-bg-color)] px-3 py-1 rounded-full">
+            Virtual Worlds
+          </p>
 
-        {/* ===== part one ===== */}
-        <div className="NFTDescription_box_share">
-          <p>Virtual Worlds</p>
-          <div className="NFTDescription_box_share_box">
-            <MdCloudUpload className='NFTDescription_box_share_box_icon' onClick={()=>openSocial()}/>
+          <div className="flex items-center gap-8 text-xl">
+            <MdCloudUpload
+              onClick={() => { setSocial(!social); setNFTMenu(false); }}
+              className="cursor-pointer"
+            />
+
             {social && (
-              <div className="NFTDescription_box_share_box_social">
-                <a href="#">
-                  <TiSocialFacebook/> Facebook
-                </a>
-                <a href="#">
-                  <TiSocialInstagram/> Instagram
-                </a>
-                <a href="#">
-                  <TiSocialLinkedin/> LinkedIn
-                </a>
-                <a href="#">
-                  <TiSocialTwitter/> Twitter
-                </a>
-                <a href="#">
-                  <TiSocialYoutube/> YouTube
-                </a>
+              <div className="absolute top-20 right-0 w-56 bg-[var(--main-bg-color)] shadow-[var(--box-shadow)] rounded-lg p-4 z-50">
+                {[
+                  [TiSocialFacebook, "Facebook"],
+                  [TiSocialInstagram, "Instagram"],
+                  [TiSocialLinkedin, "LinkedIn"],
+                  [TiSocialTwitter, "Twitter"],
+                  [TiSocialYoutube, "YouTube"],
+                ].map(([Icon, label]) => (
+                  <a
+                    key={label}
+                    href="#"
+                    className="flex items-center gap-3 p-2 rounded transition-all duration-300 hover:bg-[var(--icons-color)] hover:text-[var(--main-bg-color)]"
+                  >
+                    <Icon /> {label}
+                  </a>
+                ))}
               </div>
             )}
 
-            <BsThreeDots className='NFTDescription_box_share_box_icon' onClick={()=>openNFTMenu()}/>
+            <BsThreeDots
+              onClick={() => { setNFTMenu(!NFTMenu); setSocial(false); }}
+              className="cursor-pointer"
+            />
+
             {NFTMenu && (
-              <div className="NFTDescription_box_share_box_social">
-                <a href="#">
-                  <BiDollar/> Change Price
-                </a>
-                <a href="#">
-                  <BiTransferAlt/> Transfer
-                </a>
-                <a href="#">
-                  <MdReportProblem/> Report Abuse
-                </a>
-                <a href="#">
-                  <MdOutlineDeleteSweep/> Delete item
-                </a>
+              <div className="absolute top-20 right-0 w-56 bg-[var(--main-bg-color)] shadow-[var(--box-shadow)] rounded-lg p-4 z-50">
+                <a className="flex items-center gap-3 p-2"><BiDollar /> Change Price</a>
+                <a className="flex items-center gap-3 p-2"><BiTransferAlt /> Transfer</a>
+                <a className="flex items-center gap-3 p-2"><MdReportProblem /> Report Abuse</a>
+                <a className="flex items-center gap-3 p-2"><MdOutlineDeleteSweep /> Delete Item</a>
               </div>
             )}
-
           </div>
         </div>
 
+        {/* ===== TITLE + PROFILE ===== */}
+        <div className="mt-6">
+          <h1 className="text-[3.2rem] leading-tight">BearX #234</h1>
 
-        {/* ===== part two ===== */}
-        <div className="NFTDescription_box_profile">
-          <h1>BearX #234</h1>
-          <div className="NFTDescription_box_profile_box">
-            <div className="NFTDescription_box_profile_box_left">
-              <img src="./user-1.png" alt="" width={40} height={40} className='NFTDescription_box_profile_box_left_img'/>
-              <div className="NFTDescription_box_profile_box_left_info">
-                <small>Creator</small> <br/>
-                <span>Karli Costa <MdVerified/></span>
+          <div className="flex items-center gap-8 mt-4 max-[560px]:grid">
+            {["Creator", "Owner"].map((role, i) => (
+              <div key={i} className={`flex items-center gap-4 ${i === 1 && "border-l pl-6 border-[var(--icons-color)] max-[560px]:border-none max-[560px]:pl-0"}`}>
+                <img src="./user-1.png" width={40} height={40} className="rounded-full" />
+                <div>
+                  <small>{role}</small><br />
+                  <span className="font-extrabold flex items-center gap-1">
+                    Karli Costa <MdVerified />
+                  </span>
+                </div>
               </div>
-            </div>
-
-            <div className="NFTDescription_box_profile_box_right">
-              <img src="./user-1.png" alt="" width={40} height={40} className='NFTDescription_box_profile_box_left_img'/>
-              <div className="NFTDescription_box_profile_box_right_info">
-                <small>Creator</small> <br/>
-                <span>
-                  Karli Costa <MdVerified/>
-                </span>
-              </div>
-            </div>
-
+            ))}
           </div>
-        
+        </div>
 
-        <div className="NFTDescription_box_profile_biding">
-          <p>
-            <MdTimer/> <span>Auction ending in:</span>
+        {/* ===== AUCTION ===== */}
+        <div className="mt-6">
+          <p className="flex items-center gap-2 text-xl">
+            <MdTimer /> Auction ending in:
           </p>
-          <div className="NFTDescription_box_profile_biding_box_timer">
-            <div className="NFTDescription_box_profile_biding_box_timer_item">
-              <p>2</p>
-              <span>Days</span>
-            </div>
-            <div className="NFTDescription_box_profile_biding_box_timer_item">
-              <p>22</p>
-              <span>hours</span>
-            </div>
-            <div className="NFTDescription_box_profile_biding_box_timer_item">
-              <p>45</p>
-              <span>mins</span>
-            </div>
-            <div className="NFTDescription_box_profile_biding_box_timer_item">
-              <p>12</p>
-              <span>secs</span>
-            </div>
+
+          <div className="flex gap-12 mt-4">
+            {["Days","Hours","Mins","Secs"].map((label, i) => (
+              <div key={i}>
+                <p className="text-5xl font-black leading-none">{[2,22,45,12][i]}</p>
+                <span className="font-semibold">{label}</span>
+              </div>
+            ))}
           </div>
-          <div className="NFTDescription_box_profile_biding_box_price">
-            <div className="NFTDescription_box_profile_biding_box_price_bid">
-              <small>Current Bid</small>
-              <p>1.000 ETH <span>( = $3,221.22)</span></p>
+
+          <div className="grid grid-cols-[4fr_1fr] gap-12 items-end mt-10 max-[560px]:grid-cols-[2fr_1fr]">
+            <div className="border-2 border-[var(--icons-color)] rounded-lg">
+              <small className="bg-[var(--icons-color)] text-[var(--main-bg-color)] px-4 py-2 rounded-lg ml-6">
+                Current Bid
+              </small>
+              <p className="p-4 text-2xl font-black">
+                1.000 ETH <span className="text-base">( = $3,221.22)</span>
+              </p>
             </div>
             <span>[96 in stock]</span>
           </div>
-          <div className="NFTDescription_box_profile_biding_box_button">
-            <Button btnName="Place a bid" icon=<FaWallet/> handleClick={()=>{}} classStyle="button"/>
-            <Button btnName="Make offer" icon=<FaPercentage/> handleClick={()=>{}} classStyle="button"/>
+
+          {/* ===== ACTION BUTTONS ===== */}
+          <div className="flex items-center gap-6 mt-12 max-[560px]:gap-4">
+            <Button btnName="Place a bid" icon={<FaWallet />} />
+            <Button btnName="Make offer" icon={<FaPercentage />} />
           </div>
-          <div className="NFTDescription_box_profile_biding_box_tabs">
-            <button onClick={(e)=>openTabs(e)}>Bid History</button>
-            <button onClick={(e)=>openTabs(e)}>Provonance</button>
-            <button onClick={(e)=>openOwner()}>Owner</button>
+
+          {/* ===== TABS ===== */}
+          <div className="flex gap-4 mt-12">
+            {["Bid History","Provonance","Owner"].map((tab, i) => (
+              <button
+                key={tab}
+                onClick={() => {
+                  setHistory(tab === "Bid History");
+                  setProvanance(tab === "Provonance");
+                  setOwner(tab === "Owner");
+                }}
+                className="bg-[var(--shadow-dark-color)] px-6 py-3 rounded-full text-[var(--icons-color)] font-semibold"
+              >
+                {tab}
+              </button>
+            ))}
           </div>
-          {history && (
-            <div className="NFTDescription_box_profile_biding_box_card">
-              <NFTTabs dataTab={historyArray}/>
-            </div>
-          )}
-          {provanance && (
-            <div className="NFTDescription_box_profile_biding_box_card">
-              <NFTTabs dataTab={provonanceArray}/>
-            </div>
-          )}
-          {owner && (
-            <div className="NFTDescription_box_profile_biding_box_card">
-              <NFTTabs dataTab={ownerArray} icon=<MdVerified/> />
-            </div>
-          )}
+
+          <div className="mt-8 p-4">
+            {history && <NFTTabs dataTab={historyArray} />}
+            {provanance && <NFTTabs dataTab={provonanceArray} />}
+            {owner && <NFTTabs dataTab={ownerArray} icon={<MdVerified />} />}
+          </div>
         </div>
       </div>
-      </div>
     </div>
-  )
-}
+  );
+};
 
-export default NFTDescription
+export default NFTDescription;
