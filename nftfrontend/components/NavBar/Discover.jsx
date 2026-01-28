@@ -6,7 +6,7 @@ const Discover = () => {
     { name: "Collection", link: "collection" },
     { name: "Search", link: "searchPage" },
     { name: "Author Profile", link: "author" },
-    { name: "NFT Details", link: "NFT-details" },
+    { name: "NFT Details", link: "NFTdetail" },
     { name: "Account Setting", link: "account-setting" },
     { name: "Connect Wallet", link: "connect-wallet" },
     { name: "Blog", link: "blog" },

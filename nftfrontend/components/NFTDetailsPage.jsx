@@ -1,17 +1,24 @@
-import React from 'react'
-import NFTDescription from './NFTDescription'
-import NFTDetailsImg from './NFTDetailsImg'
-import NFTTabs from './NFTTabs'
+import React from "react";
+import NFTDescription from "./NFTDescription";
+import NFTDetailsImg from "./NFTDetailsImg";
 
 const NFTDetailsPage = () => {
   return (
-    <div className='NFTDetailsPage'>
-        <div className="NFTDetailsPage_box">
-            <NFTDetailsImg/>
-            <NFTDescription/>
-        </div>
+    <div className="w-full my-20 max-[560px]:my-8">
+      <div
+        className="
+          w-[80%] mx-auto
+          grid grid-cols-[1.2fr_1fr]
+          gap-20
+          max-[560px]:w-[90%]
+          max-[560px]:grid-cols-1
+        "
+      >
+        <NFTDetailsImg />
+        <NFTDescription />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default NFTDetailsPage
+export default NFTDetailsPage;

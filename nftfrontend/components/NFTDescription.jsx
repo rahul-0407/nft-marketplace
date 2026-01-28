@@ -47,6 +47,51 @@ const NFTDescription = () => {
     "./user-7.png"
   ]
 
+  const openSocial = () => {
+    if(!social){
+      setSocial(true)
+      setNFTMenu(false)
+    } else {
+      setSocial(false)
+    }
+  }
+
+  const openNFTMenu = () => {
+    if(!NFTMenu){
+      setSocial(false)
+      setNFTMenu(true)
+    } else {
+      setNFTMenu(false)
+    }
+  }
+
+  const openTabs = (e) =>{
+    const btnText = e.target.innerText;
+
+    if(btnText == "Bid History"){
+      setHistory(true)
+      setProvanance(false)
+      setOwner(false)
+    } else if (btnText == "Provanance"){
+      setHistory(false);
+      setProvanance(true)
+      setOwner(false)
+    }
+  }
+
+  const openOwner = () => {
+    if(!owner){
+      setOwner(true);
+      setHistory(false)
+      setProvanance(false)
+    } else {
+      setOwner(false)
+      setHistory(true)
+    }
+  }
+
+
+
   return (
     <div className='NFTDescription'>
       <div className="NFTDescription_box">
@@ -98,6 +143,8 @@ const NFTDescription = () => {
           </div>
         </div>
 
+
+        {/* ===== part two ===== */}
         <div className="NFTDescription_box_profile">
           <h1>BearX #234</h1>
           <div className="NFTDescription_box_profile_box">
@@ -124,7 +171,7 @@ const NFTDescription = () => {
 
         <div className="NFTDescription_box_profile_biding">
           <p>
-            <MdVerified/> <span>Auction ending in:</span>
+            <MdTimer/> <span>Auction ending in:</span>
           </p>
           <div className="NFTDescription_box_profile_biding_box_timer">
             <div className="NFTDescription_box_profile_biding_box_timer_item">
@@ -158,7 +205,7 @@ const NFTDescription = () => {
           <div className="NFTDescription_box_profile_biding_box_tabs">
             <button onClick={(e)=>openTabs(e)}>Bid History</button>
             <button onClick={(e)=>openTabs(e)}>Provonance</button>
-            <button onClick={(e)=>openTabs(e)}>Owner</button>
+            <button onClick={(e)=>openOwner()}>Owner</button>
           </div>
           {history && (
             <div className="NFTDescription_box_profile_biding_box_card">
@@ -172,7 +219,7 @@ const NFTDescription = () => {
           )}
           {owner && (
             <div className="NFTDescription_box_profile_biding_box_card">
-              <NFTTabs dataTab={ownerArray}/>
+              <NFTTabs dataTab={ownerArray} icon=<MdVerified/> />
             </div>
           )}
         </div>
