@@ -9,7 +9,7 @@ const NFTTabs = ({ dataTab, icon }) => {
           className="
             flex items-center gap-4
             py-4
-            border-b border-[var(--bg-shadow-dark-color)]
+            border-b border-(--bg-shadow-dark-color)
           "
         >
           <img

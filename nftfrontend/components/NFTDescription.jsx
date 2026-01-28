@@ -38,7 +38,7 @@ const NFTDescription = () => {
 
         {/* ===== TOP SHARE BAR ===== */}
         <div className="flex items-center justify-between relative">
-          <p className="bg-[var(--icons-color)] text-[var(--main-bg-color)] px-3 py-1 rounded-full">
+          <p className="bg-(--icons-color) text-(--main-bg-color) px-3 py-1 rounded-full">
             Virtual Worlds
           </p>
 
@@ -49,7 +49,7 @@ const NFTDescription = () => {
             />
 
             {social && (
-              <div className="absolute top-20 right-0 w-56 bg-[var(--main-bg-color)] shadow-[var(--box-shadow)] rounded-lg p-4 z-50">
+              <div className="absolute top-20 right-0 w-56 bg-(--main-bg-color) shadow-(--box-shadow) rounded-lg p-4 z-50">
                 {[
                   [TiSocialFacebook, "Facebook"],
                   [TiSocialInstagram, "Instagram"],
@@ -60,7 +60,7 @@ const NFTDescription = () => {
                   <a
                     key={label}
                     href="#"
-                    className="flex items-center gap-3 p-2 rounded transition-all duration-300 hover:bg-[var(--icons-color)] hover:text-[var(--main-bg-color)]"
+                    className="flex items-center gap-3 p-2 rounded transition-all duration-300 hover:bg-(--icons-color) hover:text-(--main-bg-color)"
                   >
                     <Icon /> {label}
                   </a>
@@ -74,7 +74,7 @@ const NFTDescription = () => {
             />
 
             {NFTMenu && (
-              <div className="absolute top-20 right-0 w-56 bg-[var(--main-bg-color)] shadow-[var(--box-shadow)] rounded-lg p-4 z-50">
+              <div className="absolute top-20 right-0 w-56 bg-(--main-bg-color) shadow-(--box-shadow) rounded-lg p-4 z-50">
                 <a className="flex items-center gap-3 p-2"><BiDollar /> Change Price</a>
                 <a className="flex items-center gap-3 p-2"><BiTransferAlt /> Transfer</a>
                 <a className="flex items-center gap-3 p-2"><MdReportProblem /> Report Abuse</a>
@@ -86,11 +86,11 @@ const NFTDescription = () => {
 
         {/* ===== TITLE + PROFILE ===== */}
         <div className="mt-6">
-          <h1 className="text-[3.2rem] leading-tight">BearX #234</h1>
+          <h1 className="text-[3.2rem] leading-tight font-bold">BearX #234</h1>
 
           <div className="flex items-center gap-8 mt-4 max-[560px]:grid">
             {["Creator", "Owner"].map((role, i) => (
-              <div key={i} className={`flex items-center gap-4 ${i === 1 && "border-l pl-6 border-[var(--icons-color)] max-[560px]:border-none max-[560px]:pl-0"}`}>
+              <div key={i} className={`flex items-center gap-4 ${i === 1 && "border-l pl-6 border-(--icons-color) max-[560px]:border-none max-[560px]:pl-0"}`}>
                 <img src="./user-1.png" width={40} height={40} className="rounded-full" />
                 <div>
                   <small>{role}</small><br />
@@ -119,12 +119,12 @@ const NFTDescription = () => {
           </div>
 
           <div className="grid grid-cols-[4fr_1fr] gap-12 items-end mt-10 max-[560px]:grid-cols-[2fr_1fr]">
-            <div className="border-2 border-[var(--icons-color)] rounded-lg">
-              <small className="bg-[var(--icons-color)] text-[var(--main-bg-color)] px-4 py-2 rounded-lg ml-6">
+            <div className="border-2 border-(--icons-color) rounded-lg">
+              <small className="bg-(--icons-color) text-(--main-bg-color) px-4 py-2 rounded-lg ml-6">
                 Current Bid
               </small>
               <p className="p-4 text-2xl font-black">
-                1.000 ETH <span className="text-base">( = $3,221.22)</span>
+                1.000 ETH <span className="text-2xl">( = $3,221.22)</span>
               </p>
             </div>
             <span>[96 in stock]</span>
@@ -138,7 +138,7 @@ const NFTDescription = () => {
 
           {/* ===== TABS ===== */}
           <div className="flex gap-4 mt-12">
-            {["Bid History","Provonance","Owner"].map((tab, i) => (
+            {["Bid History","Provonance","Owner"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => {
@@ -146,7 +146,7 @@ const NFTDescription = () => {
                   setProvanance(tab === "Provonance");
                   setOwner(tab === "Owner");
                 }}
-                className="bg-[var(--shadow-dark-color)] px-6 py-3 rounded-full text-[var(--icons-color)] font-semibold"
+                className="bg-(--shadow-dark-color) px-6 py-3 rounded-full text-(--icons-color) font-semibold"
               >
                 {tab}
               </button>

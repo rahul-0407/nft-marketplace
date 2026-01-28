@@ -22,9 +22,9 @@ const NFTDetailsImg = () => {
             <p
               onClick={() => setLike(!like)}
               className="
-                bg-[var(--icons-color)]
+                bg-(--icons-color)
                 px-4 py-1
-                text-[var(--main-bg-color)]
+                text-(--main-bg-color)
                 flex items-center gap-2
                 rounded-full cursor-pointer
               "
@@ -53,7 +53,7 @@ const NFTDetailsImg = () => {
           onClick={() => setDescription(!description)}
           className="
             flex items-center justify-between
-            bg-[var(--icons-bg-color)]
+            bg-(--icons-bg-color)
             rounded-lg px-4 py-3
             cursor-pointer mt-6
           "
@@ -78,7 +78,7 @@ const NFTDetailsImg = () => {
           onClick={() => setDetails(!details)}
           className="
             flex items-center justify-between
-            bg-[var(--icons-bg-color)]
+            bg-(--icons-bg-color)
             rounded-lg px-4 py-3
             cursor-pointer mt-4
           "

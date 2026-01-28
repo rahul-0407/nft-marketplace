@@ -4,7 +4,7 @@ import NFTDetailsImg from "./NFTDetailsImg";
 
 const NFTDetailsPage = () => {
   return (
-    <div className="w-full my-20 max-[560px]:my-8">
+    <div className="w-full my-20 max-[560px]:my-8 text-(--icons-color)">
       <div
         className="
           w-[80%] mx-auto
