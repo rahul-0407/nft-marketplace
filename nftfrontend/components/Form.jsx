@@ -28,7 +28,7 @@ const Form = () => {
           />
         </div>
 
-        {/* Email */}
+        {/* Email */}Username
         <div className="mt-8">
           <label className="block ml-4 font-bold text-lg">Email</label>
           <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
