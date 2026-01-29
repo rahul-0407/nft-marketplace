@@ -7,7 +7,7 @@ const Discover = () => {
     { name: "Search", link: "searchPage" },
     { name: "Author Profile", link: "author" },
     { name: "NFT Details", link: "NFTdetail" },
-    { name: "Account Setting", link: "account-setting" },
+    { name: "Account Setting", link: "account" },
     { name: "Connect Wallet", link: "connect-wallet" },
     { name: "Blog", link: "blog" },
   ];
@@ -20,9 +20,9 @@ const Discover = () => {
           className="
             px-4 py-2
             transition-all duration-300 ease-in
-            z-[22222222222]
-            hover:bg-[var(--icons-color)]
-            hover:text-[var(--shadow-dark-color)]
+            z-22222222222
+            hover:bg-(--icons-color)
+            hover:text-(--shadow-dark-color)
             hover:rounded-[0.3rem]
           "
         >
