@@ -6,91 +6,151 @@ import {
   TiSocialTwitter,
   TiSocialInstagram,
 } from "react-icons/ti";
-import Button from "@/components//Button";
+import Button from "@/components/Button";
 
 const Form = () => {
   return (
-    <div className="Form">
-      <div class="Form_box">
-        <form action="">
-          <div className="Form_box_input">
-            <label htmlFor="name">Username</label>
-            <input type="text" placeholder="Rahul Kumar" className="Form_box_input_userName"/>
-          </div>
+    <div className="w-full">
+      <form>
+        {/* Username */}
+        <div className="mt-8">
+          <label className="block ml-4 font-bold text-lg">Username</label>
+          <input
+            type="text"
+            placeholder="Rahul Kumar"
+            className="
+              w-full mt-2 p-4
+              border border-[var(--icons-color)]
+              rounded-xl
+              bg-transparent outline-none
+              placeholder:text-[var(--icons-color)]
+            "
+          />
+        </div>
 
-          <div class="Form_box_input">
-            <label htmlFor="email">Email</label>
-            <div className="Form_box_input_box">
-              <div class="Form_box_input_box_icon">
-                <HiOutlineMail/>
+        {/* Email */}
+        <div className="mt-8">
+          <label className="block ml-4 font-bold text-lg">Email</label>
+          <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
+            <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
+              <HiOutlineMail />
+            </div>
+            <input
+              type="text"
+              placeholder="Email*"
+              className="w-full bg-transparent outline-none"
+            />
+          </div>
+        </div>
+
+        {/* Description */}
+        <div className="mt-8">
+          <label className="block ml-4 font-bold text-lg">Description</label>
+          <textarea
+            rows="6"
+            placeholder="Something about yourself in few words"
+            className="
+              w-full mt-2 p-4
+              bg-transparent outline-none
+              border border-[var(--icons-color)]
+              rounded-xl
+              placeholder:text-[var(--icons-color)]
+            "
+          />
+        </div>
+
+        {/* Website */}
+        <div className="mt-8">
+          <label className="block ml-4 font-bold text-lg">Website</label>
+          <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
+            <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
+              <MdOutlineHttp />
+            </div>
+            <input
+              type="text"
+              placeholder="Website"
+              className="w-full bg-transparent outline-none"
+            />
+          </div>
+        </div>
+
+        {/* Social Links */}
+        <div
+          className="
+            grid grid-cols-3 gap-4 mt-8
+            max-[768px]:grid-cols-2
+            max-[560px]:grid-cols-1
+          "
+        >
+          {/* Facebook */}
+          <div>
+            <label className="block ml-4 font-bold text-lg">Facebook</label>
+            <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
+              <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
+                <TiSocialFacebook />
               </div>
-              <input type="text"  placeholder="Email*" />
+              <input
+                type="text"
+                placeholder="http://rahul"
+                className="w-full bg-transparent outline-none"
+              />
             </div>
           </div>
 
-          <div class="Form_box_input">
-            <label htmlFOr="description">Description</label>
-            <textarea type="text" cols="30" rows="6" placeholder="something about yourself in few words"></textarea>
-          </div>
-
-          <div class="Form_box_input">
-            <label htmlFor="website">Website</label>
-            <div class="Form_box_input_box">
-              <div class="Form_box_input_box_icon">
-                <MdOutlineHttp/>
+          {/* Twitter */}
+          <div>
+            <label className="block ml-4 font-bold text-lg">Twitter</label>
+            <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
+              <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
+                <TiSocialTwitter />
               </div>
-              <input type="text" placeholder="website"/>
+              <input
+                type="text"
+                placeholder="http://rahul"
+                className="w-full bg-transparent outline-none"
+              />
             </div>
           </div>
 
-          <div class="Form_box_input_socail">
-            <div class="Form_box_input">
-              <label htmlFor="facebook">Facebook</label>
-              <div class="Form_box_input_box">
-                <div class="Form_box_input_box_icon">
-                  <TiSocialFacebook/>
-                </div>
-                <input type="text" placeholder="http://rahul"/>
+          {/* Instagram */}
+          <div>
+            <label className="block ml-4 font-bold text-lg">Instagram</label>
+            <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
+              <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
+                <TiSocialInstagram />
               </div>
-            </div>
-            <div class="Form_box_input">
-              <label htmlFor="twitter">Twitter</label>
-              <div class="Form_box_input_box">
-                <div class="Form_box_input_box_icon">
-                  <TiSocialTwitter/>
-                </div>
-                <input type="text" placeholder="http://rahul"/>
-              </div>
-            </div>
-            <div class="Form_box_input">
-              <label htmlFor="instagram">Instagram</label>
-              <div class="Form_box_input_box">
-                <div class="Form_box_input_box_icon">
-                  <TiSocialInstagram/>
-                </div>
-                <input type="text" placeholder="http://rahul"/>
-              </div>
+              <input
+                type="text"
+                placeholder="http://rahul"
+                className="w-full bg-transparent outline-none"
+              />
             </div>
           </div>
+        </div>
 
-          <div class="Form_box_input">
-            <label htmlFor="wallet">Wallet Address</label>
-            <div class="Form_box_input_box">
-              <div class="Form_box_input_box_icon">
-                <MdOutlineHttp/>
-              </div>
-              <input type="text" placeholder="0x095418A82BC2439703b69fbE1210824F2247D77c"/>
-              <div class="Form_box_input_box_icon">
-                <MdOutlineContentCopy/>
-              </div>
+        {/* Wallet */}
+        <div className="mt-8">
+          <label className="block ml-4 font-bold text-lg">Wallet Address</label>
+          <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
+            <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
+              <MdOutlineHttp />
+            </div>
+            <input
+              type="text"
+              placeholder="0x095418A82BC2439703b69fbE1210824F2247D77c"
+              className="w-full bg-transparent outline-none"
+            />
+            <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
+              <MdOutlineContentCopy />
             </div>
           </div>
+        </div>
 
-          <div class="Form_box_btn">
-            <Button btnName="Upload Profile" handleClick={()=>{}} classStyle="button" />
-          </div>
-        </form>
-      </div>
+        {/* Button */}
+        <div className="my-16">
+          <Button btnName="Upload Profile" classStyle="w-full flex justify-center text-2xl" />
+        </div>
+      </form>
     </div>
   );
 };

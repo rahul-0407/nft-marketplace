@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -15,15 +14,14 @@
   --main-bg-color: #ecf0f3;
 
   /* ✅ Correct box-shadow variable */
-  --box-shadow: 
+  --box-shadow:
     1rem 1rem 1rem var(--shadow-dark-color),
-   -1rem -1rem 1rem var(--shadow-light-color);
+    -1rem -1rem 1rem var(--shadow-light-color);
 
   --box-shadow-small:
-    .3rem .3rem 1rem var(--shadow-dark-color),
-   -.3rem -.3rem 1rem var(--shadow-light-color);
+    0.3rem 0.3rem 1rem var(--shadow-dark-color),
+    -0.3rem -0.3rem 1rem var(--shadow-light-color);
 }
-
 
 @theme inline {
   --color-background: var(--background);
@@ -38,30 +36,30 @@
   }
 } */
 
-*{
+* {
   box-sizing: border-box;
   -webkit-tap-highlight-color: none;
 }
 
-::selection{
+::selection {
   color: var(--shadow-dark-color);
   background: var(--icons-color);
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   width: 1rem;
   border: 1px solid var(--main-bg-color);
 }
 
-::-webkit-scrollbar-track{
+::-webkit-scrollbar-track {
   border-radius: 0;
   background-color: var(--main-bg-color);
 }
 
-::-webkit-scrollbar-thumb{
+::-webkit-scrollbar-thumb {
   border-radius: 2rem;
   background: var(--icons-color);
-  width: .5rem;
+  width: 0.5rem;
 }
 
 body {
@@ -75,72 +73,98 @@ body {
 
 
 
-.account{
+.Form {
   width: 100%;
-  margin-block: 6rem;
 }
 
-.account_info{
-  width: 50%;
-  margin: 0 auto;
-  border-bottom: 1px solid var(--shadow-dark-color);
-}
-
-.account_info h1{
-  font-size: 4rem;
-  line-height: .5;
-}
-
-.account_info p{
-  font-size: 1.3rem;
-  width: 80%;
-  line-height: 1.2;
-  padding-bottom: .5rem;
-}
-
-.account_box{
-  width: 50%;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  margin-top: 3rem;
-  gap: 3rem;
-  align-items: flex-start;
-}
-
-.account_box_img{
+.Form_box_input {
   margin-top: 2rem;
-  cursor: pointer;
-  position: relative;
-  text-align: center;
 }
 
-.account_box_img_img{
-  border-radius: 50%;
-}
-
-.account_box_img_para{
+.Form_box_input label {
+  display: block;
+  width: 100%;
+  margin-left: 1rem;
   font-weight: 700;
-  font-size: 1.2rem;
-  line-height: 0;
+  font-size: 1.3rem;
 }
 
-@media screen and (max-width:35em) {
-  .account_info{
-    width: 90%;
-  }
+.Form_box_input_useName {
+  width: 100%;
+  border: 1px solid var(--icons-color);
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: transparent;
+  margin-top: 0.5rem;
+  outline: none;
+}
 
-  .account_info h1{
-    font-size: 2rem;
-  }
+.Form_box_input::placeholder {
+  font-size: 1.2rem;
+  color: var(--icons-color);
+}
 
-  .account_info p{
-    font-size: 1rem;
-    width: 100%;
-  }
+.Form_box_input_box {
+  width: 100%;
+  border: 1px solid var(--icons-color);
+  border-radius: 1rem;
+  align-items: center;
+  display: flex;
+  gap: 1rem;
+  overflow: hidden;
+}
 
-  .account_box{
-    width: 90%;
+.Form_box_input_box_icon {
+  font-size: 2rem;
+  background-color: var(--icons-color);
+  padding: 0.5rem 1rem;
+  color: var(--main-bg-color);
+  display: grid;
+  cursor: pointer;
+}
+
+.Form_box_input_box input {
+  width: 90%;
+  border: 0;
+  background-color: transparent;
+  outline: none;
+}
+
+.Form_box_input textarea {
+  width: 100%;
+  background-color: transparent;
+  outline: none;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.Form_box_input_social {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.Form_box_btn {
+  margin: 4rem 0;
+}
+
+.button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+@media screen and (max-width: 35em) {
+  .Form_box_input_social {
     grid-template-columns: 1fr;
   }
 }
+
+@media screen and (min-width: 425px) and (max-width: 768px) {
+  .Form_box_input_social {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+
