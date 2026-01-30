@@ -32,7 +32,7 @@ const DropZone = ({
     <div className="w-full my-12">
       <div
         {...getRootProps()}
-        className="border-[5px] border-dotted border-[var(--icons-color)] rounded-xl text-center p-4 cursor-pointer"
+        className="border-[5px] border-dotted border-(--icons-color) rounded-xl text-center p-4 cursor-pointer"
       >
         <input {...getInputProps()} />
         <p>{title}</p>
@@ -41,14 +41,14 @@ const DropZone = ({
         <p>{subHeading}</p>
       </div>
 
-      {fileUrl && (
-        <aside className="p-8 border-[3px] border-dotted border-[var(--icons-color)] mt-12">
+      {!fileUrl && (
+        <aside className="p-8 border-[3px] border-dotted border-(--icons-color) mt-12">
           <div className="grid grid-cols-[1.5fr_4fr] gap-12 max-[35em]:grid-cols-1">
             <img src="nft-image-1.png" width={200} height={200} />
             <div>
               <div className="flex justify-between font-bold text-[1.2rem] max-[35em]:grid">
-                <p>NFT Name: {itemName}</p>
-                <p>Website: {website}</p>
+                <p className="font-medium">NFT Name: <span className="font-bold">{itemName}</span></p>
+                <p className="font-medium">Website: <span className="font-bold">{website}</span></p>
               </div>
 
               <p className="mt-4">

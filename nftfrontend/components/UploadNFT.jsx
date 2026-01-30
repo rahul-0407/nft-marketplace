@@ -42,7 +42,7 @@ const UploadNFT = () => {
         category={category}
         properties={properties}
         royalties={royalties}
-        image="./upload"
+        image="./upload1.png"
       />
 
       <div className="upload_box">
@@ -55,10 +55,10 @@ const UploadNFT = () => {
             placeholder="Rahul Kumar"
             className="
               w-full mt-2 p-4
-              border border-[var(--icons-color)]
+              border border-(--icons-color)
               rounded-xl
               bg-transparent outline-none
-              placeholder:text-[var(--icons-color)]
+              placeholder:text-(--icons-color)
             "
             onChange={(e) => setItemName(e.target.value)}
           />
@@ -68,8 +68,8 @@ const UploadNFT = () => {
         <div className="mt-8">
           <label className="block ml-4 font-bold text-lg">Website</label>
 
-          <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
-            <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
+          <div className="flex items-center gap-4 mt-2 border border-(--icons-color) rounded-xl overflow-hidden">
+            <div className="text-2xl bg-(--icons-color) px-4 py-2 text-(--main-bg-color) cursor-pointer">
               <MdOutlineHttp />
             </div>
 
@@ -98,9 +98,9 @@ const UploadNFT = () => {
             className="
               w-full mt-2 p-4
               bg-transparent outline-none
-              border border-[var(--icons-color)]
+              border border-(--icons-color)
               rounded-xl
-              placeholder:text-[var(--icons-color)]
+              placeholder:text-(--icons-color)
             "
             onChange={(e) => setDescription(e.target.value)}
           />
@@ -130,10 +130,10 @@ const UploadNFT = () => {
                   setCategory(el.category);
                 }}
                 className={`
-                  border border-[var(--icons-color)]
+                  border border-(--icons-color)
                   rounded-xl p-4 cursor-pointer
                   transition-all
-                  ${active === i + 1 ? "bg-[var(--icons-color)] text-[var(--main-bg-color)]" : ""}
+                  ${active === i + 1 ? "bg-(--icons-color) text-(--main-bg-color)" : ""}
                 `}
               >
                 <div className="flex items-center gap-12">
@@ -145,7 +145,7 @@ const UploadNFT = () => {
                     className="rounded-full"
                   />
 
-                  <div className="bg-[var(--icons-color)] text-[var(--main-bg-color)] rounded-full p-1">
+                  <div className="bg-(--icons-color) text-(--main-bg-color) rounded-full p-1">
                     <TiTick />
                   </div>
                 </div>
@@ -170,8 +170,8 @@ const UploadNFT = () => {
           <div>
             <label className="block ml-4 font-bold text-lg">Royalties</label>
 
-            <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
-              <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
+            <div className="flex items-center gap-4 mt-2 border border-(--icons-color) rounded-xl overflow-hidden">
+              <div className="text-2xl bg-(--icons-color) px-4 py-2 text-(--main-bg-color) cursor-pointer">
                 <FaPercent />
               </div>
 
@@ -188,8 +188,8 @@ const UploadNFT = () => {
           <div>
             <label className="block ml-4 font-bold text-lg">Size</label>
 
-            <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
-              <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
+            <div className="flex items-center gap-4 mt-2 border border-(--icons-color) rounded-xl overflow-hidden">
+              <div className="text-2xl bg-(--icons-color) px-4 py-2 text-(--main-bg-color) cursor-pointer">
                 <MdOutlineAttachFile />
               </div>
 
@@ -206,8 +206,8 @@ const UploadNFT = () => {
           <div>
             <label className="block ml-4 font-bold text-lg">Propertie</label>
 
-            <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
-              <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
+            <div className="flex items-center gap-4 mt-2 border border-(--icons-color) rounded-xl overflow-hidden">
+              <div className="text-2xl bg-(--icons-color) px-4 py-2 text-(--main-bg-color) cursor-pointer">
                 <AiTwotonePropertySafety />
               </div>
 
