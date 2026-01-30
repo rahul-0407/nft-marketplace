@@ -57,6 +57,7 @@ const UploadNFT = () => {
         fileSize={fileSize}
         category={category}
         properties={properties}
+        royalties={royalties}
         image="./upload"
       />
 
@@ -214,6 +215,11 @@ const UploadNFT = () => {
         <div className="upload_box_btn">
           <Button
             btnName="Upload"
+            handleClick={() => {}}
+            classStyle="upload_box_btn_style"
+          />
+          <Button
+            btnName="Preview"
             handleClick={() => {}}
             classStyle="upload_box_btn_style"
           />
