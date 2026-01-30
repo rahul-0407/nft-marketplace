@@ -19,34 +19,18 @@ const UploadNFT = () => {
   const [properties, setProperties] = useState("");
 
   const categoryArray = [
-    {
-      image: "./nft-image-1.png",
-      category: "Sports",
-    },
-    {
-      image: "./nft-image-2.png",
-      category: "Arts",
-    },
-    {
-      image: "./nft-image-3.png",
-      category: "Music",
-    },
-    {
-      image: "./nft-image-1.png",
-      category: "Digital",
-    },
-    {
-      image: "./nft-image-2.png",
-      category: "Time",
-    },
-    {
-      image: "./nft-image-3.png",
-      category: "Photography",
-    },
+    { image: "./nft-image-1.png", category: "Sports" },
+    { image: "./nft-image-2.png", category: "Arts" },
+    { image: "./nft-image-3.png", category: "Music" },
+    { image: "./nft-image-1.png", category: "Digital" },
+    { image: "./nft-image-2.png", category: "Time" },
+    { image: "./nft-image-3.png", category: "Photography" },
   ];
 
   return (
     <div className="upload">
+
+      {/* DropZone */}
       <DropZone
         title="JPG, PNG, WEBM, MAX 100MB"
         heading="Drag and drop file"
@@ -62,6 +46,8 @@ const UploadNFT = () => {
       />
 
       <div className="upload_box">
+
+        {/* Item Name */}
         <div className="mt-8">
           <label className="block ml-4 font-bold text-lg">Item Name</label>
           <input
@@ -78,12 +64,15 @@ const UploadNFT = () => {
           />
         </div>
 
+        {/* Website */}
         <div className="mt-8">
           <label className="block ml-4 font-bold text-lg">Website</label>
+
           <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
             <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
               <MdOutlineHttp />
             </div>
+
             <input
               type="text"
               placeholder="Website"
@@ -92,15 +81,17 @@ const UploadNFT = () => {
             />
           </div>
 
-          <p className="upload_box_input_para">
+          <p className="px-4">
             Ciscrypt will include a link to this URL on this item's detail page,
             so that users can click to learn more about it. You are welcome to
             link to your own webpage with more details.
           </p>
         </div>
 
+        {/* Description */}
         <div className="mt-8">
           <label className="block ml-4 font-bold text-lg">Description</label>
+
           <textarea
             rows="6"
             placeholder="Something about yourself in few words"
@@ -111,81 +102,97 @@ const UploadNFT = () => {
               rounded-xl
               placeholder:text-[var(--icons-color)]
             "
-            onChaneg={(e) => setDescription(e.target.value)}
+            onChange={(e) => setDescription(e.target.value)}
           />
+
           <p>
             The description will be included on the item's detail page
             underneath its image. Markdown syntax is supported.
           </p>
         </div>
 
+        {/* Choose Collection */}
         <div className="mt-8">
           <label className="block ml-4 font-bold text-lg">
             Choose collection
           </label>
-          <p className="upload_box_input_para">
+
+          <p className="px-4">
             Choose an exciting collection or create a new one
           </p>
 
-          <div className="upload_box_slider_div">
+          <div className="flex gap-4 max-[35em]:grid max-[35em]:grid-cols-2">
             {categoryArray.map((el, i) => (
               <div
-                className={`upload_box_slider ${active == i + 1 ? "active" : ""}`}
-                key={i + 1}
+                key={i}
                 onClick={() => {
                   setActive(i + 1);
                   setCategory(el.category);
                 }}
+                className={`
+                  border border-[var(--icons-color)]
+                  rounded-xl p-4 cursor-pointer
+                  transition-all
+                  ${active === i + 1 ? "bg-[var(--icons-color)] text-[var(--main-bg-color)]" : ""}
+                `}
               >
-                <div className="upload_box_slider_box">
-                  <div className="upload_box_slider_box_img">
-                    <img
-                      src={el.image}
-                      alt="background image"
-                      width={70}
-                      height={70}
-                      className="upload_box_slider_box_img_img"
-                    />
-                  </div>
-                  <div className="upload_box_slider_box_img_icon">
+                <div className="flex items-center gap-12">
+                  <img
+                    src={el.image}
+                    alt="category"
+                    width={70}
+                    height={70}
+                    className="rounded-full"
+                  />
+
+                  <div className="bg-[var(--icons-color)] text-[var(--main-bg-color)] rounded-full p-1">
                     <TiTick />
                   </div>
                 </div>
-                <p>Crypto Legent - Professor</p>
+
+                <p className="text-[1.2rem] font-bold leading-[1.2]">
+                  Crypto Legent - Professor
+                </p>
               </div>
             ))}
           </div>
         </div>
 
+        {/* Royalties / Size / Properties */}
         <div
           className="
-                    grid grid-cols-3 gap-4 mt-8
-                    max-[768px]:grid-cols-2
-                    max-[560px]:grid-cols-1 Form_box_input_social"
+            grid grid-cols-3 gap-4 mt-8
+            max-[768px]:grid-cols-2
+            max-[560px]:grid-cols-1
+          "
         >
-          {/* Facebook */}
+          {/* Royalties */}
           <div>
             <label className="block ml-4 font-bold text-lg">Royalties</label>
+
             <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
               <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
                 <FaPercent />
               </div>
+
               <input
                 type="text"
                 placeholder="20%"
-                onChaneg={(e) => setRoyalties(e.target.value)}
                 className="w-full bg-transparent outline-none"
+                onChange={(e) => setRoyalties(e.target.value)}
               />
             </div>
           </div>
 
-          {/* Twitter */}
+          {/* Size */}
           <div>
             <label className="block ml-4 font-bold text-lg">Size</label>
+
             <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
               <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
                 <MdOutlineAttachFile />
               </div>
+
               <input
                 type="text"
                 placeholder="165MB"
@@ -195,13 +202,15 @@ const UploadNFT = () => {
             </div>
           </div>
 
-          {/* Instagram */}
+          {/* Properties */}
           <div>
             <label className="block ml-4 font-bold text-lg">Propertie</label>
+
             <div className="flex items-center gap-4 mt-2 border border-[var(--icons-color)] rounded-xl overflow-hidden">
               <div className="text-2xl bg-[var(--icons-color)] px-4 py-2 text-[var(--main-bg-color)] cursor-pointer">
                 <AiTwotonePropertySafety />
               </div>
+
               <input
                 type="text"
                 placeholder="Propertie"
@@ -212,18 +221,20 @@ const UploadNFT = () => {
           </div>
         </div>
 
-        <div className="upload_box_btn">
+        {/* Buttons */}
+        <div className="grid grid-cols-2 gap-8 my-16">
           <Button
             btnName="Upload"
             handleClick={() => {}}
-            classStyle="upload_box_btn_style"
+            classStyle="w-full grid place-items-center text-[1.3rem]"
           />
           <Button
             btnName="Preview"
             handleClick={() => {}}
-            classStyle="upload_box_btn_style"
+            classStyle="w-full grid place-items-center text-[1.3rem]"
           />
         </div>
+
       </div>
     </div>
   );
