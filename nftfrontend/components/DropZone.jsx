@@ -1,64 +1,73 @@
-'use client'
+"use client";
 
-import React,{useState, useCallback} from 'react'
-import { useDropzone } from 'react-dropzone/.'
+import React, { useState, useCallback } from "react";
+import { useDropzone } from "react-dropzone";
 
-const DropZone = ({title, heading, subHeading, itemName, website, description, fileSize, category, properties, image, royalties}) => {
-
+const DropZone = ({
+  title,
+  heading,
+  subHeading,
+  itemName,
+  website,
+  description,
+  fileSize,
+  category,
+  properties,
+  image,
+  royalties,
+}) => {
   const [fileUrl, setFileUrl] = useState(null);
 
-  const onDrop = useCallback(async(acceptedFile)=>{
-    setFileUrl(acceptedFile[0])
-  })
+  const onDrop = useCallback((acceptedFiles) => {
+    setFileUrl(acceptedFiles[0]);
+  }, []);
 
-  const {getRootProps, getInputProps} = useDropzone({
+  const { getRootProps, getInputProps } = useDropzone({
     onDrop,
-    accept: "image/*",
+    accept: { "image/*": [] },
     maxSize: 5000000,
-  })
+  });
 
   return (
-    <div className='DropZone'>
-      <div className="DropZone_box" {...getRootProps()}>
-        <input {...getInputProps()}/>
-        <div className='DropZone_box_input'>
-          <p>{title}</p>
-          <div className='DropZone_box_input_img'>
-            <img src={image} alt="upload" width={100} height={100} className='DropZone_box_input_img_img' objectFit="contain"/>
-          </div>
-          <p>{heading}</p>
-          <p>{subHeading}</p>
-        </div>
+    <div className="w-full my-12">
+      <div
+        {...getRootProps()}
+        className="border-[5px] border-dotted border-[var(--icons-color)] rounded-xl text-center p-4 cursor-pointer"
+      >
+        <input {...getInputProps()} />
+        <p>{title}</p>
+        <img src={image} width={100} height={100} className="rounded-xl mx-auto" />
+        <p>{heading}</p>
+        <p>{subHeading}</p>
       </div>
+
       {fileUrl && (
-        <aside className='DropZone_box_aside'>
-          <div className='DropZone_box_aside_box'>
-            <img src="nft-image-1.png" alt="nft image" width={200} height={200}/>
-            <div className='DropZone_box_aside_box_preview'>
-              <div className='DropZone_box_aside_box_preview_one'>
-                <p><samp>NFT Name:</samp>{itemName || ""}</p>
-                <p><samp>Website:</samp>{website || ""}</p>
+        <aside className="p-8 border-[3px] border-dotted border-[var(--icons-color)] mt-12">
+          <div className="grid grid-cols-[1.5fr_4fr] gap-12 max-[35em]:grid-cols-1">
+            <img src="nft-image-1.png" width={200} height={200} />
+            <div>
+              <div className="flex justify-between font-bold text-[1.2rem] max-[35em]:grid">
+                <p>NFT Name: {itemName}</p>
+                <p>Website: {website}</p>
               </div>
 
-              <div className='DropZone_box_aside_box_preview_two'>
-                <p>
-                  <span>Description</span>
-                  {description || ""}
-                </p>
-              </div>
+              <p className="mt-4">
+                <span className="font-bold text-[1.2rem] mr-4">Description</span>
+                {description}
+              </p>
 
-              <div className='DropZone_box_aside_box_preview_three'>
-                <p><span>Royalties</span>{royalties || ""}</p>
-                <p><span>FileSize</span>{fileSize || ""}</p>
-                <p><span>Properties</span>{properties || ""}</p>
-                <p><span>Category</span>{category || ""}</p>
+              <div className="grid grid-cols-3 max-[35em]:grid-cols-1">
+                <p><span className="font-bold mr-2">Royalties</span>{royalties}</p>
+                <p><span className="font-bold mr-2">FileSize</span>{fileSize}</p>
+                <p><span className="font-bold mr-2">Properties</span>{properties}</p>
+                <p><span className="font-bold mr-2">Category</span>{category}</p>
               </div>
             </div>
           </div>
         </aside>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default DropZone
+export default DropZone;
