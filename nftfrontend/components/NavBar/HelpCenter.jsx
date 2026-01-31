@@ -9,7 +9,7 @@ const HelpCenter = () => {
     },
     {
       name: "Contact Us",
-      link: "contact-us",
+      link: "contactus",
     },
     {
       name: "Sign Up",
@@ -38,7 +38,7 @@ const HelpCenter = () => {
             hover:rounded-[0.3rem]
           "
         >
-          <Link href={{ pathname: `${el.link}` }}>{el.name}</Link>
+          <Link href={`/${el.link}`}>{el.name}</Link>
         </div>
       ))}
     </div>
