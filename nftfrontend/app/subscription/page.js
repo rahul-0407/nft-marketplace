@@ -1,19 +1,20 @@
+
 import React from "react";
-import SubscriptionBox from "@/components/SubscriptionBox";
+import SubscriptionBox from "@/components/Subscription";
 
 const Subscription = () => {
   const subscriptionArray = [
     {
       plan: "STARTER",
       price: "$5/mo",
-      popular: "",
+      popular: " ",
       service: ["Automated Reporting", "Faster Processing", "Customizations"],
       info: "Literally you probably haven't heard of them jean shorts,",
     },
     {
       plan: "BASIC",
       price: "$15/mo",
-      popular: "",
+      popular: "POPULAR",
       service: [
         "Everyting in Starter",
         "100 Builds",
@@ -25,7 +26,7 @@ const Subscription = () => {
     {
       plan: "PLUS",
       price: "$25/mo",
-      popular: "",
+      popular: " ",
       service: [
         "Everyting in Basic",
         "Unlimited Builds",
@@ -37,15 +38,15 @@ const Subscription = () => {
   ];
 
   return (
-    <div className="w-full my-28 max-[35em]:my-16 max-[1024px]:my-16">
+    <div className="w-full my-28 max-[35em]:my-16 max-[1024px]:my-16 text-(--icons-color)">
       <div className="w-[80%] mx-auto max-[35em]:w-[90%] max-[1024px]:w-[90%]">
 
         {/* HEADER */}
-        <div className="text-center leading-none">
-          <h1 className="text-[4rem] leading-[0.5] max-[35em]:text-[2rem] max-[1024px]:text-[2rem]">
+        <div className="text-center ">
+          <h1 className="text-[4rem]  max-[35em]:text-[2rem] max-[1024px]:text-[2rem] font-semibold">
             💎 Subscription
           </h1>
-          <p className="text-[1.6rem] leading-[0.5] max-[35em]:text-[1rem] max-[1024px]:text-[1rem]">
+          <p className="text-[1.6rem]  max-[35em]:text-[1rem] max-[1024px]:text-[1rem]">
             Pricing to fit the needs of any company size.
           </p>
         </div>
