@@ -1,9 +1,13 @@
 'use client'
 
-import React from "react";
+import React,{useContext} from "react";
 import Button from "./Button";
+import {NFTMarketplaceContext} from "../context/NFTMarketplaceContext"
 
 const HeroSection = () => {
+
+  const {title} = useContext(NFTMarketplaceContext)
+
   return (
     <div
       className="
@@ -36,7 +40,7 @@ const HeroSection = () => {
               max-[55em]:text-[3rem] mb-8
             "
           >
-            Discover, collect, and sell NFTs
+            {title}
           </h1>
 
           <p className="mb-8 text-(--icons-color)">

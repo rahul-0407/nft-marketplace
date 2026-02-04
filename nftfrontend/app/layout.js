@@ -1,4 +1,4 @@
-"useClient"
+
 
 import { Poppins} from "next/font/google";
 import "./globals.css";
@@ -19,14 +19,17 @@ const poppins = Poppins({
 
 import NavBar from "@/components/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
+import NFTMarketplaceProvider from "../context/NFTMarketplaceContext"
 
 export default function RootLayout({ children }) {
   return (
     <html>
       <body className={`${poppins.variable} font-sans`}>
+        <NFTMarketplaceProvider>
         <NavBar/>
         {children}
         <Footer/>
+        </NFTMarketplaceProvider>
       </body>
     </html>
   );
