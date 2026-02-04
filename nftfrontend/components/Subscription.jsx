@@ -1,20 +1,65 @@
-import React from 'react'
-import {TiTick} from "react-icons/ti";
-import Button from './Button';
+import React from "react";
+import { TiTick } from "react-icons/ti";
+import Button from "./Button";
 
-const Subscription = ({el, i}) => {
+const SubscriptionBox = ({ el, i }) => {
   return (
-    <div className='SubscriptionBox'>
-      <div class="SubscriptionBox_box">
-        <span class="SubscriptionBox_box_span">{el.plan}</span>
-        <small className='SubscriptionBox_box_small'>{el.popular || ""}</small>
-        <p className='SubscriptionBox_box_price'>{el.price}</p>
-        <div class="SubscriptionBox_box_info">{el.service.map((el,i)=>(<p className='SubscriptionBox_box_info_para' key={i+1}><span><TiTick/></span>{el}</p>))}</div>
+    <div
+      className="
+        border border-[var(--icons-color)]
+        p-8 rounded-xl
+        relative cursor-pointer
+        transition-all duration-300 ease-in
+        hover:shadow-[var(--box-shadow)]
+      "
+    >
+      <span className="text-[2rem] font-black">
+        {el.plan}
+      </span>
 
-        <Button btnName="Submit" handleClick={()=>{}} classStyle="button"/>
+      {el.popular && (
+        <small
+          className="
+            absolute right-16
+            text-[1.2rem]
+            bg-[var(--icons-color)]
+            text-[var(--main-bg-color)]
+            px-4 py-2 rounded-lg
+          "
+        >
+          {el.popular}
+        </small>
+      )}
+
+      <p className="text-[3rem] leading-none font-black">
+        {el.price}
+      </p>
+
+      <div className="my-8">
+        {el.service.map((service, i) => (
+          <p
+            key={i}
+            className="
+              flex items-center gap-2
+              font-medium text-[1.5rem] leading-none
+              max-[35em]:text-[1rem]
+            "
+          >
+            <span>
+              <TiTick />
+            </span>
+            {service}
+          </p>
+        ))}
       </div>
-    </div>
-  )
-}
 
-export default Subscription
+      <Button
+        btnName="Submit"
+        handleClick={() => {}}
+        classStyle="mt-8"
+      />
+    </div>
+  );
+};
+
+export default SubscriptionBox;
