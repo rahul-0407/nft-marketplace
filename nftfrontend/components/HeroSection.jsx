@@ -1,12 +1,14 @@
-'use client'
+"use client";
 
-import React,{useContext} from "react";
+import React, { useContext } from "react";
 import Button from "./Button";
-import {NFTMarketplaceContext} from "../context/NFTMarketplaceContext"
+import { NFTMarketplaceContext } from "../context/NFTMarketplaceContext";
 
 const HeroSection = () => {
 
-  const {title} = useContext(NFTMarketplaceContext)
+  const { title } = useContext(NFTMarketplaceContext);
+
+  // };
 
   return (
     <div
@@ -39,6 +41,7 @@ const HeroSection = () => {
               leading-none font-bold text-(--icons-color)
               max-[55em]:text-[3rem] mb-8
             "
+            onClick={() => show()}
           >
             {title}
           </h1>

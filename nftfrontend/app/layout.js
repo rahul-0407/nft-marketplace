@@ -23,14 +23,15 @@ import NFTMarketplaceProvider from "../context/NFTMarketplaceContext"
 
 export default function RootLayout({ children }) {
   return (
-    <html>
+    <html lang="en" suppressHydrationWarning>
       <body className={`${poppins.variable} font-sans`}>
         <NFTMarketplaceProvider>
-        <NavBar/>
-        {children}
-        <Footer/>
+          <NavBar />
+          {children}
+          <Footer />
         </NFTMarketplaceProvider>
       </body>
     </html>
   );
 }
+

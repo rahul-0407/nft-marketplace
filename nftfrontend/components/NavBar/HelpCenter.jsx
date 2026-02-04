@@ -36,7 +36,7 @@ const HelpCenter = () => {
             hover:bg-[var(--icons-color)]
             hover:text-[var(--shadow-dark-color)]
             hover:rounded-[0.3rem]
-          "
+          " key={i+1}
         >
           <Link href={`/${el.link}`}>{el.name}</Link>
         </div>

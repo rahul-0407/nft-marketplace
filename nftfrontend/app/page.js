@@ -1,4 +1,6 @@
-import React from 'react'
+'use client'
+
+import React, { useContext, useEffect } from 'react'
 
 import HeroSection from '@/components/HeroSection'
 import Service from '@/components/Service'
@@ -16,9 +18,14 @@ import Brand from '@/components/Brand'
 import Video from '@/components/Video'
 
 
+import {NFTMarketplaceContext} from "../context/NFTMarketplaceContext"
+
+
 
 
 const Home = () => {
+
+
   return (
     <div className='homePage'>
       <HeroSection/>
