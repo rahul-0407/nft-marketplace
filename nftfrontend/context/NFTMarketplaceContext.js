@@ -4,10 +4,8 @@ import React, { useState } from "react";
 import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 import { NFTMarketplaceAddress, NFTMarketplaceABI } from "./constants";
-import { create as ipfsHttpClient } from "ipfs-http-client";
 import axios from "axios";
-
-const client = ipfsHttpClient("https://ipfs.infura.io:5001/api/v0");
+import { uploadToIPFS, uploadJSONToIPFS } from "@/lib/ipfsClient";
 
 export const NFTMarketplaceContext = React.createContext();
 
@@ -49,7 +47,7 @@ const NFTMarketplaceProvider = ({ children }) => {
         console.log("No Account found");
       }
 
-      console.log(currentAccount)
+      console.log(currentAccount);
     } catch (error) {
       console.log("Something wrong while connecting to the wallet");
     }
@@ -59,43 +57,53 @@ const NFTMarketplaceProvider = ({ children }) => {
     try {
       if (!window.ethereum) return console.log("Install metaMask");
       const accounts = await window.ethereum.request({
-        method: "eth_reqAccounts",
+        method: "eth_requestAccounts",
       });
       setCurrentAccount(accounts[0]);
       window.location.reload();
     } catch (error) {
-      console.log("error while coneccting to the wallet");
+      console.log("error while connecting to the wallet");
     }
   };
 
-  const uploadToIPFS = async (file) => {
+  // Upload file to IPFS using Pinata
+  const uploadToIPFSHandler = async (file) => {
     try {
-      const added = await client.add({ content: file });
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
+      const url = await uploadToIPFS(file);
       return url;
     } catch (error) {
-      console.log("Error uploading to ipfs");
+      console.error("IPFS upload error:", error);
+      throw error;
     }
   };
 
-  const createNFT = async (formInput, fileUrl, router) => {
+  // Create NFT - Upload metadata and create sale
+  const createNFT = async (formInput, fileUrl) => {
     const { name, description, price } = formInput;
 
-    if (!name || !description || !price || !fileUrl)
-      return console.log("data is missing");
+    if (!name || !description || !price || !fileUrl) {
+      console.error("Missing required fields");
+      return;
+    }
 
-    const data = JSON.stringify({ name, description, image: fileUrl });
+    const data = { name, description, image: fileUrl };
 
     try {
-      const added = await client.add(data);
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
-      await createSale(url, price);
-    } catch (error) {}
+      // Upload metadata JSON to IPFS
+      const url = await uploadJSONToIPFS(data);
+      console.log("Metadata uploaded to:", url);
+      
+      // Create sale on blockchain
+      await createSale(url, price, false);
+    } catch (error) {
+      console.error("Create NFT failed:", error);
+      throw error;
+    }
   };
 
   const createSale = async (url, formInputPrice, isReselling, id) => {
     try {
-      const price = ethers.utils.parseUints(formInputPrice, "ether");
+      const price = ethers.parseUnits(formInputPrice, "ether");
       const contract = await connectingWithContract();
 
       const listingPrice = await contract.getListingPrice();
@@ -104,105 +112,118 @@ const NFTMarketplaceProvider = ({ children }) => {
         ? await contract.createToken(url, price, {
             value: listingPrice.toString(),
           })
-        : await contract.reSellToken(url, price, {
+        : await contract.reSellToken(id, price, {
             value: listingPrice.toString(),
           });
 
-      await transaction.wait()
+      await transaction.wait();
+      console.log("Sale created successfully!");
     } catch (error) {
-      console.log("error while creating sale");
+      console.error("Error while creating sale:", error);
+      throw error;
     }
   };
 
   const fetchNFTs = async () => {
     try {
-      const provider = new ethers.provider.JsonRpcProvider()
-      const contract = fetchContract(provider)
+      const provider = new ethers.JsonRpcProvider("http://127.0.0.1:8545");
+      const contract = fetchContract(provider);
 
       const data = await contract.fetchMarketItem();
-      // console.log(data)
 
       const items = await Promise.all(
         data.map(
-          async({tokenId, seller, owner, price: unformattedPrice}) => {
-            const tokenURI = await contract.tokenURI(tokenId)
+          async ({ tokenId, seller, owner, price: unformattedPrice }) => {
+            const tokenURI = await contract.tokenURI(tokenId);
 
-            const {data: {image, name, description},}= await axios.get(tokenURI)
-            const price = ethers.utils.formatUnits(unformattedPrice.toString(), "ether")
+            const {
+              data: { image, name, description },
+            } = await axios.get(tokenURI);
+            const price = ethers.formatUnits(
+              unformattedPrice.toString(),
+              "ether",
+            );
 
             return {
               price,
-              tokenId: tokenId.toNumber(),
-              seller, 
+              tokenId: Number(tokenId),
+              seller,
               owner,
               image,
               name,
               description,
-              tokenURI
-            }
-          }
-        )
-      )
+              tokenURI,
+            };
+          },
+        ),
+      );
 
       return items;
-
     } catch (error) {
-      console.log("error while fetching")
+      console.error("Error while fetching NFTs:", error);
+      throw error;
     }
-  }
+  };
 
   const fetchMyNFTsOrListedNFTs = async (type) => {
     try {
+      const contract = await connectingWithContract();
 
-      const contract = connectingWithContract()
-
-      const data = type == "fetchItemsListed" ? await contract.fetchItemsListed() : await contract.fetchMyNFT();
+      const data =
+        type === "fetchItemsListed"
+          ? await contract.fetchItemsListed()
+          : await contract.fetchMyNFT();
 
       const items = await Promise.all(
         data.map(
-          async({tokenId, seller, owner, price: unformattedPrice}) => {
-            const tokenURI = await contract.tokenURI(tokenId)
+          async ({ tokenId, seller, owner, price: unformattedPrice }) => {
+            const tokenURI = await contract.tokenURI(tokenId);
 
-            const {data: {image, name, description},}= await axios.get(tokenURI)
-            const price = ethers.utils.formatUnits(unformattedPrice.toString(), "ether")
+            const {
+              data: { image, name, description },
+            } = await axios.get(tokenURI);
+            const price = ethers.formatUnits(
+              unformattedPrice.toString(),
+              "ether",
+            );
 
             return {
               price,
-              tokenId: tokenId.toNumber(),
-              seller, 
+              tokenId: Number(tokenId),
+              seller,
               owner,
               image,
               name,
               description,
-              tokenURI
-            }
-          }
-        )
-      )
+              tokenURI,
+            };
+          },
+        ),
+      );
 
       return items;
-
-      
     } catch (error) {
-      console.log("error while fethcing listed nfts")
+      console.error("Error while fetching listed NFTs:", error);
+      throw error;
     }
-  }
+  };
 
   const buyNFT = async (nft) => {
     try {
-
       const contract = await connectingWithContract();
-      const price = ethers.utils.parseUnits(nft.price.toString(),"ether");
+      const price = ethers.parseUnits(nft.price.toString(), "ether");
 
+      const transaction = await contract.createMarketSale(nft.tokenId, {
+        value: price,
+      });
 
-      const transaction = await contract.createMarketSale(nft.tokenId,{value: price})
-
-      await transaction.wait()
-      
+      await transaction.wait();
+      console.log("NFT purchased successfully!");
     } catch (error) {
-      console.log("error while buying nft")
+      console.error("Error while buying NFT:", error);
+      throw error;
     }
-  }
+  };
 
   return (
     <NFTMarketplaceContext.Provider
@@ -210,13 +231,14 @@ const NFTMarketplaceProvider = ({ children }) => {
         title,
         checkIfWalletIsConnected,
         connectWallet,
-        uploadToIPFS,
+        uploadToIPFS: uploadToIPFSHandler,
         createNFT,
-        fetchNFTs, 
+        fetchNFTs,
         fetchMyNFTsOrListedNFTs,
         connectingWithContract,
         buyNFT,
-        currentAccount
+        currentAccount,
+        createSale,
       }}
     >
       {children}
