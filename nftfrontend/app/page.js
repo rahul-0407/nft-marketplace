@@ -25,6 +25,12 @@ import {NFTMarketplaceContext} from "../context/NFTMarketplaceContext"
 
 const Home = () => {
 
+  const {connectingWithContract} = useContext(NFTMarketplaceContext)
+
+  useContext(()=>{
+    connectingWithContract()
+  },[])
+
 
   return (
     <div className='homePage'>
