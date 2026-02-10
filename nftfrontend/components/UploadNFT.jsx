@@ -7,16 +7,25 @@ import { AiTwotonePropertySafety } from "react-icons/ai";
 import { TiTick } from "react-icons/ti";
 import Button from "./Button";
 import DropZone from "./DropZone";
+import {NFTMarketplaceContext} from "../context/NFTMarketplaceContext"
+import { useRouter } from "next/router";
 
 const UploadNFT = () => {
+
+  const {uploadToIPFS, createNFT} = useContext(NFTMarketplaceContext)
+
+  const [price, setPrice] = useState("");
   const [active, setActive] = useState(0);
-  const [itemName, setItemName] = useState("");
+  const [name, setName] = useState("");
   const [website, setWebsite] = useState("");
   const [description, setDescription] = useState("");
   const [royalties, setRoyalties] = useState("");
   const [fileSize, setFileSize] = useState("");
   const [category, setCategory] = useState("");
   const [properties, setProperties] = useState("");
+  const [image, setImage] = useState("");
+
+  const router = useRouter()
 
   const categoryArray = [
     { image: "./nft-image-1.png", category: "Sports" },
@@ -35,14 +44,15 @@ const UploadNFT = () => {
         title="JPG, PNG, WEBM, MAX 100MB"
         heading="Drag and drop file"
         subHeading="or Browse media on your device"
-        itemName={itemName}
+        name={name}
         website={website}
         description={description}
         fileSize={fileSize}
         category={category}
         properties={properties}
         royalties={royalties}
-        image="./upload1.png"
+        setImage={setImage}
+        uploadToIPFS={uploadToIPFS}
       />
 
       <div className="upload_box">
@@ -60,7 +70,7 @@ const UploadNFT = () => {
               bg-transparent outline-none
               placeholder:text-(--icons-color)
             "
-            onChange={(e) => setItemName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
           />
         </div>
 
@@ -204,6 +214,22 @@ const UploadNFT = () => {
 
           {/* Properties */}
           <div>
+            <label className="block ml-4 font-bold text-lg">Price</label>
+
+            <div className="flex items-center gap-4 mt-2 border border-(--icons-color) rounded-xl overflow-hidden">
+              <div className="text-2xl bg-(--icons-color) px-4 py-2 text-(--main-bg-color) cursor-pointer">
+                <AiTwotonePropertySafety />
+              </div>
+
+              <input
+                type="text"
+                placeholder="Price"
+                className="w-full bg-transparent outline-none"
+                onChange={(e) => setPrice(e.target.value)}
+              />
+            </div>
+          </div>
+          <div>
             <label className="block ml-4 font-bold text-lg">Propertie</label>
 
             <div className="flex items-center gap-4 mt-2 border border-(--icons-color) rounded-xl overflow-hidden">
@@ -225,7 +251,7 @@ const UploadNFT = () => {
         <div className="grid grid-cols-2 gap-8 my-16">
           <Button
             btnName="Upload"
-            handleClick={() => {}}
+            handleClick={async() => createNFT(name, price, image, description, router, website, fileSize, royalties, category, properties)}
             classStyle="w-full grid place-items-center text-[1.3rem]"
           />
           <Button

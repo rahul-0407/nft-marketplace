@@ -1,7 +1,14 @@
-import React from "react";
+'use client'
+
+import React,{useState, useContext, useEffect} from "react";
 import UploadNFT from "@/components/UploadNFT";
+import {NFTMarketplaceContext} from "../../context/NFTMarketplaceContext"
 
 const Upload = () => {
+
+
+  const {uploadToIPFS, createNFT} = useContext(NFTMarketplaceContext)
+
   return (
     <div className="w-full my-32 text-(--icons-color)">
       <div className="w-[60%] mx-auto max-[35em]:w-[90%]">
