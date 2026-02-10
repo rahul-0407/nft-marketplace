@@ -110,8 +110,8 @@ const NavBar = () => {
 
           {/* navbar_container_right_button (hidden on mobile) */}
           <div className="relative cursor-pointer max-md:hidden">
-            {currentAccount == ''? (<Button btnName="Connect" handleClick={()=>connectWallet()} />):(<a href={{pathname: "/"}}><Button btnName="Create" /></a>)}
-            
+            {currentAccount == ''? (<Button btnName="Connect" handleClick={()=>connectWallet()} />):(<a href="/upload"><Button btnName="Create" /></a>)}
+
           </div>
 
           {/* navbar_container_right_profile_box */}

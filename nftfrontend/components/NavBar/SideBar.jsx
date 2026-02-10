@@ -13,12 +13,14 @@ import {
   TiArrowSortedDown,
   TiArrowSortedUp,
 } from "react-icons/ti";
+import {NFTMarketplaceContext} from "../../context/NFTMarketplaceContext"
 
 import Button from "../Button";
 
 const SideBar = ({ setOpenSideMenu }) => {
   const [openDiscover, setOpenDiscover] = useState(false);
   const [openHelp, setOpenHelp] = useState(false);
+  const {currentAccount, connectWallet} = useContext(NFTMarketplaceContext)
 
   const discover = [
     { name: "Collection", link: "collection" },
@@ -46,7 +48,7 @@ const SideBar = ({ setOpenSideMenu }) => {
     setOpenHelp((prev) => !prev);
   };
 
-  const closeSideBar = (e) => {
+  const closeSideBar = () => {
     console.log("hello");
     setOpenSideMenu(false);
   };
@@ -56,10 +58,10 @@ const SideBar = ({ setOpenSideMenu }) => {
       className="
         fixed top-0
         w-96 h-screen
-        bg-[var(--main-bg-color)]
-        shadow-[var(--box-shadow)]
+        bg-(--main-bg-color)
+        shadow-(--box-shadow)
         overflow-y-auto
-        z-[11111] 
+        z-11111 
       "
       style={{ scrollbarWidth: "none" }}
     >
@@ -69,7 +71,7 @@ const SideBar = ({ setOpenSideMenu }) => {
           absolute top-12 right-8 
           cursor-pointer
           transition-all duration-200 ease-in-out
-          shadow-[var(--box-shadow)]
+          shadow-(--box-shadow)
           hover:rotate-45
           w-6 h-6 flex items-center justify-center
         "
@@ -80,34 +82,34 @@ const SideBar = ({ setOpenSideMenu }) => {
       </div>
 
       {/* TOP BOX */}
-      <div className="p-8 border-b border-[var(--icons-color)] ">
+      <div className="p-8 border-b border-(--icons-color) ">
         <img src="/logo.svg" alt="logo" width={150} height={150} />
-        <p className="mt-[2rem]">
+        <p className="mt-8">
           Discover the most outstanding articles on all topics of NFT & your own
           stories and share them
         </p>
 
         <div className="flex gap-5 text-[1.5rem] items-center mt-4">
-          <a className="p-1 rounded-full grid transition-all duration-300 hover:bg-[var(--icons-color)] hover:text-[var(--shadow-dark-color)]">
+          <a className="p-1 rounded-full grid transition-all duration-300 hover:bg-(--icons-color) hover:text-(--shadow-dark-color)">
             <TiSocialFacebook />
           </a>
-          <a className="p-1 rounded-full grid transition-all duration-300 hover:bg-[var(--icons-color)] hover:text-[var(--shadow-dark-color)]">
+          <a className="p-1 rounded-full grid transition-all duration-300 hover:bg-(--icons-color) hover:text-(--shadow-dark-color)">
             <TiSocialLinkedin />
           </a>
-          <a className="p-1 rounded-full grid transition-all duration-300 hover:bg-[var(--icons-color)] hover:text-[var(--shadow-dark-color)]">
+          <a className="p-1 rounded-full grid transition-all duration-300 hover:bg-(--icons-color) hover:text-(--shadow-dark-color)">
             <TiSocialTwitter />
           </a>
-          <a className="p-1 rounded-full grid transition-all duration-300 hover:bg-[var(--icons-color)] hover:text-[var(--shadow-dark-color)]">
+          <a className="p-1 rounded-full grid transition-all duration-300 hover:bg-(--icons-color) hover:text-(--shadow-dark-color)">
             <TiSocialYoutube />
           </a>
-          <a className="p-1 rounded-full grid transition-all duration-300 hover:bg-[var(--icons-color)] hover:text-[var(--shadow-dark-color)]">
+          <a className="p-1 rounded-full grid transition-all duration-300 hover:bg-(--icons-color) hover:text-(--shadow-dark-color)">
             <TiSocialInstagram />
           </a>
         </div>
       </div>
 
       {/* MENU */}
-      <div className="p-8 uppercase font-medium border-b border-[var(--icons-color)]">
+      <div className="p-8 uppercase font-medium border-b border-(--icons-color)">
         {/* DISCOVER */}
         <div>
           <div
@@ -153,7 +155,7 @@ const SideBar = ({ setOpenSideMenu }) => {
 
       {/* BUTTONS */}
       <div className="p-8 flex items-center justify-between">
-        <Button btnName="Create" handleClick={()=>{}} />
+        {currentAccount == ''? (<Button btnName="Connect" handleClick={()=>connectWallet()} />):(<a href="/upload"><Button btnName="Create" /></a>)}
         <Button btnName="Connect Wallet" handleClick={()=>{}}/>
       </div>
     </div>
