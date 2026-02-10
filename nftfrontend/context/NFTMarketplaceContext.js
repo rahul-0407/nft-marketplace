@@ -60,7 +60,7 @@ const NFTMarketplaceProvider = ({ children }) => {
         method: "eth_requestAccounts",
       });
       setCurrentAccount(accounts[0]);
-      window.location.reload();
+      // window.location.reload();
     } catch (error) {
       console.log("error while connecting to the wallet");
     }

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import { MdNotifications } from "react-icons/md";
 import { BsSearch } from "react-icons/bs";
@@ -12,6 +12,7 @@ import Notification from "./Notification";
 import Profile from "./Profile";
 import SideBar from "./SideBar";
 import Button from "../Button";
+import {NFTMarketplaceContext} from "../../context/NFTMarketplaceContext"
 
 const NavBar = () => {
   const [discover, setDiscover] = useState(false);
@@ -52,10 +53,11 @@ const NavBar = () => {
     setOpenSideMenu((prev) => !prev);
   };
 
-  /* ================= JSX ================= */
+  const {currentAccount, connectWallet} = useContext(NFTMarketplaceContext)
+
 
   return (
-    <nav className="w-full py-6 relative z-[1111111]">
+    <nav className="w-full py-6 relative z-1111111">
       {/* navbar_container */}
       <div className="w-[80%] mx-auto grid grid-cols-2 items-center gap-4 max-md:grid-cols-2">
 
@@ -64,7 +66,7 @@ const NavBar = () => {
           <img src="/logo.svg" alt="NFT Marketplace" width={100} height={100} />
 
           {/* navbar_container_left_box_input_box (hidden on mobile) */}
-          <div className="w-[60%] border border-[var(--icons-color)] flex items-center p-2 rounded-full max-md:hidden">
+          <div className="w-[60%] border border-(--icons-color) flex items-center p-2 rounded-full max-md:hidden">
             <input
               type="text"
               placeholder="Search NFT"
@@ -81,7 +83,7 @@ const NavBar = () => {
           <div className="relative cursor-pointer max-md:hidden">
             <p onClick={openMenu}>Discover</p>
             {discover && (
-              <div className="absolute mt-4 p-4 w-60 rounded-xl bg-[var(--main-bg-color)] shadow-[var(--box-shadow)]">
+              <div className="absolute mt-4 p-4 w-60 rounded-xl bg-(--main-bg-color) shadow-(--box-shadow)">
                 <Discover />
               </div>
             )}
@@ -91,7 +93,7 @@ const NavBar = () => {
           <div className="relative cursor-pointer max-md:hidden">
             <p onClick={openMenu}>Help Center</p>
             {help && (
-              <div className="absolute mt-4 p-4 w-60 rounded-xl bg-[var(--main-bg-color)] shadow-[var(--box-shadow)]">
+              <div className="absolute mt-4 p-4 w-60 rounded-xl bg-(--main-bg-color) shadow-(--box-shadow)">
                 <HelpCenter />
               </div>
             )}
@@ -108,7 +110,8 @@ const NavBar = () => {
 
           {/* navbar_container_right_button (hidden on mobile) */}
           <div className="relative cursor-pointer max-md:hidden">
-            <Button btnName="Create" handleClick={()=>{}} />
+            {currentAccount == ''? (<Button btnName="Connect" handleClick={()=>connectWallet()} />):(<a href={{pathname: "/"}}><Button btnName="Create" /></a>)}
+            
           </div>
 
           {/* navbar_container_right_profile_box */}
@@ -137,9 +140,9 @@ const NavBar = () => {
       {/* ===== SIDEBAR (mobile only) ===== */}
       {openSideMenu && (
         <div
-          className="fixed top-0 left-0 w-96 h-screen bg-[var(--main-bg-color)]
-                     shadow-[var(--box-shadow)] overflow-y-auto
-                     z-[11111] hidden max-md:block"
+          className="fixed top-0 left-0 w-96 h-screen bg-(--main-bg-color)
+                     shadow-(--box-shadow) overflow-y-auto
+                     z-11111 hidden max-md:block"
           style={{ scrollbarWidth: "none" }}
         >
           <SideBar setOpenSideMenu={setOpenSideMenu} />

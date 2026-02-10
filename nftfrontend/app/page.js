@@ -25,10 +25,10 @@ import {NFTMarketplaceContext} from "../context/NFTMarketplaceContext"
 
 const Home = () => {
 
-  const {connectingWithContract} = useContext(NFTMarketplaceContext)
+  const {checkIfWalletIsConnected} = useContext(NFTMarketplaceContext)
 
   useContext(()=>{
-    connectingWithContract()
+    checkIfWalletIsConnected()
   },[])
 
 
