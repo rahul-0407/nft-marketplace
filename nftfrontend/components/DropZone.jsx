@@ -19,8 +19,10 @@ const DropZone = ({
 }) => {
   const [fileUrl, setFileUrl] = useState(null);
 
-  const onDrop = useCallback((acceptedFiles) => {
-    setFileUrl(acceptedFiles[0]);
+  const onDrop = useCallback(async(acceptedFiles) => {
+    const url = await uploadToIPFS(acceptedFiles[0]);
+    setFileUrl(url)
+    setImage(url)
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -45,7 +47,7 @@ const DropZone = ({
       {!fileUrl && (
         <aside className="p-8 border-[3px] border-dotted border-(--icons-color) mt-12">
           <div className="grid grid-cols-[1.5fr_4fr] gap-12 max-[35em]:grid-cols-1">
-            <img src="nft-image-1.png" width={200} height={200} />
+            <img src={fileUrl} width={200} height={200} />
             <div>
               <div className="flex justify-between font-bold text-[1.2rem] max-[35em]:grid">
                 <p className="font-medium">NFT Name: <span className="font-bold">{itemName}</span></p>
