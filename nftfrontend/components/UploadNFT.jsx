@@ -1,18 +1,17 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { MdOutlineHttp, MdOutlineAttachFile } from "react-icons/md";
 import { FaPercent } from "react-icons/fa";
 import { AiTwotonePropertySafety } from "react-icons/ai";
 import { TiTick } from "react-icons/ti";
 import Button from "./Button";
 import DropZone from "./DropZone";
-import {NFTMarketplaceContext} from "../context/NFTMarketplaceContext"
-import { useRouter } from "next/router";
+import { NFTMarketplaceContext } from "../context/NFTMarketplaceContext";
+import { useRouter } from "next/navigation";
 
 const UploadNFT = () => {
-
-  const {uploadToIPFS, createNFT} = useContext(NFTMarketplaceContext)
+  const { uploadToIPFS, createNFT } = useContext(NFTMarketplaceContext);
 
   const [price, setPrice] = useState("");
   const [active, setActive] = useState(0);
@@ -25,7 +24,7 @@ const UploadNFT = () => {
   const [properties, setProperties] = useState("");
   const [image, setImage] = useState("");
 
-  const router = useRouter()
+  const router = useRouter();
 
   const categoryArray = [
     { image: "./nft-image-1.png", category: "Sports" },
@@ -38,7 +37,6 @@ const UploadNFT = () => {
 
   return (
     <div className="upload">
-
       {/* DropZone */}
       <DropZone
         title="JPG, PNG, WEBM, MAX 100MB"
@@ -56,7 +54,6 @@ const UploadNFT = () => {
       />
 
       <div className="upload_box">
-
         {/* Item Name */}
         <div className="mt-8">
           <label className="block ml-4 font-bold text-lg">Item Name</label>
@@ -143,7 +140,11 @@ const UploadNFT = () => {
                   border border-(--icons-color)
                   rounded-xl p-4 cursor-pointer
                   transition-all
-                  ${active === i + 1 ? "bg-(--icons-color) text-(--main-bg-color)" : ""}
+                  ${
+                    active === i + 1
+                      ? "bg-(--icons-color) text-(--main-bg-color)"
+                      : ""
+                  }
                 `}
               >
                 <div className="flex items-center gap-12">
@@ -251,7 +252,20 @@ const UploadNFT = () => {
         <div className="grid grid-cols-2 gap-8 my-16">
           <Button
             btnName="Upload"
-            handleClick={async() => createNFT(name, price, image, description, router, website, fileSize, royalties, category, properties)}
+            handleClick={async () =>
+              createNFT(
+                name,
+                price,
+                image,
+                description,
+                router,
+                // website,
+                // fileSize,
+                // royalties,
+                // category,
+                // properties,
+              )
+            }
             classStyle="w-full grid place-items-center text-[1.3rem]"
           />
           <Button
@@ -260,7 +274,6 @@ const UploadNFT = () => {
             classStyle="w-full grid place-items-center text-[1.3rem]"
           />
         </div>
-
       </div>
     </div>
   );

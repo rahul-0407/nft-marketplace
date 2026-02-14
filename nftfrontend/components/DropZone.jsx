@@ -7,7 +7,7 @@ const DropZone = ({
   title,
   heading,
   subHeading,
-  itemName,
+  name,
   website,
   description,
   fileSize,
@@ -23,6 +23,7 @@ const DropZone = ({
     const url = await uploadToIPFS(acceptedFiles[0]);
     setFileUrl(url)
     setImage(url)
+    console.log(url)
   }, []);
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -39,18 +40,18 @@ const DropZone = ({
       >
         <input {...getInputProps()} />
         <p>{title}</p>
-        <img src={image} width={100} height={100} className="rounded-xl mx-auto" />
+        <img src="./upload1.png" width={100} height={100} className="rounded-xl mx-auto" />
         <p>{heading}</p>
         <p>{subHeading}</p>
       </div>
 
-      {!fileUrl && (
+      {fileUrl && (
         <aside className="p-8 border-[3px] border-dotted border-(--icons-color) mt-12">
           <div className="grid grid-cols-[1.5fr_4fr] gap-12 max-[35em]:grid-cols-1">
             <img src={fileUrl} width={200} height={200} />
             <div>
               <div className="flex justify-between font-bold text-[1.2rem] max-[35em]:grid">
-                <p className="font-medium">NFT Name: <span className="font-bold">{itemName}</span></p>
+                <p className="font-medium">NFT Name: <span className="font-bold">{name}</span></p>
                 <p className="font-medium">Website: <span className="font-bold">{website}</span></p>
               </div>
 

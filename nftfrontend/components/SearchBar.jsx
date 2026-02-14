@@ -1,7 +1,28 @@
-import React from "react";
+'use client'
+
+import React,{useState, useEffect} from "react";
 import { BsSearch, BsArrowRight } from "react-icons/bs";
 
-const SearchBar = () => {
+const SearchBar = ({onHandleSearch, onClearSearch}) => {
+
+  const [search, setSearch] = useState("")
+  const [searchItem, setSearchItem] = useState(search)
+
+  useEffect(()=>{
+    const timer = setTimeout(()=>setSearch(setSearchItem), 1000)
+
+    return () => clearTimeout(timer)
+  },[])
+
+  useEffect(()=>{
+    if(search){
+      onHandleSearch(search)
+    } else {
+      onClearSearch()
+    }
+  },[search])
+  
+
   return (
     <div className="w-full max-[560px]:w-[90%] max-[560px]:mx-auto max-[560px]:mt-8 max-[560px]:mb-4">
       <div
@@ -29,7 +50,7 @@ const SearchBar = () => {
             bg-(--main-bg-color)
             placeholder:text-(--icons-color)
             placeholder:text-lg
-          "
+          " onChange={(e)=>setSearchItem(e.target.value)} value={searchItem}
         />
 
         {/* Right Icon */}

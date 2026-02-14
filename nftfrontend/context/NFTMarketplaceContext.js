@@ -1,11 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 import { NFTMarketplaceAddress, NFTMarketplaceABI } from "./constants";
 import axios from "axios";
 import { uploadToIPFS, uploadJSONToIPFS } from "@/lib/ipfsClient";
+import { useRouter } from "next/navigation";
 
 export const NFTMarketplaceContext = React.createContext();
 
@@ -32,6 +33,7 @@ const connectingWithContract = async () => {
 
 const NFTMarketplaceProvider = ({ children }) => {
   const title = "Discover, collect, and sell NFTs";
+  const router = useRouter()
 
   const [currentAccount, setCurrentAccount] = useState("");
 
@@ -78,21 +80,26 @@ const NFTMarketplaceProvider = ({ children }) => {
   };
 
   // Create NFT - Upload metadata and create sale
-  const createNFT = async (formInput, fileUrl) => {
-    const { name, description, price } = formInput;
+  const createNFT = async (
+    name,
+    price,
+    image,
+    description,
+    router
+  ) => {
 
-    if (!name || !description || !price || !fileUrl) {
+    if (!name || !description || !price || !image) {
       console.error("Missing required fields");
       return;
     }
 
-    const data = { name, description, image: fileUrl };
+    const data = { name, description, image };
 
     try {
       // Upload metadata JSON to IPFS
       const url = await uploadJSONToIPFS(data);
       console.log("Metadata uploaded to:", url);
-      
+
       // Create sale on blockchain
       await createSale(url, price, false);
     } catch (error) {
@@ -117,7 +124,9 @@ const NFTMarketplaceProvider = ({ children }) => {
           });
 
       await transaction.wait();
+      console.log(transaction)
       console.log("Sale created successfully!");
+      router.push('/searchPage')
     } catch (error) {
       console.error("Error while creating sale:", error);
       throw error;
@@ -164,6 +173,10 @@ const NFTMarketplaceProvider = ({ children }) => {
       throw error;
     }
   };
+
+  useEffect(()=>{
+    fetchNFTs();
+  },[])
 
   const fetchMyNFTsOrListedNFTs = async (type) => {
     try {
