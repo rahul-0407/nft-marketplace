@@ -1,44 +1,53 @@
-'use client'
+"use client";
 
-import React,{useEffect, useState, useContext} from 'react'
-import Slider from '@/components/Slider'
-import Brand from '@/components/Brand'
-import SearchBar from '@/components/SearchBar'
-import Filter from '@/components/Filter'
-import NFTCardTwo from '@/components/NFTCardTwo'
-import Banner from '@/components/Banner'
+import React, { useEffect, useState, useContext } from "react";
+import Slider from "@/components/Slider";
+import Brand from "@/components/Brand";
+import SearchBar from "@/components/SearchBar";
+import Filter from "@/components/Filter";
+import NFTCardTwo from "@/components/NFTCardTwo";
+import Banner from "@/components/Banner";
 
-import { NFTMarketplaceContext } from '@/context/NFTMarketplaceContext' 
+import { NFTMarketplaceContext } from "@/context/NFTMarketplaceContext";
 
 const SearchPage = () => {
-
-  const {fetchNFTs} = useContext(NFTMarketplaceContext);
+  const { fetchNFTs } = useContext(NFTMarketplaceContext);
   const [nfts, setNfts] = useState([]);
   const [nftsCopy, setNftsCopy] = useState([]);
 
-  useEffect(()=>{
-    fetchNFTs().then((item)=>{
+  useEffect(() => {
+    fetchNFTs().then((item) => {
       setNfts(item.reverse());
-      setNftsCopy(item)
-      console.log(nfts)
-    })
-  })
+      setNftsCopy(item);
+
+      //  Send to server
+      // fetch("/api/debug", {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(item),
+      // });
+    });
+  }, []);
 
   const onHandleSearch = (value) => {
-    const filteredNFTs = nfts.filter(({name})=> name.toLowerCase().includes(value.toLowerCase()));
+    const filteredNFTs = nfts.filter(({ name }) =>
+      name.toLowerCase().includes(value.toLowerCase()),
+    );
 
-    if(filteredNFTs.length === 0){
-      setNfts(nftsCopy)
+    if (filteredNFTs.length === 0) {
+      setNfts(nftsCopy);
     } else {
-      setNfts(filteredNFTs)
+      setNfts(filteredNFTs);
     }
-  }
+  };
 
-  const onClearSearch = () =>{
-    if(nfts.length && nftsCopy.length){
-      setNfts(nftsCopy)
+  const onClearSearch = () => {
+    if (nfts.length && nftsCopy.length) {
+      setNfts(nftsCopy);
     }
-  }
+  };
 
   // const collectionArray = [
   //   "./nft-image-1.png",
@@ -53,15 +62,18 @@ const SearchPage = () => {
   // ];
 
   return (
-    <div className='searchPage'>
-      <Banner bannerImage="./creatorbackground-4.jpg"/>
-      <SearchBar onHandleSearch={onHandleSearch} onClearSearch={onClearSearch} />
-      <Filter/>
+    <div className="searchPage">
+      <Banner bannerImage="./creatorbackground-4.jpg" />
+      <SearchBar
+        onHandleSearch={onHandleSearch}
+        onClearSearch={onClearSearch}
+      />
+      <Filter />
       <NFTCardTwo NFTData={nfts} />
-      <Slider/>
-      <Brand/>
+      <Slider />
+      <Brand />
     </div>
-  )
-}
+  );
+};
 
-export default SearchPage
+export default SearchPage;

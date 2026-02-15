@@ -16,7 +16,7 @@ const Brand = () => {
       >
         {/* Left */}
         <div>
-          <img src="./logo.svg" alt="brand logo" width={100} height={100}  className="mb-8"/>
+          <img src="/logo.svg" alt="brand logo" width={100} height={100}  className="mb-8"/>
 
           <h1 className="text-[5rem] leading-[1.2] font-extrabold max-[560px]:text-[2.5rem]">
             Earn free crypto with Ciscrypt
@@ -35,7 +35,7 @@ const Brand = () => {
         {/* Right */}
         <div>
           <img
-            src="./eran.png"
+            src="/eran.png"
             alt="earn img"
             height={600}
             width={800}

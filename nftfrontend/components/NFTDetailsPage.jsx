@@ -2,7 +2,7 @@ import React from "react";
 import NFTDescription from "./NFTDescription";
 import NFTDetailsImg from "./NFTDetailsImg";
 
-const NFTDetailsPage = () => {
+const NFTDetailsPage = ({nft}) => {
   return (
     <div className="w-full my-20 max-[560px]:my-8 text-(--icons-color)">
       <div
@@ -14,8 +14,8 @@ const NFTDetailsPage = () => {
           max-[560px]:grid-cols-1
         "
       >
-        <NFTDetailsImg />
-        <NFTDescription />
+        <NFTDetailsImg nft={nft}/>
+        <NFTDescription nft={nft}/>
       </div>
     </div>
   );

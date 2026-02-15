@@ -28,9 +28,9 @@ const NFTDescription = () => {
   const [provanance, setProvanance] = useState(false);
   const [owner, setOwner] = useState(false);
 
-  const historyArray = ["./user-1.png","./user-2.png","./user-3.png","./user-4.png","./user-5.png"];
-  const provonanceArray = ["./user-6.png","./user-7.png","./user-8.png","./user-9.png","./user-10.png"];
-  const ownerArray = ["./user-1.png","./user-8.png","./user-3.png","./user-10.png","./user-7.png"];
+  const historyArray = ["/user-1.png","/user-2.png","/user-3.png","/user-4.png","/user-5.png"];
+  const provonanceArray = ["/user-6.png","/user-7.png","/user-8.png","/user-9.png","/user-10.png"];
+  const ownerArray = ["/user-1.png","/user-8.png","/user-3.png","/user-10.png","/user-7.png"];
 
   return (
     <div className="w-full">
@@ -91,7 +91,7 @@ const NFTDescription = () => {
           <div className="flex items-center gap-8 mt-4 max-[560px]:grid">
             {["Creator", "Owner"].map((role, i) => (
               <div key={i} className={`flex items-center gap-4 ${i === 1 && "border-l pl-6 border-(--icons-color) max-[560px]:border-none max-[560px]:pl-0"}`}>
-                <img src="./user-1.png" width={40} height={40} className="rounded-full" />
+                <img src="/user-1.png" width={40} height={40} className="rounded-full" />
                 <div>
                   <small>{role}</small><br />
                   <span className="font-extrabold flex items-center gap-1">

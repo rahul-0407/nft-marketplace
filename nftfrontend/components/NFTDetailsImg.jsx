@@ -5,7 +5,7 @@ import { BsSearch } from "react-icons/bs";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { TiArrowSortedDown, TiArrowSortedUp } from "react-icons/ti";
 
-const NFTDetailsImg = () => {
+const NFTDetailsImg = ({nft}) => {
   const [description, setDescription] = useState(true);
   const [details, setDetails] = useState(true);
   const [like, setLike] = useState(false);
@@ -40,7 +40,7 @@ const NFTDetailsImg = () => {
 
           {/* Image */}
           <img
-            src="./nft-image-1.png"
+            src={nft.image}
             alt="NFT image"
             width={700}
             height={800}
@@ -65,10 +65,7 @@ const NFTDetailsImg = () => {
         {description && (
           <div className="px-4 py-3 text-sm leading-relaxed">
             <p>
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Beatae doloremque cumque voluptate expedita, mollitia unde
-              recusandae culpa nobis deserunt molestias harum neque alias
-              fugiat quo rerum impedit ut voluptatibus adipisci sunt.
+              {nft.description}
             </p>
           </div>
         )}
@@ -94,13 +91,13 @@ const NFTDetailsImg = () => {
             <p>
               <small className="block">Contract Address</small>
               <span className="break-all">
-                0x447a634A3EE85f5D95b56dD01C35737795297440
+                {nft.seller}
               </span>
             </p>
 
             <p>
               <small className="block">Token ID</small>
-              100300372864
+              {nft.tokenId}
             </p>
           </div>
         )}

@@ -33,12 +33,13 @@ const NFTCardTwo = ({ NFTData }) => {
       "
     >
       {NFTData.map((el, i) => {
-        const likeData = likes[el.id] || { liked: false, count: 21 };
+        const likeData = likes[el.tokenId] || { liked: false, count: 21 };
+        console.log("NFT ITEM:", el);
 
         return (
           <Link
-            href={`/NFTdetail/${el.id}`}
-            key={el.id}
+            href={`/NFTdetail/${el.tokenId}`}
+            key={el.tokenId}
             className="block"
           >
             <div
@@ -57,7 +58,7 @@ const NFTCardTwo = ({ NFTData }) => {
                   <p
                     onClick={(e) => {
                       e.preventDefault(); // Prevent link navigation
-                      handleLike(el.id);
+                      handleLike(el.tokenId);
                     }}
                     className="
                       flex items-center gap-2
@@ -65,11 +66,7 @@ const NFTCardTwo = ({ NFTData }) => {
                       rounded-full px-2 py-1 cursor-pointer
                     "
                   >
-                    {likeData.liked ? (
-                      <AiFillHeart />
-                    ) : (
-                      <AiOutlineHeart />
-                    )}
+                    {likeData.liked ? <AiFillHeart /> : <AiOutlineHeart />}
                     <span>{likeData.count}</span>
                   </p>
                 </div>

@@ -27,7 +27,7 @@ const Footer = () => {
       >
         {/* SOCIAL */}
         <div>
-          <img src="./logo.svg" alt="footer logo" width={100} height={100}  className="mt-6"/>
+          <img src="/logo.svg" alt="footer logo" width={100} height={100}  className="mt-6"/>
           <p className="mt-18">
             The world's first and largest digital marketplace for crypto
             collectibles and non-fungible tokens (NFTs). Buy, sell, and discover
