@@ -20,7 +20,7 @@ const SearchBar = ({onHandleSearch, onClearSearch}) => {
     } else {
       onClearSearch()
     }
-  },[search])
+  },[])
   
 
   return (
