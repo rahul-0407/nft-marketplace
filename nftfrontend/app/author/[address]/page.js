@@ -1,6 +1,6 @@
 'use client'
 
-import React,{useState, useEffect} from 'react'
+import React,{useState, useEffect, useContext} from 'react'
 import Banner from '@/components/Banner';
 import NFTCardTwo from '@/components/NFTCardTwo'
 import Brand from '@/components/Brand';
@@ -9,6 +9,7 @@ import AuthorProfileCard from '@/components/AuthorProfileCard';
 import AuthorTabs from '@/components/AuthorTabs';
 import FollowerTabCard from '@/components/FollowerTabCard';
 import AuthorNftCardBox from '@/components/AuthorNftCardBox';
+import { NFTMarketplaceContext } from "@/context/NFTMarketplaceContext";
 
 const Author = () => {
 
@@ -21,18 +22,35 @@ const Author = () => {
     { bg: "/creatorbackground-8.jpg", avatar: "/user-8.png", name: "Pooja Mehta", price: "10.320 ETH" },
   ];
 
+  const {fetchMyNFTsOrListedNFTs, currentAccount} = useContext(NFTMarketplaceContext)
+
     const [collectiables, setCollectiables] = useState(true)
     const [created, setCreated] = useState(false)
     const [like, setLike] = useState(false)
     const [follower, setFollower] = useState(false)
     const [following, setFollowing] = useState(false)
+    const [nfts, setNfts] = useState([])
+    const [myNFTs, setMyNFTs] = useState([])
+
+    useEffect(()=>{
+      fetchMyNFTsOrListedNFTs("fetchItemsListed").then((items)=>{
+        setNfts(items)
+      })
+    },[])
+
+    useEffect(()=>{
+      fetchMyNFTsOrListedNFTs("fetchMyNFTS").then((items)=>{
+        setMyNFTs(items)
+      })
+    },[])
+    
 
   return (
     <div className='author'>
         <Banner bannerImage="/creatorbackground-2.jpeg" />
-        <AuthorProfileCard/>
+        <AuthorProfileCard currentAccount={currentAccount}/>
         <AuthorTabs setCollectiables={setCollectiables} setCreated={setCreated} setLike={setLike} setFollower={setFollower} setFollowing={setFollowing} />
-        <AuthorNftCardBox collectiables={collectiables} created={created} like={like} follower={follower} following={following}/>
+        <AuthorNftCardBox collectiables={collectiables} created={created} like={like} follower={follower} following={following} nfts={nfts} myNFTS={myNFTs} />
         <Title heading="Popular Creators" paragraph="Click on music icon and enjoy NTF music or audio"/>
         
         <div className='author_box w-[80%] grid-cols-4 grid mx-auto my-0 gap-8 mt-24 max-[560px]:w-[90%] max-[560px]:grid-cols-1'>

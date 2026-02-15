@@ -4,25 +4,25 @@ import React,{useState} from 'react'
 import NFTCardTwo from './NFTCardTwo'
 import FollowerTabCard from './FollowerTabCard'
 
-const AuthorNftCardBox = ({collectiables,created,like,follower,following}) => {
+const AuthorNftCardBox = ({collectiables,created,like,follower,following, nfts, myNFTs}) => {
 
-  const collectibleArray = [
-    "/nft-image-1.png",
-    "/nft-image-2.png",
-    "/nft-image-3.png",
-    "/nft-image-1.png",
-    "/nft-image-2.png",
-    "/nft-image-3.png",
-    "/nft-image-1.png",
-    "/nft-image-2.png"
-  ]
+  // const collectibleArray = [
+  //   "/nft-image-1.png",
+  //   "/nft-image-2.png",
+  //   "/nft-image-3.png",
+  //   "/nft-image-1.png",
+  //   "/nft-image-2.png",
+  //   "/nft-image-3.png",
+  //   "/nft-image-1.png",
+  //   "/nft-image-2.png"
+  // ]
 
-  const createdArray = [
-    "/nft-image-1.png",
-    "/nft-image-2.png",
-    "/nft-image-3.png",
-    "/nft-image-1.png"
-  ]
+  // const createdArray = [
+  //   "/nft-image-1.png",
+  //   "/nft-image-2.png",
+  //   "/nft-image-3.png",
+  //   "/nft-image-1.png"
+  // ]
 
   const likeArray = [
     "/nft-image-1.png",
@@ -52,8 +52,8 @@ const AuthorNftCardBox = ({collectiables,created,like,follower,following}) => {
 
   return (
     <div className='AuthorNFTCardBox w-full mb-56'>
-      {collectiables && <NFTCardTwo NFTData={collectibleArray}/>}
-      {created && <NFTCardTwo NFTData={createdArray}/>}
+      {collectiables && <NFTCardTwo NFTData={nfts}/>}
+      {created && <NFTCardTwo NFTData={myNFTs || []}/>}
       {like && <NFTCardTwo NFTData={likeArray}/>}
       {follower && (
         <div className='AuthorNFTCardBox_box w-[80%] mx-auto my-0 grid gap-8 grid-cols-4'>{followerArray.map((el, i)=><FollowerTabCard data={el} i={i}/>)}</div>

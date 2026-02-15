@@ -19,15 +19,6 @@ const SearchPage = () => {
     fetchNFTs().then((item) => {
       setNfts(item.reverse());
       setNftsCopy(item);
-
-      //  Send to server
-      // fetch("/api/debug", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(item),
-      // });
     });
   }, []);
 

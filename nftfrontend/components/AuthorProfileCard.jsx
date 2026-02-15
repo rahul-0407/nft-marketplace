@@ -16,7 +16,7 @@ import {
 import { BsThreeDots } from "react-icons/bs";
 import Button from "./Button";
 
-const AuthorProfileCard = () => {
+const AuthorProfileCard = ({currentAccount}) => {
   const [share, setShare] = useState(false);
   const [report, setReport] = useState(false);
 
@@ -83,7 +83,7 @@ const AuthorProfileCard = () => {
           <div className="flex items-center gap-4">
             <input
               type="text"
-              value="0x829BD824B03D092293333..A830"
+              value={currentAccount}
               id="myInput"
               readOnly
               className="

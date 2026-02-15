@@ -180,7 +180,8 @@ const NFTMarketplaceProvider = ({ children }) => {
 
   const fetchMyNFTsOrListedNFTs = async (type) => {
     try {
-      const contract = await connectingWithContract();
+      const provider = new ethers.JsonRpcProvider("http://127.0.0.1:8545");
+      const contract = fetchContract(provider);
 
       const data =
         type === "fetchItemsListed"
