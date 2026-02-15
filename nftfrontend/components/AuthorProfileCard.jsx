@@ -62,7 +62,7 @@ const AuthorProfileCard = () => {
         {/* Image */}
         <div className="max-[560px]:w-1/2">
           <img
-            src="./nft-image-1.png"
+            src="/nft-image-1.png"
             alt="nft"
             width={220}
             height={220}

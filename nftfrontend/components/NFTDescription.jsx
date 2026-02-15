@@ -1,6 +1,7 @@
-'use client'
+"use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import Link from "next/link";
 import {
   MdVerified,
   MdCloudUpload,
@@ -20,22 +21,42 @@ import {
 import { BiTransferAlt, BiDollar } from "react-icons/bi";
 import Button from "./Button";
 import NFTTabs from "./NFTTabs";
+import { NFTMarketplaceContext } from "@/context/NFTMarketplaceContext";
 
-const NFTDescription = () => {
+const NFTDescription = ({ nft }) => {
   const [social, setSocial] = useState(false);
   const [NFTMenu, setNFTMenu] = useState(false);
   const [history, setHistory] = useState(true);
   const [provanance, setProvanance] = useState(false);
   const [owner, setOwner] = useState(false);
 
-  const historyArray = ["/user-1.png","/user-2.png","/user-3.png","/user-4.png","/user-5.png"];
-  const provonanceArray = ["/user-6.png","/user-7.png","/user-8.png","/user-9.png","/user-10.png"];
-  const ownerArray = ["/user-1.png","/user-8.png","/user-3.png","/user-10.png","/user-7.png"];
+  const historyArray = [
+    "/user-1.png",
+    "/user-2.png",
+    "/user-3.png",
+    "/user-4.png",
+    "/user-5.png",
+  ];
+  const provonanceArray = [
+    "/user-6.png",
+    "/user-7.png",
+    "/user-8.png",
+    "/user-9.png",
+    "/user-10.png",
+  ];
+  const ownerArray = [
+    "/user-1.png",
+    "/user-8.png",
+    "/user-3.png",
+    "/user-10.png",
+    "/user-7.png",
+  ];
+
+  const { buyNFT, currentAccount } = useContext(NFTMarketplaceContext);
 
   return (
     <div className="w-full">
       <div className="w-full">
-
         {/* ===== TOP SHARE BAR ===== */}
         <div className="flex items-center justify-between relative">
           <p className="bg-(--icons-color) text-(--main-bg-color) px-3 py-1 rounded-full">
@@ -44,7 +65,10 @@ const NFTDescription = () => {
 
           <div className="flex items-center gap-8 text-xl">
             <MdCloudUpload
-              onClick={() => { setSocial(!social); setNFTMenu(false); }}
+              onClick={() => {
+                setSocial(!social);
+                setNFTMenu(false);
+              }}
               className="cursor-pointer"
             />
 
@@ -69,16 +93,27 @@ const NFTDescription = () => {
             )}
 
             <BsThreeDots
-              onClick={() => { setNFTMenu(!NFTMenu); setSocial(false); }}
+              onClick={() => {
+                setNFTMenu(!NFTMenu);
+                setSocial(false);
+              }}
               className="cursor-pointer"
             />
 
             {NFTMenu && (
               <div className="absolute top-20 right-0 w-56 bg-(--main-bg-color) shadow-(--box-shadow) rounded-lg p-4 z-50">
-                <a className="flex items-center gap-3 p-2"><BiDollar /> Change Price</a>
-                <a className="flex items-center gap-3 p-2"><BiTransferAlt /> Transfer</a>
-                <a className="flex items-center gap-3 p-2"><MdReportProblem /> Report Abuse</a>
-                <a className="flex items-center gap-3 p-2"><MdOutlineDeleteSweep /> Delete Item</a>
+                <a className="flex items-center gap-3 p-2">
+                  <BiDollar /> Change Price
+                </a>
+                <a className="flex items-center gap-3 p-2">
+                  <BiTransferAlt /> Transfer
+                </a>
+                <a className="flex items-center gap-3 p-2">
+                  <MdReportProblem /> Report Abuse
+                </a>
+                <a className="flex items-center gap-3 p-2">
+                  <MdOutlineDeleteSweep /> Delete Item
+                </a>
               </div>
             )}
           </div>
@@ -86,20 +121,47 @@ const NFTDescription = () => {
 
         {/* ===== TITLE + PROFILE ===== */}
         <div className="mt-6">
-          <h1 className="text-[3.2rem] leading-tight font-bold">BearX #234</h1>
+          <h1 className="text-[3.2rem] leading-tight font-bold">
+            {nft.name} #{nft.tokenId}
+          </h1>
 
           <div className="flex items-center gap-8 mt-4 max-[560px]:grid">
-            {["Creator", "Owner"].map((role, i) => (
-              <div key={i} className={`flex items-center gap-4 ${i === 1 && "border-l pl-6 border-(--icons-color) max-[560px]:border-none max-[560px]:pl-0"}`}>
-                <img src="/user-1.png" width={40} height={40} className="rounded-full" />
-                <div>
-                  <small>{role}</small><br />
+            <div
+              className={`flex items-center gap-4  pl-6 border-(--icons-color) max-[560px]:border-none max-[560px]:pl-0"`}
+            >
+              <img
+                src="/user-1.png"
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
+              <div>
+                <small>Creator</small>
+                <br />
+                <Link href={`/author/${nft.seller}`}>
                   <span className="font-extrabold flex items-center gap-1">
                     Karli Costa <MdVerified />
                   </span>
-                </div>
+                </Link>
               </div>
-            ))}
+            </div>
+            <div
+              className={`flex items-center gap-4 border-l pl-6 border-(--icons-color) max-[560px]:border-none max-[560px]:pl-0`}
+            >
+              <img
+                src="/user-1.png"
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
+              <div>
+                <small>Collection</small>
+                <br />
+                <span className="font-extrabold flex items-center gap-1">
+                  token app <MdVerified />
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -110,9 +172,11 @@ const NFTDescription = () => {
           </p>
 
           <div className="flex gap-12 mt-4">
-            {["Days","Hours","Mins","Secs"].map((label, i) => (
+            {["Days", "Hours", "Mins", "Secs"].map((label, i) => (
               <div key={i}>
-                <p className="text-5xl font-black leading-none">{[2,22,45,12][i]}</p>
+                <p className="text-5xl font-black leading-none">
+                  {[2, 22, 45, 12][i]}
+                </p>
                 <span className="font-semibold">{label}</span>
               </div>
             ))}
@@ -124,7 +188,7 @@ const NFTDescription = () => {
                 Current Bid
               </small>
               <p className="p-4 text-2xl font-black">
-                1.000 ETH <span className="text-2xl">( = $3,221.22)</span>
+                {nft.price} ETH <span className="text-2xl">( = $3,221.22)</span>
               </p>
             </div>
             <span>[96 in stock]</span>
@@ -132,13 +196,20 @@ const NFTDescription = () => {
 
           {/* ===== ACTION BUTTONS ===== */}
           <div className="flex items-center gap-6 mt-12 max-[560px]:gap-4">
-            <Button btnName="Place a bid" icon={<FaWallet />} />
+            {currentAccount == nft.seller.toLowerCase() ? (
+              <p>You cannot buy your own nft</p>
+            ) : currentAccount == nft.owner.toLowerCase() ? (
+              <Button btnName="List on Marketplace" icon={<FaWallet />} />
+            ) : (
+              <Button btnName="Buy NFT" icon={<FaPercentage />} handleClick={()=> buyNFT(nft)}/>
+            )}
+
             <Button btnName="Make offer" icon={<FaPercentage />} />
           </div>
 
           {/* ===== TABS ===== */}
           <div className="flex gap-4 mt-12">
-            {["Bid History","Provonance","Owner"].map((tab) => (
+            {["Bid History", "Provonance", "Owner"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => {

@@ -8,7 +8,6 @@ import { MdTimer } from "react-icons/md";
 import LikeProfile from "./LikeProfile";
 
 const NFTCardTwo = ({ NFTData }) => {
-  // Store likes per NFT using object
   const [likes, setLikes] = useState({});
 
   const handleLike = (id) => {
@@ -39,7 +38,7 @@ const NFTCardTwo = ({ NFTData }) => {
         return (
           <Link
             href={`/NFTdetail/${el.tokenId}`}
-            key={el.tokenId}
+            key={i+1}
             className="block"
           >
             <div

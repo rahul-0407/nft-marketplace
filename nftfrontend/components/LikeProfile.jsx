@@ -1,7 +1,7 @@
 import React from "react";
 
 const LikeProfile = () => {
-  const imageArray = ["user-1.png", "user-2.png", "user-3.png", "user-4.png"];
+  const imageArray = ["/user-1.png", "/user-2.png", "/user-3.png", "/user-4.png"];
 
   return (
     <div className="flex items-center">

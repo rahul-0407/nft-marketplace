@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 import { NFTMarketplaceAddress, NFTMarketplaceABI } from "./constants";
@@ -232,6 +232,7 @@ const NFTMarketplaceProvider = ({ children }) => {
 
       await transaction.wait();
       console.log("NFT purchased successfully!");
+      router.push("/author")
     } catch (error) {
       console.error("Error while buying NFT:", error);
       throw error;

@@ -13,12 +13,12 @@ import AuthorNftCardBox from '@/components/AuthorNftCardBox';
 const Author = () => {
 
     const followingArray = [
-    { bg: "./creatorbackground-3.jpeg", avatar: "./user-3.png", name: "Aman Verma", price: "7.540 ETH" },
-    { bg: "./creatorbackground-4.jpg", avatar: "./user-4.png", name: "Rohit Singh", price: "5.120 ETH" },
-    { bg: "./creatorbackground-9.jpg", avatar: "./user-5.png", name: "Neha Patel", price: "11.004 ETH" },
-    { bg: "./creatorbackground-6.jpg", avatar: "./user-6.png", name: "Karan Shah", price: "6.899 ETH" },
-    { bg: "./creatorbackground-10.jpg", avatar: "./user-7.png", name: "Ankit Jain", price: "8.777 ETH" },
-    { bg: "./creatorbackground-8.jpg", avatar: "./user-8.png", name: "Pooja Mehta", price: "10.320 ETH" },
+    { bg: "/creatorbackground-3.jpeg", avatar: "/user-3.png", name: "Aman Verma", price: "7.540 ETH" },
+    { bg: "/creatorbackground-4.jpg", avatar: "/user-4.png", name: "Rohit Singh", price: "5.120 ETH" },
+    { bg: "/creatorbackground-9.jpg", avatar: "/user-5.png", name: "Neha Patel", price: "11.004 ETH" },
+    { bg: "/creatorbackground-6.jpg", avatar: "/user-6.png", name: "Karan Shah", price: "6.899 ETH" },
+    { bg: "/creatorbackground-10.jpg", avatar: "/user-7.png", name: "Ankit Jain", price: "8.777 ETH" },
+    { bg: "/creatorbackground-8.jpg", avatar: "/user-8.png", name: "Pooja Mehta", price: "10.320 ETH" },
   ];
 
     const [collectiables, setCollectiables] = useState(true)
@@ -29,7 +29,7 @@ const Author = () => {
 
   return (
     <div className='author'>
-        <Banner bannerImage="./creatorbackground-2.jpeg" />
+        <Banner bannerImage="/creatorbackground-2.jpeg" />
         <AuthorProfileCard/>
         <AuthorTabs setCollectiables={setCollectiables} setCreated={setCreated} setLike={setLike} setFollower={setFollower} setFollowing={setFollowing} />
         <AuthorNftCardBox collectiables={collectiables} created={created} like={like} follower={follower} following={following}/>
