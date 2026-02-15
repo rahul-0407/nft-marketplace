@@ -119,7 +119,7 @@ const NFTMarketplaceProvider = ({ children }) => {
         ? await contract.createToken(url, price, {
             value: listingPrice.toString(),
           })
-        : await contract.reSellToken(id, price, {
+        : await contract.resellToken(id, price, {
             value: listingPrice.toString(),
           });
 
@@ -180,13 +180,23 @@ const NFTMarketplaceProvider = ({ children }) => {
 
   const fetchMyNFTsOrListedNFTs = async (type) => {
     try {
-      const provider = new ethers.JsonRpcProvider("http://127.0.0.1:8545");
-      const contract = fetchContract(provider);
+      
+      const contract = await connectingWithContract();
+      
+      if (!contract) {
+        console.error("Contract connection failed");
+        return [];
+      }
 
       const data =
         type === "fetchItemsListed"
           ? await contract.fetchItemsListed()
           : await contract.fetchMyNFT();
+
+      // If no items, return empty array
+      if (!data || data.length === 0) {
+        return [];
+      }
 
       const items = await Promise.all(
         data.map(
@@ -217,8 +227,8 @@ const NFTMarketplaceProvider = ({ children }) => {
 
       return items;
     } catch (error) {
-      console.error("Error while fetching listed NFTs:", error);
-      throw error;
+      console.error("Error while fetching NFTs:", error);
+      return [];
     }
   };
 
@@ -233,7 +243,7 @@ const NFTMarketplaceProvider = ({ children }) => {
 
       await transaction.wait();
       console.log("NFT purchased successfully!");
-      router.push("/author")
+      router.push("/")
     } catch (error) {
       console.error("Error while buying NFT:", error);
       throw error;

@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { TiArrowSortedDown, TiArrowSortedUp, TiTick } from "react-icons/ti";
 
 const AuthorTabs = ({
@@ -11,7 +11,7 @@ const AuthorTabs = ({
   setFollowing,
 }) => {
   const [openList, setOpenList] = useState(false);
-  const [activeBtn, setActiveBtn] = useState(0);
+  const [activeBtn, setActiveBtn] = useState(1); 
   const [selectedMenu, setSelectedMenu] = useState("Most Recent");
 
   const listArray = [
@@ -20,6 +20,15 @@ const AuthorTabs = ({
     "Most Discussed",
     "Most Viewed",
   ];
+
+  
+  useEffect(() => {
+    setCollectiables(true);
+    setCreated(false);
+    setFollower(false);
+    setFollowing(false);
+    setLike(false);
+  }, []);
 
   const openDropDownList = () => {
     setOpenList(!openList);
@@ -77,7 +86,7 @@ const AuthorTabs = ({
           md:grid md:grid-cols-1 md:gap-8
         "
       >
-        {/* Left Tabs */}
+        
         <div>
           <div
             className="
@@ -116,8 +125,6 @@ const AuthorTabs = ({
             )}
           </div>
         </div>
-
-        {/* Right Dropdown */}
         <div className="relative mt-0 max-[560px]:mt-8 md:mt-8">
           <div
             onClick={() => openDropDownList()}
