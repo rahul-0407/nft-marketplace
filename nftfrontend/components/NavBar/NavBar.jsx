@@ -4,7 +4,9 @@ import React, { useContext, useState } from "react";
 
 import { MdNotifications } from "react-icons/md";
 import { BsSearch } from "react-icons/bs";
+import { DiJqueryLogo } from "react-icons/di";
 import { CgMenuRight } from "react-icons/cg";
+import { useRouter } from "next/navigation";
 
 import Discover from "./Discover";
 import HelpCenter from "./HelpCenter";
@@ -12,7 +14,7 @@ import Notification from "./Notification";
 import Profile from "./Profile";
 import SideBar from "./SideBar";
 import Button from "../Button";
-import {NFTMarketplaceContext} from "../../context/NFTMarketplaceContext"
+import { NFTMarketplaceContext } from "../../context/NFTMarketplaceContext";
 
 const NavBar = () => {
   const [discover, setDiscover] = useState(false);
@@ -20,8 +22,7 @@ const NavBar = () => {
   const [notification, setNotification] = useState(false);
   const [profile, setProfile] = useState(false);
   const [openSideMenu, setOpenSideMenu] = useState(false);
-
-  /* ===== LOGIC (UNCHANGED NAMES) ===== */
+  const router = useRouter();
 
   const openMenu = (e) => {
     const btnText = e.target.innerText;
@@ -29,9 +30,9 @@ const NavBar = () => {
     setHelp(btnText === "Help Center");
     setNotification(false);
     setProfile(false);
-    if(discover || help){
-      setDiscover(false)
-      setHelp(false)
+    if (discover || help) {
+      setDiscover(false);
+      setHelp(false);
     }
   };
 
@@ -53,19 +54,20 @@ const NavBar = () => {
     setOpenSideMenu((prev) => !prev);
   };
 
-  const {currentAccount, connectWallet} = useContext(NFTMarketplaceContext)
-
+  const { currentAccount, connectWallet } = useContext(NFTMarketplaceContext);
 
   return (
     <nav className="w-full py-6 relative z-1111111">
-      {/* navbar_container */}
+     
       <div className="w-[80%] mx-auto grid grid-cols-2 items-center gap-4 max-md:grid-cols-2">
-
-        {/* navbar_container_left */}
+     
         <div className="grid grid-cols-[1fr_2fr] items-center gap-4 max-md:grid-cols-1">
-          <img src="/logo.svg" alt="NFT Marketplace" width={100} height={100} />
+          <div class="logo w-full">
+            <DiJqueryLogo className="w-full h-[50]" onClick={()=>router.push("/")}/>
+          </div>
+          {/* <img src="/logo.svg" alt="NFT Marketplace" width={100} height={100} /> */}
 
-          {/* navbar_container_left_box_input_box (hidden on mobile) */}
+          
           <div className="w-[60%] border border-(--icons-color) flex items-center p-2 rounded-full max-md:hidden">
             <input
               type="text"
@@ -76,9 +78,7 @@ const NavBar = () => {
           </div>
         </div>
 
-        {/* navbar_container_right */}
         <div className="grid grid-cols-[1fr_1fr_.5fr_1fr_.3fr] gap-4 items-center self-end max-md:grid-cols-3">
-
           {/* navbar_container_right_discover (hidden on mobile) */}
           <div className="relative cursor-pointer max-md:hidden">
             <p onClick={openMenu}>Discover</p>
@@ -110,8 +110,13 @@ const NavBar = () => {
 
           {/* navbar_container_right_button (hidden on mobile) */}
           <div className="relative cursor-pointer max-md:hidden">
-            {currentAccount == ''? (<Button btnName="Connect" handleClick={()=>connectWallet()} />):(<a href="/upload"><Button btnName="Create" /></a>)}
-
+            {currentAccount == "" ? (
+              <Button btnName="Connect" handleClick={() => connectWallet()} />
+            ) : (
+              
+                <Button btnName="Create" handleClick={() => router.push('/upload')}/>
+              
+            )}
           </div>
 
           {/* navbar_container_right_profile_box */}
@@ -124,7 +129,7 @@ const NavBar = () => {
               className="rounded-full"
               onClick={openProfile}
             />
-            {profile && <Profile />}
+            {profile && <Profile currentAccount={currentAccount}/>}
           </div>
 
           {/* navbar_container_right_menuBtn (mobile only) */}

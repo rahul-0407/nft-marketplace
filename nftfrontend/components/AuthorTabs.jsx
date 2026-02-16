@@ -37,14 +37,14 @@ const AuthorTabs = ({
   const openTab = (e) => {
     const btnText = e.target.innerText;
 
-    if (btnText === "Collectiables") {
+    if (btnText === "Owned NFTs") {
       setCollectiables(true);
       setCreated(false);
       setFollower(false);
       setFollowing(false);
       setLike(false);
       setActiveBtn(1);
-    } else if (btnText === "Created") {
+    } else if (btnText === "Listed NFTs") {
       setCollectiables(false);
       setCreated(true);
       setFollower(false);
@@ -96,7 +96,7 @@ const AuthorTabs = ({
               max-[560px]:p-4 max-[560px]:rounded-2xl
             "
           >
-            {["Collectiables", "Created", "Liked", "Following", "Followers"].map(
+            {["Owned NFTs", "Listed NFTs", "Liked", "Following", "Followers"].map(
               (btn, index) => {
                 const btnIndex = index + 1;
                 const isActive = activeBtn === btnIndex;

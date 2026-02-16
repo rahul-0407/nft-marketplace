@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 import { GrClose } from "react-icons/gr";
 import {
@@ -13,14 +14,15 @@ import {
   TiArrowSortedDown,
   TiArrowSortedUp,
 } from "react-icons/ti";
-import {NFTMarketplaceContext} from "../../context/NFTMarketplaceContext"
+import { NFTMarketplaceContext } from "../../context/NFTMarketplaceContext";
 
 import Button from "../Button";
 
 const SideBar = ({ setOpenSideMenu }) => {
   const [openDiscover, setOpenDiscover] = useState(false);
   const [openHelp, setOpenHelp] = useState(false);
-  const {currentAccount, connectWallet} = useContext(NFTMarketplaceContext)
+  const { currentAccount, connectWallet } = useContext(NFTMarketplaceContext);
+  const router = useRouter()
 
   const discover = [
     { name: "Collection", link: "collection" },
@@ -155,8 +157,12 @@ const SideBar = ({ setOpenSideMenu }) => {
 
       {/* BUTTONS */}
       <div className="p-8 flex items-center justify-between">
-        {currentAccount == ''? (<Button btnName="Connect" handleClick={()=>connectWallet()} />):(<a href="/upload"><Button btnName="Create" /></a>)}
-        <Button btnName="Connect Wallet" handleClick={()=>{}}/>
+        {currentAccount == "" ? (
+          <Button btnName="Connect" handleClick={() => connectWallet()} />
+        ) : (
+            <Button btnName="Create" onClick={()=>router.push("/upload")}/>
+        )}
+        <Button btnName="Connect Wallet" handleClick={() => {}} />
       </div>
     </div>
   );
