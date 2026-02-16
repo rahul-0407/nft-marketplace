@@ -62,10 +62,10 @@ const ReSellToken = () => {
             placeholder="reSell Price"
             className="
               w-full mt-2 p-4
-              border border-[var(--icons-color)]
+              border border-(--icons-color)
               rounded-xl
               bg-transparent outline-none
-              placeholder:text-[var(--icons-color)]
+              placeholder:text-(--icons-color)
             "
           />
         </div>

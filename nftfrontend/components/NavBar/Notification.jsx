@@ -5,17 +5,17 @@ const Notification = () => {
     <div
       className="
         absolute
-        top-[3.5rem]
+        top-14
         right-0
-        w-[25rem]
+        w-100
         p-8 px-4
         rounded-xl
         text-base
-        shadow-[var(--box-shadow)]
-        bg-[var(--main-bg-color)]
-        z-[222222222]
+        shadow-(--box-shadow)
+        bg-(--main-bg-color)
+        z-222222222
         max-[35em]:w-[20rem]
-        max-[35em]:right-[-2rem]
+        max-[35em]:-right-8
       "
     >
       {/* TITLE */}
@@ -28,8 +28,8 @@ const Notification = () => {
         className="
           flex items-start gap-4 p-4
           transition-all duration-300 ease-in
-          hover:bg-[var(--icons-color)]
-          hover:text-[var(--shadow-dark-color)]
+          hover:bg-(--icons-color)
+          hover:text-(--shadow-dark-color)
           hover:rounded-[0.3rem]
           max-[35em]:p-[0.3rem]
         "
