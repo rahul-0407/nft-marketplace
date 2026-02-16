@@ -1,37 +1,25 @@
 "use client";
 
-import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "next/navigation";
+import React, { useState, useEffect } from "react";
+import { useParams, useSearchParams } from "next/navigation";
 import Category from "@/components/Category";
 import Brand from "@/components/Brand";
 import NFTDetailsPage from "@/components/NFTDetailsPage";
-import { NFTMarketplaceContext } from "@/context/NFTMarketplaceContext";
 
 const NFTdetail = () => {
-  const { fetchNFTs } = useContext(NFTMarketplaceContext);
-  const params = useParams();   
+  const params = useParams();
+  const searchParams = useSearchParams();
 
   const [nft, setNft] = useState(null);
 
   useEffect(() => {
-    const loadNFT = async () => {
-      const allNFTs = await fetchNFTs();
+    const nftData = searchParams.get("nft");
 
-      console.log("PARAM ID:", params.id);
-
-      const selectedNFT = allNFTs.find(
-        (item) => Number(item.tokenId) === Number(params.id)
-      );
-
-      if (selectedNFT) {
-        setNft(selectedNFT);
-      }
-    };
-
-    if (params?.id) {
-      loadNFT();
+    if (nftData) {
+      const parsed = JSON.parse(decodeURIComponent(nftData));
+      setNft(parsed);
     }
-  }, [params, fetchNFTs]);
+  }, [searchParams]);
 
   if (!nft) return <div>Loading...</div>;
 

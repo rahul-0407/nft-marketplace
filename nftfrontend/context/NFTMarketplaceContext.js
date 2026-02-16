@@ -68,7 +68,6 @@ const NFTMarketplaceProvider = ({ children }) => {
     }
   };
 
-  // Upload file to IPFS using Pinata
   const uploadToIPFSHandler = async (file) => {
     try {
       const url = await uploadToIPFS(file);
@@ -79,7 +78,6 @@ const NFTMarketplaceProvider = ({ children }) => {
     }
   };
 
-  // Create NFT - Upload metadata and create sale
   const createNFT = async (
     name,
     price,
@@ -102,6 +100,8 @@ const NFTMarketplaceProvider = ({ children }) => {
 
       // Create sale on blockchain
       await createSale(url, price, false);
+
+      router.push('/searchPage')
     } catch (error) {
       console.error("Create NFT failed:", error);
       throw error;
@@ -126,7 +126,6 @@ const NFTMarketplaceProvider = ({ children }) => {
       await transaction.wait();
       console.log(transaction)
       console.log("Sale created successfully!");
-      router.push('/searchPage')
     } catch (error) {
       console.error("Error while creating sale:", error);
       throw error;

@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useContext } from "react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   MdVerified,
   MdCloudUpload,
@@ -53,6 +54,7 @@ const NFTDescription = ({ nft }) => {
   ];
 
   const { buyNFT, currentAccount } = useContext(NFTMarketplaceContext);
+  const router = useRouter();
 
   return (
     <div className="w-full">
@@ -199,7 +201,7 @@ const NFTDescription = ({ nft }) => {
             {currentAccount == nft.seller.toLowerCase() ? (
               <p>You cannot buy your own nft</p>
             ) : currentAccount == nft.owner.toLowerCase() ? (
-              <Button btnName="List on Marketplace" icon={<FaWallet />} />
+              <Button btnName="List on Marketplace" icon={<FaWallet />} handleClick={()=> router.push(`/reSellToken?id=${nft.tokenId}&tokenURI=${nft.tokenURI}`)}/>
             ) : (
               <Button btnName="Buy NFT" icon={<FaPercentage />} handleClick={()=> buyNFT(nft)}/>
             )}

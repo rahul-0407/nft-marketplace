@@ -37,8 +37,13 @@ const NFTCardTwo = ({ NFTData }) => {
 
         return (
           <Link
-            href={`/NFTdetail/${el.tokenId}`}
-            key={i+1}
+            href={{
+              pathname: `/NFTdetail/${el.tokenId}`,
+              query: {
+                nft: encodeURIComponent(JSON.stringify(el)),
+              },
+            }}
+            key={i + 1}
             className="block"
           >
             <div
