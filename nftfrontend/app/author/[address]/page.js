@@ -76,11 +76,6 @@ const Author = () => {
     if (currentAccount) {
       fetchMyNFTsOrListedNFTs("fetchMyNFT").then((items) => {
         console.log("My NFTs:", items);
-        fetch("/api/debug", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(items),
-        });
         setMyNFTs(items);
       });
     }
@@ -105,7 +100,7 @@ const Author = () => {
         follower={follower}
         following={following}
         nfts={myNFTs}
-        myNFTs={nfts}
+        myNFTS={nfts}
       />
       <Title
         heading="Popular Creators"
