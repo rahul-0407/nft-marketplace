@@ -84,7 +84,7 @@ const NavBar = () => {
             <p onClick={openMenu}>Discover</p>
             {discover && (
               <div className="absolute mt-4 p-4 w-60 rounded-xl bg-(--main-bg-color) shadow-(--box-shadow)">
-                <Discover />
+                <Discover currentAccount={currentAccount}/>
               </div>
             )}
           </div>

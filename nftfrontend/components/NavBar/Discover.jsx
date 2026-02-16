@@ -1,11 +1,11 @@
 import React from "react";
 import Link from "next/link";
 
-const Discover = () => {
+const Discover = ({currentAccount}) => {
   const discover = [
     { name: "Collection", link: "collection" },
     { name: "Search", link: "searchPage" },
-    { name: "Author Profile", link: "author" },
+    { name: "Author Profile", link: `author/${currentAccount}` },
     { name: "NFT Details", link: "NFTdetail" },
     { name: "Account Setting", link: "account" },
     { name: "Upload NFT", link: "upload" },

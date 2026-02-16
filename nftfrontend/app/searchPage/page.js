@@ -7,6 +7,7 @@ import SearchBar from "@/components/SearchBar";
 import Filter from "@/components/Filter";
 import NFTCardTwo from "@/components/NFTCardTwo";
 import Banner from "@/components/Banner";
+import Loader from "@/components/Loader";
 
 import { NFTMarketplaceContext } from "@/context/NFTMarketplaceContext";
 
@@ -60,7 +61,8 @@ const SearchPage = () => {
         onClearSearch={onClearSearch}
       />
       <Filter />
-      <NFTCardTwo NFTData={nfts} />
+
+      {nfts.length == 0? <Loader/> : <NFTCardTwo NFTData={nfts} />}
       <Slider />
       <Brand />
     </div>

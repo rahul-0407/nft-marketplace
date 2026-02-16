@@ -3,8 +3,9 @@
 import React, { useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { BsImages } from "react-icons/bs";
+import Link from "next/link";
 
-const NFTCard = () => {
+const NFTCard = ({NFTData}) => {
   const featureArray = [1, 2, 3, 4, 5, 6, 7, 8, 9];
   const [like, setLike] = useState(true);
 
@@ -12,7 +13,17 @@ const NFTCard = () => {
 
   return (
     <div className="w-[80%] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12 mb-40 text-(--icons-color)">
-      {featureArray.map((_el, i) => (
+      {NFTData.map((_el, i) => (
+        <Link
+            href={{
+              pathname: `/NFTdetail/${_el.tokenId}`,
+              query: {
+                nft: encodeURIComponent(JSON.stringify(_el)),
+              },
+            }}
+            key={i + 1}
+            className="block"
+          >
         <div
           key={i}
           className="bg-(--shadow-light-color) p-4 rounded-2xl mx-auto cursor-pointer transition-all duration-300 ease-in hover:shadow-(--box-shadow-small) relative overflow-hidden grid"
@@ -20,7 +31,7 @@ const NFTCard = () => {
           {/* Image */}
           <div className="col-span-full row-span-full overflow-hidden rounded-2xl">
             <img
-              src="./nft-image-1.png"
+              src={_el.image}
               alt="NFT"
               className="rounded-2xl transition-all duration-300 ease-in hover:scale-105"
             />
@@ -57,14 +68,14 @@ const NFTCard = () => {
             {/* Skewed Price Box */}
             <div className="bg-(--shadow-light-color) -ml-6 pt-2 pb-4 skew-x-45 rounded-tr-2xl">
               <div className="-skew-x-45 pl-12">
-                <h4 className="text-lg font-bold">Clone #17373</h4>
+                <h4 className="text-lg font-bold">{_el.name} #{_el.tokenId}</h4>
 
                 <div className="flex justify-between items-end mt-2">
                   <div className="border border-(--icons-color) px-2 py-1 rounded-md">
                     <small className="bg-(--icons-color) text-(--main-bg-color) rounded px-2 py-1 text-xs m-auto">
                       Current Bid
                     </small>
-                    <p className="pt-2 font-semibold px-2">1.000 ETH</p>
+                    <p className="pt-2 font-semibold px-2">{_el.price} ETH</p>
                   </div>
 
                   <div>
@@ -80,6 +91,7 @@ const NFTCard = () => {
             </div>
           </div>
         </div>
+        </Link>
       ))}
     </div>
   );

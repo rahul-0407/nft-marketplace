@@ -1,9 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { NFTMarketplaceContext } from "@/context/NFTMarketplaceContext";
 
 const connectWallet = () => {
   const [activeBtn, setActiveBtn] = useState(1);
+  const {currentAccount, connectWallet} = useContext(NFTMarketplaceContext)
 
   const providerArray = [
     {
@@ -44,7 +46,7 @@ const connectWallet = () => {
           {providerArray.map((el, i) => (
             <div
               key={i + 1}
-              onClick={() => setActiveBtn(i + 1)}
+              onClick={() => (setActiveBtn(i + 1), connectWallet())}
               className={`
                 flex items-center gap-8
                 rounded-xl mt-6

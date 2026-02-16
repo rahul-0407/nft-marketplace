@@ -40,7 +40,7 @@ const AuthorNftCardBox = ({collectiables,created,like,follower,following, nfts, 
       
       {created && myNFTS && myNFTS.length > 0 && <NFTCardTwo NFTData={myNFTS}/>}
       
-      {like && <NFTCardTwo NFTData={likeArray}/>}
+      {like && <NFTCardTwo NFTData={nfts}/>}
       
       {follower && (
         <div className='AuthorNFTCardBox_box w-[80%] mx-auto my-0 grid gap-8 grid-cols-4'>
