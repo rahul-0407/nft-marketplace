@@ -19,7 +19,7 @@ app.get("/api/v1/nfts", (req, res) => {
 
 app.post("/api/v1/nfts", (req, res) => {
 //   console.log(req);
- const newId = nfts[nfts.length - 1] +1;  
+ const newId = nfts[nfts.length - 1].id +1;  
  const newNFTs = Object.assign({id:newId},req.body);
  nfts.push(newNFTs);
  fs.writeFileSync(`${__dirname}/nft-data/data/nft-simple.json`,JSON.stringify(nfts),err=>{

@@ -16,6 +16,8 @@ import AudioLive from "@/components/AudioLive";
 import Slider from "@/components/Slider";
 import Brand from "@/components/Brand";
 import Video from "@/components/Video";
+import Loader from "@/components/Loader";
+import { getTopCreators } from "@/TopCreators/TopCreators";
 
 import { NFTMarketplaceContext } from "../context/NFTMarketplaceContext";
 
@@ -30,11 +32,16 @@ const Home = () => {
 
   const [nfts, setNfts] = useState([]);
   const [nftsCopy, setNftsCopy] = useState([]);
+  const [creators, setCreators] = useState([]);
 
   useEffect(() => {
     fetchNFTs().then((item) => {
-      setNfts(item.reverse());
+      const reversed = item.reverse();
+      setNfts(reversed);
       setNftsCopy(item);
+
+      const creatorData = getTopCreators(reversed);
+      setCreators(creatorData);
     });
   }, []);
 
@@ -49,7 +56,7 @@ const Home = () => {
       />
       <AudioLive />
       {/* <Title heading="New Collection" paragraph="Explore the NFTSs in the most featured categories."/> */}
-      <FollowerTab />
+      {creators.length == 0 ? <Loader length={4}/> : <FollowerTab TopCreator={creators} />}
       <Slider />
       <Collection />
       <Title
@@ -57,7 +64,7 @@ const Home = () => {
         paragraph="Discover the most outstanding NFTs in all topicsof life."
       />
       <Filter />
-      <NFTCard NFTData={nfts}/>
+      {nfts.length == 0 ? <Loader length={8} /> : <NFTCard NFTData={nfts} />}
       <Title
         heading="Browse by category"
         paragraph="Explore the NFTSs in the most featured categories."

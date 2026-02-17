@@ -62,7 +62,7 @@ const SearchPage = () => {
       />
       <Filter />
 
-      {nfts.length == 0? <Loader/> : <NFTCardTwo NFTData={nfts} />}
+      {nfts.length == 0? <Loader length={8}/> : <NFTCardTwo NFTData={nfts} />}
       <Slider />
       <Brand />
     </div>

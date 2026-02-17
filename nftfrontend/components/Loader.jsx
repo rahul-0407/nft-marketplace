@@ -1,10 +1,11 @@
 import React from "react";
 
-const Loader = () => {
-  const cards = Array.from({ length: 10 });
+const Loader = ({length}) => {
+  const cards = Array.from({ length: length });
 
   return (
-    <div className="relative">
+    <div className="relative w-[80%] mx-auto mb-56 max-[560px]:w-[90%]">
+
       {/* Spinner Overlay */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center pointer-events-none">
         <div className="w-16 h-16 rounded-full border-4 border-gray-200 border-t-blue-500 animate-spin mb-4"></div>
@@ -14,7 +15,7 @@ const Loader = () => {
       </div>
 
       {/* Skeleton Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6 opacity-40 pointer-events-none">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 opacity-40 pointer-events-none">
         {cards.map((_, index) => (
           <div
             key={index}
@@ -41,35 +42,7 @@ const Loader = () => {
         ))}
       </div>
 
-      {/* Shimmer Animation */}
-      <style jsx>{`
-        .shimmer {
-          position: relative;
-          overflow: hidden;
-        }
-
-        .shimmer::after {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: -100%;
-          height: 100%;
-          width: 100%;
-          background: linear-gradient(
-            90deg,
-            transparent,
-            rgba(255, 255, 255, 0.6),
-            transparent
-          );
-          animation: shimmer 1.5s infinite;
-        }
-
-        @keyframes shimmer {
-          100% {
-            left: 100%;
-          }
-        }
-      `}</style>
+      
     </div>
   );
 };
