@@ -38,7 +38,7 @@ const Category = () => {
             "
           >
             <img
-              src="/creatorbackground-1.jpeg"
+              src="/creatorbackground-1.svg"
               alt="Background image"
               width={350}
               height={150}

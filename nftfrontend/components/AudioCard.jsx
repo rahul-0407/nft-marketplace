@@ -4,19 +4,18 @@ import React, { useState } from "react";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { TbPlayerPlay, TbPlayerPause } from "react-icons/tb";
 import LikeProfile from "./LikeProfile";
- 
 
 const AudioCard = () => {
   const [like, setLike] = useState(false);
   const [play, setPlay] = useState(false);
 
   return (
-    <div className="grid grid-cols-5 grid-rows-[repeat(6,4rem)] gap-4 overflow-hidden rounded-3xl hover:shadow-(--box-shadow) relative transition-all duration-300 ease-in
-">
-
+    <div
+      className="grid grid-cols-5 grid-rows-[repeat(6,4rem)] gap-4 overflow-hidden rounded-3xl hover:shadow-(--box-shadow) relative transition-all duration-300 ease-in
+"
+    >
       {/* Like + Time Row */}
       <div className="col-span-full row-start-1 row-end-2 flex justify-between z-20">
-        
         {/* Like */}
         <div
           onClick={() => setLike(!like)}
@@ -54,9 +53,10 @@ const AudioCard = () => {
       </div>
 
       {/* Bottom Details */}
-      <div className="col-span-full row-start-5 -row-end-1 z-20 flex justify-between items-center
-                      bg-(--main-bg-color) w-[90%] p-8 rounded-tr-3xl leading-tight">
-
+      <div
+        className="col-span-full row-start-5 -row-end-1 z-20 flex justify-between items-center
+                      bg-(--main-bg-color) w-[90%] p-8 rounded-tr-3xl leading-tight"
+      >
         <div>
           <h4 className="text-lg leading-none">NFT music #1234</h4>
 
@@ -69,7 +69,7 @@ const AudioCard = () => {
         </div>
 
         <div className="text-right grid">
-          <LikeProfile/>
+          <LikeProfile />
           <small className="mt-8">24 in stock</small>
         </div>
       </div>
@@ -77,7 +77,7 @@ const AudioCard = () => {
       {/* Background Image */}
       <div className="col-span-full row-span-full">
         <img
-          src="./creatorbackground-10.jpg"
+          src="/creatorbackground-10.svg"
           alt="background"
           className="w-full h-full object-cover"
         />

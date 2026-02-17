@@ -16,7 +16,7 @@ const SliderCard = () => {
         {/* Image */}
         <div>
           <img
-            src="./creatorbackground-10.jpg"
+            src="./creatorbackground-10.svg"
             alt="slider profile"
             width={500}
             height={300}

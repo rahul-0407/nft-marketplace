@@ -14,6 +14,7 @@ import Notification from "./Notification";
 import Profile from "./Profile";
 import SideBar from "./SideBar";
 import Button from "../Button";
+import Error from "../Error";
 import { NFTMarketplaceContext } from "../../context/NFTMarketplaceContext";
 
 const NavBar = () => {
@@ -54,7 +55,7 @@ const NavBar = () => {
     setOpenSideMenu((prev) => !prev);
   };
 
-  const { currentAccount, connectWallet } = useContext(NFTMarketplaceContext);
+  const { currentAccount, connectWallet, openError } = useContext(NFTMarketplaceContext);
 
   return (
     <nav className="w-full py-6 relative z-1111111">
@@ -62,7 +63,7 @@ const NavBar = () => {
       <div className="w-[80%] mx-auto grid grid-cols-2 items-center gap-4 max-md:grid-cols-2">
      
         <div className="grid grid-cols-[1fr_2fr] items-center gap-4 max-md:grid-cols-1">
-          <div class="logo w-full">
+          <div className="logo w-full">
             <DiJqueryLogo className="w-full h-[50]" onClick={()=>router.push("/")}/>
           </div>
           {/* <img src="/logo.svg" alt="NFT Marketplace" width={100} height={100} /> */}
@@ -153,6 +154,8 @@ const NavBar = () => {
           <SideBar setOpenSideMenu={setOpenSideMenu} />
         </div>
       )}
+
+      <Error />
     </nav>
   );
 };

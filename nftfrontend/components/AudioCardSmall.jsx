@@ -14,7 +14,7 @@ const AudioCardSmall = () => {
 
       {/* Image */}
       <img
-        src="creatorbackground-1.jpeg"
+        src="creatorbackground-1.svg"
         alt="music"
         width={100}
         height={100}

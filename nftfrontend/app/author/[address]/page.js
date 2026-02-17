@@ -42,7 +42,7 @@ const Author = () => {
       seller:"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" 
     },
     {
-      bg: "/creatorbackground-10.jpg",
+      bg: "/creatorbackground-10.svg",
       avatar: "/user-7.png",
       name: "Ankit Jain",
       price: "8.777 ETH",
@@ -89,7 +89,7 @@ const Author = () => {
 
   return (
     <div className="author">
-      <Banner bannerImage="/creatorbackground-2.jpeg" />
+      <Banner bannerImage="/creatorbackground-2.svg" />
       <AuthorProfileCard currentAccount={currentAccount} />
       <AuthorTabs
         setCollectiables={setCollectiables}

@@ -1,6 +1,6 @@
 import collection from "./collection.png";
-import creatorbackground1 from "./creatorbackground-1.jpeg";
-import creatorbackground2 from "./creatorbackground-2.jpeg";
+import creatorbackground1 from "./creatorbackground-1.svg";
+import creatorbackground2 from "./creatorbackground-2.svg";
 import creatorbackground3 from "./creatorbackground-3.jpeg";
 import creatorbackground4 from "./creatorbackground-4.jpg";
 import creatorbackground5 from "./creatorbackground-5.jpg";
@@ -8,7 +8,7 @@ import creatorbackground6 from "./creatorbackground-6.jpg";
 import creatorbackground7 from "./creatorbackground-7.jpg";
 import creatorbackground8 from "./creatorbackground-8.jpg";
 import creatorbackground9 from "./creatorbackground-9.jpg";
-import creatorbackground10 from "./creatorbackground-10.jpg";
+import creatorbackground10 from "./creatorbackground-10.svg";
 import creatorbackground11 from "./creatorbackground-11.jpg";
 import user1 from "./user-1.png";
 import user2 from "./user-2.png";

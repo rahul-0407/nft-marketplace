@@ -7,7 +7,7 @@ const DaysComponents = () => {
       <div>
         <div>
           <img
-            src="./creatorbackground-1.jpeg"
+            src="./creatorbackground-1.svg"
             alt="profile background"
             className="w-full h-auto rounded-2xl object-cover"
             width={500}
@@ -17,21 +17,21 @@ const DaysComponents = () => {
 
         <div className="grid grid-cols-3 gap-2">
           <img
-            src="./creatorbackground-2.jpeg"
+            src="./creatorbackground-2.svg"
             alt="profile"
             height={200}
             width={200}
             className="object-cover rounded-bl-2xl"
           />
           <img
-            src="./creatorbackground-2.jpeg"
+            src="./creatorbackground-2.svg"
             alt="profile"
             height={200}
             width={200}
             className="object-cover"
           />
           <img
-            src="./creatorbackground-2.jpeg"
+            src="./creatorbackground-2.svg"
             alt="profile"
             height={200}
             width={200}
