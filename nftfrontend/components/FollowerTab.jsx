@@ -7,8 +7,8 @@ import FollowerTabCard from "./FollowerTabCard";
 const FollowerTab = ({TopCreator}) => {
 
   // const CardArray = [
-  //   { bg: "./creatorbackground-1.svg", avatar: "./user-1.png", name: "Sunny Kumar", price: "12.321 ETH" },
-  //   { bg: "./creatorbackground-2.svg", avatar: "./user-2.png", name: "Rahul Gupta", price: "9.221 ETH" },
+  //   { bg: "./creatorbackground-1.jpeg", avatar: "./user-1.png", name: "Sunny Kumar", price: "12.321 ETH" },
+  //   { bg: "./creatorbackground-2.jpeg", avatar: "./user-2.png", name: "Rahul Gupta", price: "9.221 ETH" },
   //   { bg: "./creatorbackground-3.jpeg", avatar: "./user-3.png", name: "Aman Verma", price: "7.540 ETH" },
   //   { bg: "./creatorbackground-4.jpg", avatar: "./user-4.png", name: "Rohit Singh", price: "5.120 ETH" },
   //   { bg: "./creatorbackground-9.jpg", avatar: "./user-5.png", name: "Neha Patel", price: "11.004 ETH" },
@@ -27,9 +27,9 @@ const FollowerTab = ({TopCreator}) => {
   ];
 
   const NewsArray = [
-    { bg: "./creatorbackground-2.svg", avatar: "./user-2.png", name: "Rahul Gupta", price: "9.221 ETH" },
+    { bg: "./creatorbackground-2.jpeg", avatar: "./user-2.png", name: "Rahul Gupta", price: "9.221 ETH" },
     { bg: "./creatorbackground-6.jpg", avatar: "./user-6.png", name: "Karan Shah", price: "6.899 ETH" },
-    { bg: "./creatorbackground-1.svg", avatar: "./user-1.png", name: "Sunny Kumar", price: "12.321 ETH" },
+    { bg: "./creatorbackground-1.jpeg", avatar: "./user-1.png", name: "Sunny Kumar", price: "12.321 ETH" },
     { bg: "./creatorbackground-8.jpg", avatar: "./user-8.png", name: "Pooja Mehta", price: "10.320 ETH" },
     { bg: "./creatorbackground-4.jpg", avatar: "./user-4.png", name: "Rohit Singh", price: "5.120 ETH" },
   ];

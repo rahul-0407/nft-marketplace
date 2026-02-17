@@ -26,7 +26,7 @@ const AuthorNftCardBox = ({collectiables,created,like,follower,following, nfts, 
   const followerArray = [
     { bg: "/creatorbackground-3.jpeg", avatar: "/user-3.png", name: "Aman Verma", price: "7.540 ETH", seller:"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" },
     { bg: "/creatorbackground-4.jpg", avatar: "/user-4.png", name: "Rohit Singh", price: "5.120 ETH" , seller:"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" },
-    { bg: "/creatorbackground-1.svg", avatar: "/user-5.png", name: "Neha Petal", price: "11.004 ETH" , seller:"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" },
+    { bg: "/creatorbackground-1.jpeg", avatar: "/user-5.png", name: "Neha Petal", price: "11.004 ETH" , seller:"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" },
     { bg: "/creatorbackground-6.jpg", avatar: "/user-6.png", name: "Karan Shah", price: "6.899 ETH", seller:"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"  },
     { bg: "/creatorbackground-9.jpg", avatar: "/user-7.png", name: "Ankit Jain", price: "8.777 ETH", seller:"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"  },
     { bg: "/creatorbackground-8.jpg", avatar: "/user-8.png", name: "Pooja Mehta", price: "10.320 ETH" , seller:"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266" },

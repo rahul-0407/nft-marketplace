@@ -22,7 +22,7 @@ const Collection = () => {
 
   return (
     <div className="collection">
-      <Banner bannerImage="./creatorbackground-1.svg" />
+      <Banner bannerImage="./creatorbackground-1.jpeg" />
       <CollectionProfile />
       <Filter />
       <NFTCardTwo NFTData={collectionArray} />

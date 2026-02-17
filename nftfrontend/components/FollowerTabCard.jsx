@@ -17,7 +17,7 @@ const FollowerTabCard = ({ i, data }) => {
       {/* Background Image */}
       <div className="col-span-full">
         <img
-          src={data.bg || "/creatorbackground-1.svg"}
+          src={data.bg || "/creatorbackground-1.jpeg"}
           alt="profile background"
           width={500}
           height={300}
