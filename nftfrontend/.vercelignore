@@ -1,0 +1,12 @@
+# Hardhat / Solidity (not needed for frontend build)
+contracts/
+scripts/
+test/
+ignition/
+cache/
+artifacts/
+hardhat.config.js
+
+# Dev files
+.env
+.env.local

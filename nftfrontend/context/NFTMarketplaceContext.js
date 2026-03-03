@@ -14,13 +14,59 @@ const fetchContract = (signerOrProvider) =>
   new ethers.Contract(
     NFTMarketplaceAddress,
     NFTMarketplaceABI,
-    signerOrProvider
+    signerOrProvider,
   );
+
+// Polygon Amoy testnet chainId
+const EXPECTED_CHAIN_ID = 80002n;
+const EXPECTED_CHAIN_ID_HEX = "0x13882";
 
 const connectingWithContract = async () => {
   const web3Modal = new Web3Modal();
   const connection = await web3Modal.connect();
   const provider = new ethers.BrowserProvider(connection);
+
+  const network = await provider.getNetwork();
+
+  // Validate the wallet is on the correct network
+  if (network.chainId !== EXPECTED_CHAIN_ID) {
+    try {
+      await window.ethereum.request({
+        method: "wallet_switchEthereumChain",
+        params: [{ chainId: EXPECTED_CHAIN_ID_HEX }],
+      });
+    } catch (switchError) {
+      if (switchError.code === 4902) {
+        await window.ethereum.request({
+          method: "wallet_addEthereumChain",
+          params: [
+            {
+              chainId: EXPECTED_CHAIN_ID_HEX,
+              chainName: "Polygon Amoy Testnet",
+              nativeCurrency: {
+                name: "Polygon Amoy",
+                symbol: "POL",
+                decimals: 18,
+              },
+              rpcUrls: [
+                "https://polygon-amoy.g.alchemy.com/v2/gvSAhY8S8dFMTxxMZBZCG",
+              ],
+              blockExplorerUrls: ["https://amoy.polygonscan.com/"],
+            },
+          ],
+        });
+      } else {
+        throw new Error(
+          "Please switch your wallet to Polygon Amoy testnet to use this app.",
+        );
+      }
+    }
+    // Reconnect after network switch
+    const newProvider = new ethers.BrowserProvider(window.ethereum);
+    const signer = await newProvider.getSigner();
+    return fetchContract(signer);
+  }
+
   const signer = await provider.getSigner();
   return fetchContract(signer);
 };
@@ -94,22 +140,27 @@ const NFTMarketplaceProvider = ({ children }) => {
 
       const transaction = !isReselling
         ? await contract.createToken(url, price, {
-            value: listingPrice.toString(),
+            value: listingPrice,
           })
         : await contract.resellToken(id, price, {
-            value: listingPrice.toString(),
+            value: listingPrice,
           });
 
       await transaction.wait();
     } catch (err) {
-      setError(err.message);
+      if (err.code === "CALL_EXCEPTION") {
+        setError(
+          "Contract call failed. Make sure your wallet is connected to Polygon Amoy testnet and the contract is deployed.",
+        );
+      } else {
+        setError(err.message || "Transaction failed");
+      }
     }
   };
 
   const fetchNFTs = async () => {
     try {
-      const provider = new ethers.JsonRpcProvider("http://127.0.0.1:8545");
-      const contract = fetchContract(provider);
+      const contract = await connectingWithContract();
 
       const data = await contract.fetchMarketItem();
 
@@ -128,7 +179,7 @@ const NFTMarketplaceProvider = ({ children }) => {
             description: meta.data.description,
             tokenURI,
           };
-        })
+        }),
       );
 
       return items;
@@ -164,7 +215,7 @@ const NFTMarketplaceProvider = ({ children }) => {
             description: meta.data.description,
             tokenURI,
           };
-        })
+        }),
       );
 
       return items;

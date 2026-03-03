@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useEffect, useState, useContext } from "react";
+import React, { Suspense, useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
 import { NFTMarketplaceContext } from "@/context/NFTMarketplaceContext";
 import Button from "@/components/Button";
 
-const ReSellToken = () => {
+const ReSellTokenContent = () => {
   const { currentAccount, createSale } = useContext(NFTMarketplaceContext);
   const [price, setPrice] = useState("");
   const [image, setImage] = useState("");
@@ -17,7 +17,6 @@ const ReSellToken = () => {
   const id = searchParams.get("id");
   const tokenURI = searchParams.get("tokenURI");
 
-
   const fetchNFT = async () => {
     if (!tokenURI) return;
 
@@ -26,33 +25,27 @@ const ReSellToken = () => {
   };
 
   useEffect(() => {
-  if (tokenURI) {
-    fetchNFT();
-  }
-}, [tokenURI]);
-
+    if (tokenURI) {
+      fetchNFT();
+    }
+  }, [tokenURI]);
 
   const resell = async () => {
     try {
       await createSale(tokenURI, price, image, id);
       router.push(`/author/${currentAccount}`);
     } catch (error) {
-      console.log("error while resell",error);
+      console.log("error while resell", error);
     }
   };
 
   return (
     <div className="w-full my-16">
-      {/* Equivalent of .reSellToken_box */}
       <div className="w-[60%] mx-auto">
-        <h1 className="text-5xl font-bold">
-          ReSell Your Token, Set Price
-        </h1>
+        <h1 className="text-5xl font-bold">ReSell Your Token, Set Price</h1>
 
         <div className="mt-8">
-          <label className="block ml-4 font-bold text-lg">
-            Price
-          </label>
+          <label className="block ml-4 font-bold text-lg">Price</label>
 
           <input
             type="number"
@@ -70,7 +63,6 @@ const ReSellToken = () => {
           />
         </div>
 
-        {/* Equivalent of .reSellToken_box_image */}
         <div className="my-16">
           {image && (
             <img
@@ -84,13 +76,20 @@ const ReSellToken = () => {
         </div>
 
         <div className="my-16">
-          <Button
-            btnName="Resell NFT"
-            handleClick={resell}
-          />
+          <Button btnName="Resell NFT" handleClick={resell} />
         </div>
       </div>
     </div>
+  );
+};
+
+const ReSellToken = () => {
+  return (
+    <Suspense
+      fallback={<div className="w-full my-16 text-center">Loading...</div>}
+    >
+      <ReSellTokenContent />
+    </Suspense>
   );
 };
 

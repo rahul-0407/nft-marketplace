@@ -1,6 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "gateway.pinata.cloud",
+      },
+      {
+        protocol: "https",
+        hostname: "*.ipfs.dweb.link",
+      },
+    ],
+  },
+  turbopack: {},
+  serverExternalPackages: ["hardhat"],
 };
 
 export default nextConfig;
